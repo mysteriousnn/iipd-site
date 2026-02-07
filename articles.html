@@ -1,0 +1,2118 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <!-- Google Analytics (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HKF6P1HJ9Q"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-HKF6P1HJ9Q');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Добавьте эти мета-теги для предотвращения кеширования -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    
+    <title>Наши статьи и материалы - iipd</title>
+    <link rel="icon" href="iipdPin.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ===== CSS Reset & Base Styles ===== */
+        :root {
+            /* Темная тема (по умолчанию) */
+            --bg-primary: #1a1a1a;
+            --bg-secondary: #262626;
+            --bg-accent: rgba(38, 38, 38, 0.98);
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.85);
+            --accent-gradient: linear-gradient(135deg, #888, #aaa);
+            --accent-orange: linear-gradient(135deg, #999, #bbb);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --shadow-color: rgba(0, 0, 0, 0.4);
+            --header-height: 70px;
+            --menu-border-radius: 15px;
+            --scrollbar-track: rgba(255, 255, 255, 0.05);
+            --scrollbar-thumb: rgba(136, 136, 136, 0.5);
+            --scrollbar-thumb-hover: rgba(136, 136, 136, 0.7);
+            --theme-toggle-color: #ffffff;
+            --theme-toggle-bg: rgba(255, 255, 255, 0.05);
+        }
+        
+        .light-theme {
+            /* Светлая тема */
+            --bg-primary: #f5f5f7;
+            --bg-secondary: #ffffff;
+            --bg-accent: rgba(255, 255, 255, 0.98);
+            --text-primary: #1a1a1a;
+            --text-secondary: rgba(26, 26, 26, 0.85);
+            --accent-gradient: linear-gradient(135deg, #666, #888);
+            --accent-orange: linear-gradient(135deg, #777, #999);
+            --border-color: rgba(0, 0, 0, 0.12);
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --scrollbar-track: rgba(0, 0, 0, 0.05);
+            --scrollbar-thumb: rgba(136, 136, 136, 0.3);
+            --scrollbar-thumb-hover: rgba(136, 136, 136, 0.5);
+            --theme-toggle-color: #1a1a1a;
+            --theme-toggle-bg: rgba(0, 0, 0, 0.08);
+            /* Усиленная контрастность для кнопки меню */
+            --menu-button-bg: rgba(0, 0, 0, 0.12);
+            --menu-button-border: rgba(0, 0, 0, 0.18);
+            --menu-button-text: #1a1a1a;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        html {
+            scroll-behavior: auto;
+            overflow: hidden;
+            height: 100%;
+        }
+        
+        body {
+            background-color: var(--bg-primary);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-primary);
+            padding-top: var(--header-height);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+            line-height: 1.6;
+            height: 100vh;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            display: flex;
+            flex-direction: column;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        
+        .channel-description,
+        .channel-text,
+        .info-text,
+        .button-description,
+        .subtitle,
+        .article-description {
+            -webkit-user-select: text;
+            -moz-user-select: text;
+            -ms-user-select: text;
+            user-select: text;
+        }
+        
+        body::-webkit-scrollbar {
+            width: 0;
+            height: 0;
+            display: none;
+        }
+        
+        body {
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        
+        /* ===== Header & Navigation ===== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--header-height);
+            z-index: 3000;
+            background-color: rgba(26, 26, 26, 0.95);
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.6);
+            padding: 10px 0;
+        }
+        
+        .light-theme .header {
+            background-color: rgba(245, 245, 247, 0.95);
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 100%;
+        }
+        
+        .main-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            height: 100%;
+        }
+        
+        /* УПРОЩЕННЫЙ ЛОГОТИП - как в первом файле */
+        .logo {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            text-decoration: none;
+            cursor: pointer;
+            z-index: 1002;
+            user-select: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 0;
+        }
+        
+        .logo:hover {
+            opacity: 0.8;
+        }
+        
+        .logo-icon {
+            font-size: 1.8rem;
+            color: var(--text-primary);
+        }
+        
+        .logo-text {
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            letter-spacing: 0.5px;
+            color: var(--text-primary);
+        }
+        
+        .light-theme .logo-icon,
+        .light-theme .logo-text {
+            color: var(--text-primary);
+        }
+        
+        /* Кнопка переключения темы */
+        .theme-toggle {
+            position: absolute;
+            right: 80px; /* Увеличено расстояние от правого края */
+            top: 50%;
+            transform: translateY(-50%);
+            width: 44px;
+            height: 44px;
+            background: var(--theme-toggle-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--theme-toggle-color);
+            cursor: pointer;
+            text-decoration: none;
+            z-index: 1002;
+            -webkit-touch-callout: none;
+        }
+        
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .light-theme .theme-toggle:hover {
+            background: rgba(0, 0, 0, 0.15);
+            border-color: rgba(0, 0, 0, 0.25);
+        }
+        
+        .theme-toggle i {
+            font-size: 1.2rem;
+        }
+        
+        /* Иконка луны для темной темы */
+        .theme-toggle .fa-moon {
+            display: block;
+        }
+        
+        .theme-toggle .fa-sun {
+            display: none;
+        }
+        
+        /* В светлой теме показываем солнце, скрываем луну */
+        .light-theme .theme-toggle .fa-moon {
+            display: none;
+        }
+        
+        .light-theme .theme-toggle .fa-sun {
+            display: block;
+        }
+        
+        /* Telegram Icon in Header */
+        .telegram-icon {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 44px;
+            height: 44px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            cursor: pointer;
+            text-decoration: none;
+            z-index: 1002;
+            -webkit-touch-callout: none;
+        }
+        
+        .telegram-icon:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .light-theme .telegram-icon {
+            background: rgba(0, 0, 0, 0.05);
+            color: rgba(26, 26, 26, 0.85);
+        }
+        
+        .light-theme .telegram-icon:hover {
+            background: rgba(0, 0, 0, 0.1);
+            color: var(--text-primary);
+            border-color: rgba(0, 0, 0, 0.2);
+        }
+        
+        .telegram-icon i {
+            font-size: 1.3rem;
+        }
+        
+        /* Menu Toggle Button */
+        .menu-toggle {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            user-select: none;
+            z-index: 1002;
+            position: relative;
+            top: 2px;
+            border: none;
+            outline: none;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+        }
+        
+        /* Усиленная видимость кнопки меню в светлой теме */
+        .light-theme .menu-toggle {
+            background-color: var(--menu-button-bg);
+            border-color: var(--menu-button-border);
+            color: var(--menu-button-text);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+        
+        /* Убираем стандартные стили для кнопок на мобильных */
+        button, 
+        .menu-toggle,
+        .dropdown-toggle,
+        .button-link,
+        .nav-link,
+        .dropdown-item,
+        .telegram-icon,
+        .theme-toggle {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        /* Стили для активного состояния (нажатия) на мобильных */
+        .menu-toggle:active,
+        .dropdown-toggle:active,
+        .button-link:active,
+        .nav-link:active,
+        .dropdown-item:active,
+        .telegram-icon:active,
+        .theme-toggle:active {
+            background-color: rgba(255, 255, 255, 0.15) !important;
+        }
+        
+        .light-theme .menu-toggle:active,
+        .light-theme .dropdown-toggle:active,
+        .light-theme .button-link:active,
+        .light-theme .nav-link:active,
+        .light-theme .dropdown-item:active,
+        .light-theme .telegram-icon:active,
+        .light-theme .theme-toggle:active {
+            background-color: rgba(0, 0, 0, 0.15) !important;
+        }
+        
+        /* Main Menu */
+        .nav-list {
+            display: none;
+            flex-direction: column;
+            width: calc(100% - 40px);
+            max-width: 400px;
+            position: fixed;
+            top: calc(var(--header-height) + 15px);
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--bg-secondary);
+            padding: 0;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
+            border: 1px solid var(--border-color);
+            border-radius: var(--menu-border-radius);
+            z-index: 1001;
+            max-height: 85vh;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            overscroll-behavior: contain;
+            list-style: none;
+        }
+        
+        .light-theme .nav-list {
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Стили для скроллбара меню */
+        .nav-list::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .nav-list::-webkit-scrollbar-track {
+            background: var(--scrollbar-track);
+            border-radius: 4px;
+            margin: 8px 0;
+        }
+        
+        .nav-list::-webkit-scrollbar-thumb {
+            background: var(--scrollbar-thumb);
+            border-radius: 4px;
+            border: 2px solid var(--bg-secondary);
+        }
+        
+        .nav-list::-webkit-scrollbar-thumb:hover {
+            background: var(--scrollbar-thumb-hover);
+        }
+        
+        /* Для Firefox */
+        .nav-list {
+            scrollbar-width: thin;
+            scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+        }
+        
+        .nav-list.active {
+            display: flex;
+        }
+        
+        .nav-item {
+            position: relative;
+            width: 100%;
+        }
+        
+        .nav-item:first-child .nav-link {
+            border-radius: var(--menu-border-radius) var(--menu-border-radius) 0 0;
+        }
+        
+        /* Footer in menu */
+        .nav-footer {
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            border-radius: 0 0 var(--menu-border-radius) var(--menu-border-radius);
+            flex-shrink: 0;
+        }
+        
+        .light-theme .nav-footer {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+        
+        .nav-footer-text {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-align: center;
+            line-height: 1.5;
+        }
+        
+        .nav-footer-link {
+            color: #aaa;
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 1px solid transparent;
+        }
+        
+        .nav-footer-link:hover {
+            color: var(--text-primary);
+            border-bottom: 1px solid var(--text-primary);
+        }
+        
+        .nav-footer-year {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.85rem;
+            margin-top: 5px;
+        }
+        
+        .light-theme .nav-footer-year {
+            color: rgba(26, 26, 26, 0.6);
+        }
+        
+        /* Для последнего элемента перед футером */
+        .nav-item:last-child .nav-link {
+            border-radius: 0;
+        }
+        
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 18px 24px;
+            font-weight: 600;
+            font-size: 1rem;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            width: 100%;
+            background-color: transparent;
+            position: relative;
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+            user-select: none;
+            flex-shrink: 0;
+        }
+        
+        .nav-link i {
+            font-size: 1.1rem;
+            margin-right: 12px;
+            width: 24px;
+            text-align: center;
+        }
+        
+        .link-text {
+            flex-grow: 1;
+            text-align: left;
+        }
+        
+        /* Dropdown Menu */
+        .dropdown-menu {
+            width: 100%;
+            background-color: var(--bg-secondary);
+            padding: 0;
+            margin: 0;
+            display: none;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        
+        .dropdown.active .dropdown-menu {
+            display: block;
+        }
+        
+        /* Для Tgstat - скрываем закругления */
+        .nav-item.dropdown:nth-last-child(3) .nav-link {
+            border-radius: 0;
+        }
+        
+        .nav-item.dropdown:nth-last-child(3) .dropdown-menu {
+            border-radius: 0;
+        }
+        
+        /* Для "Стать Админом" - убираем закругления */
+        .nav-item.dropdown:nth-last-child(2) .nav-link {
+            border-radius: 0;
+        }
+        
+        .nav-item.dropdown:nth-last-child(2) .dropdown-menu {
+            border-radius: 0;
+        }
+        
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 16px 48px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            position: relative;
+            min-height: 48px;
+            justify-content: flex-start;
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+            user-select: none;
+            flex-shrink: 0;
+        }
+        
+        .dropdown-item:last-child {
+            border-radius: 0;
+        }
+        
+        /* Diamond bullet for dropdown items */
+        .dropdown-item::before {
+            content: '';
+            position: absolute;
+            left: 32px;
+            top: 50%;
+            transform: translateY(-50%) rotate(45deg);
+            width: 8px;
+            height: 8px;
+            background: #888;
+            flex-shrink: 0;
+        }
+        
+        .dropdown-item-text {
+            flex: 1;
+            padding-left: 8px;
+            text-align: left;
+        }
+        
+        .dropdown-item::after {
+            content: ' ➥';
+            color: #888;
+            font-weight: bold;
+            margin-left: auto;
+        }
+        
+        /* Dropdown arrow (diamond shape) */
+        .dropdown-toggle::after {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-right: 2px solid currentColor;
+            border-bottom: 2px solid currentColor;
+            transform: rotate(45deg);
+            margin-left: 12px;
+            flex-shrink: 0;
+        }
+        
+        .dropdown.active .dropdown-toggle::after {
+            transform: rotate(-135deg);
+        }
+        
+        /* Для консистентности добавим одинаковые hover эффекты */
+        .nav-link:hover, 
+        .nav-link.active,
+        .dropdown.active .dropdown-toggle {
+            background-color: rgba(255, 255, 255, 0.08);
+            color: var(--text-primary);
+        }
+        
+        .light-theme .nav-link:hover,
+        .light-theme .nav-link.active,
+        .light-theme .dropdown.active .dropdown-toggle {
+            background-color: rgba(0, 0, 0, 0.08);
+        }
+        
+        /* Dropdown items - такой же эффект при наведении как у обычных пунктов */
+        .dropdown-item:hover {
+            background-color: rgba(255, 255, 255, 0.08);
+            color: var(--text-primary);
+        }
+        
+        .light-theme .dropdown-item:hover {
+            background-color: rgba(0, 0, 0, 0.08);
+        }
+        
+        /* ===== Main Content ===== */
+        .content {
+            padding: 20px 0 40px 0;
+            flex: 1 0 auto;
+            width: 100%;
+        }
+        
+        /* Page Description */
+        .page-description {
+            background-color: var(--bg-secondary);
+            border-radius: var(--menu-border-radius);
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .light-theme .page-description {
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .page-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+            text-align: center;
+        }
+        
+        .page-subtitle {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+        
+        /* Article Card - simplified version */
+        .article-card {
+            background-color: var(--bg-secondary);
+            border-radius: var(--menu-border-radius);
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .light-theme .article-card {
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .article-icon-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background: var(--accent-gradient);
+            color: white;
+            border-radius: var(--menu-border-radius);
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(136, 136, 136, 0.3);
+        }
+        
+        .article-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .article-description {
+            font-size: 0.98rem;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+        
+        .article-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            text-decoration: none;
+            padding: 14px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: 1px solid var(--border-color);
+            margin-top: auto;
+            cursor: pointer;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .article-button:active {
+            background-color: rgba(255, 255, 255, 0.15) !important;
+            transform: translateY(1px);
+        }
+        
+        .article-button:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .light-theme .article-button {
+            background: rgba(0, 0, 0, 0.05);
+            color: #1a1a1a;
+            border-color: rgba(0, 0, 0, 0.12);
+        }
+        
+        .light-theme .article-button:hover {
+            background: rgba(0, 0, 0, 0.1);
+        }
+        
+        .light-theme .article-button:active {
+            background-color: rgba(0, 0, 0, 0.15) !important;
+        }
+        
+        .button-icon {
+            font-size: 1.1rem;
+        }
+        
+        /* Buttons Grid */
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        /* Info Section */
+        .info-section {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 30px;
+            border-radius: var(--menu-border-radius);
+            margin-top: 40px;
+            margin-bottom: 40px;
+            border-left: 4px solid #888;
+        }
+        
+        .light-theme .info-section {
+            background: rgba(0, 0, 0, 0.03);
+        }
+        
+        .info-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+        }
+        
+        .info-text {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+        
+        .support-link {
+            color: #aaa;
+            text-decoration: underline;
+            font-weight: 600;
+        }
+        
+        .light-theme .support-link {
+            color: #666;
+        }
+        
+        .support-link:hover {
+            color: var(--text-primary);
+        }
+        
+        /* Suggest Topic Section - ИСПРАВЛЕННЫЙ БЛОК */
+        .suggest-topic {
+            background-color: var(--bg-secondary);
+            border-radius: var(--menu-border-radius);
+            padding: 30px;
+            margin-top: 40px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .light-theme .suggest-topic {
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .suggest-topic-icon {
+            font-size: 2.5rem;
+            color: #888;
+            margin-bottom: 20px;
+        }
+        
+        .suggest-topic-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+        }
+        
+        .suggest-topic-text {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 25px;
+            line-height: 1.7;
+        }
+        
+        .suggest-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            text-decoration: none;
+            padding: 14px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: 1px solid var(--border-color);
+            margin: 0 auto;
+            cursor: pointer;
+            max-width: 300px;
+        }
+        
+        .suggest-button:active {
+            background-color: rgba(255, 255, 255, 0.15) !important;
+            transform: translateY(1px);
+        }
+        
+        .suggest-button:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .light-theme .suggest-button {
+            background: rgba(0, 0, 0, 0.05);
+            color: #1a1a1a;
+            border-color: rgba(0, 0, 0, 0.12);
+        }
+        
+        .light-theme .suggest-button:hover {
+            background: rgba(0, 0, 0, 0.1);
+        }
+        
+        .light-theme .suggest-button:active {
+            background-color: rgba(0, 0, 0, 0.15) !important;
+        }
+        
+        /* ===== ARTICLE CONTENT STYLES ===== */
+        .article-content-container {
+            display: none;
+            background-color: var(--bg-secondary);
+            border-radius: var(--menu-border-radius);
+            padding: 40px;
+            margin-bottom: 40px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .light-theme .article-content-container {
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .article-content-header {
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 20px;
+        }
+        
+        .article-content-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+            line-height: 1.3;
+        }
+        
+        .article-content-meta {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+        
+        .article-content-meta i {
+            margin-right: 5px;
+        }
+        
+        .article-content-body {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+        }
+        
+        .article-content-body h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin: 40px 0 20px 0;
+            color: var(--text-primary);
+            border-bottom: 2px solid rgba(136, 136, 136, 0.3);
+            padding-bottom: 10px;
+        }
+        
+        .article-content-body p {
+            margin-bottom: 20px;
+        }
+        
+        .article-content-body ul,
+        .article-content-body ol {
+            margin: 0 0 20px 20px;
+        }
+        
+        .article-content-body li {
+            margin-bottom: 8px;
+            padding-left: 5px;
+        }
+        
+        .article-content-body a {
+            color: #888;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(136, 136, 136, 0.3);
+        }
+        
+        .article-content-body a:hover {
+            color: var(--text-primary);
+            border-bottom-color: currentColor;
+        }
+        
+        .article-content-footer {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .article-content-footer .article-button {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        
+        .light-theme .article-content-footer .article-button {
+            background: rgba(0, 0, 0, 0.05);
+            color: #1a1a1a;
+        }
+        
+        .article-content-footer .article-button:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .light-theme .article-content-footer .article-button:hover {
+            background: rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Стили для форматирования из редактора */
+        .article-content-section {
+            margin-bottom: 30px;
+        }
+        
+        .article-content-section h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin: 40px 0 20px 0;
+            color: var(--text-primary);
+            border-bottom: 2px solid rgba(136, 136, 136, 0.3);
+            padding-bottom: 10px;
+        }
+        
+        .article-content-text {
+            margin-bottom: 20px;
+            color: var(--text-secondary);
+        }
+        
+        .article-content-list {
+            margin: 0 0 20px 20px;
+            color: var(--text-secondary);
+        }
+        
+        .article-content-item {
+            margin-bottom: 8px;
+            padding-left: 5px;
+        }
+        
+        .menu-overlay {
+            position: fixed;
+            top: var(--header-height);
+            left: 0;
+            width: 100%;
+            height: calc(100% - var(--header-height));
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
+            backdrop-filter: blur(2px);
+        }
+        
+        .menu-overlay.active {
+            display: block;
+        }
+        
+        /* ===== Media Queries ===== */
+        @media (min-width: 769px) {
+            .nav-list {
+                width: 400px;
+                max-width: 400px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-list {
+                width: calc(100% - 40px);
+                max-width: calc(100% - 40px);
+                max-height: 80vh;
+            }
+            
+            .logo {
+                gap: 8px;
+            }
+            
+            .logo-icon {
+                font-size: 1.6rem;
+            }
+            
+            .logo-text {
+                font-size: 1.6rem;
+            }
+            
+            .page-description {
+                padding: 30px;
+            }
+            
+            .articles-grid {
+                gap: 25px;
+            }
+            
+            /* Suggest Topic адаптация */
+            .suggest-topic {
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            }
+            
+            .light-theme .suggest-topic {
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            }
+            
+            /* Адаптация кнопки темы для планшетов */
+            .theme-toggle {
+                right: 70px;
+            }
+            
+            /* Article Content адаптация */
+            .article-content-container {
+                padding: 25px;
+            }
+            
+            .article-content-title {
+                font-size: 1.8rem;
+            }
+            
+            .article-content-body {
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .content {
+                padding: 20px 0 30px 0;
+            }
+            
+            .nav-list {
+                max-height: 75vh;
+                top: calc(var(--header-height) + 10px);
+            }
+            
+            /* Адаптация логотипа для мобильных */
+            .logo {
+                gap: 6px;
+                left: 50%;
+                transform: translateX(-50%) translateY(-50%);
+            }
+            
+            .logo-icon {
+                font-size: 1.4rem;
+            }
+            
+            .logo-text {
+                font-size: 1.4rem;
+                letter-spacing: 0;
+            }
+            
+            /* Уменьшаем скроллбар на мобильных */
+            .nav-list::-webkit-scrollbar {
+                width: 6px;
+            }
+            
+            .container {
+                padding: 0 15px;
+            }
+            
+            .page-description {
+                padding: 20px;
+                margin-bottom: 20px;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            }
+            
+            .light-theme .page-description {
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            }
+            
+            .page-title {
+                font-size: 1.3rem;
+            }
+            
+            .page-subtitle {
+                font-size: 1rem;
+                margin-bottom: 15px;
+            }
+            
+            .article-card {
+                padding: 18px;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            }
+            
+            .light-theme .article-card {
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            }
+            
+            .article-icon-container {
+                width: 55px;
+                height: 55px;
+                font-size: 1.4rem;
+                margin-bottom: 15px;
+            }
+            
+            .article-title {
+                font-size: 1.2rem;
+            }
+            
+            .article-button, .suggest-button {
+                padding: 12px 16px;
+            }
+            
+            .info-section {
+                padding: 20px;
+                margin-top: 30px;
+                margin-bottom: 30px;
+            }
+            
+            /* Suggest Topic адаптация для мобильных */
+            .suggest-topic {
+                padding: 20px;
+                margin-top: 30px;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            }
+            
+            .light-theme .suggest-topic {
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            }
+            
+            .suggest-topic-icon {
+                font-size: 2rem;
+            }
+            
+            .suggest-topic-title {
+                font-size: 1.3rem;
+            }
+            
+            .menu-toggle {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+            
+            .nav-link {
+                padding: 16px 20px;
+                font-size: 0.95rem;
+            }
+            
+            .dropdown-item {
+                padding: 14px 40px;
+            }
+            
+            .dropdown-item::before {
+                left: 24px;
+            }
+            
+            /* ИСПРАВЛЕНИЕ: Значительно увеличены отступы между кнопками */
+            .telegram-icon {
+                right: 15px;
+                width: 40px;
+                height: 40px;
+            }
+            
+            .theme-toggle {
+                right: 70px; /* Значительно увеличено расстояние - 60px между центрами кнопок */
+                width: 40px;
+                height: 40px;
+            }
+            
+            .telegram-icon i {
+                font-size: 1.1rem;
+            }
+            
+            .theme-toggle i {
+                font-size: 1.1rem;
+            }
+            
+            .nav-footer {
+                padding: 15px;
+            }
+            
+            .nav-footer-text {
+                font-size: 0.85rem;
+            }
+            
+            /* Article Content адаптация для мобильных */
+            .article-content-container {
+                padding: 20px;
+            }
+            
+            .article-content-title {
+                font-size: 1.5rem;
+            }
+            
+            .article-content-meta {
+                flex-direction: column;
+                gap: 10px;
+                align-items: flex-start;
+            }
+        }
+        
+        @media (max-width: 380px) and (max-height: 800px) {
+            .nav-list {
+                max-height: 70vh;
+                top: calc(var(--header-height) + 5px);
+            }
+            
+            /* Дальнейшая адаптация логотипа */
+            .logo {
+                gap: 5px;
+            }
+            
+            .logo-icon {
+                font-size: 1.3rem;
+            }
+            
+            .logo-text {
+                font-size: 1.3rem;
+            }
+            
+            .telegram-icon {
+                right: 12px;
+                width: 38px;
+                height: 38px;
+            }
+            
+            .theme-toggle {
+                right: 67px; /* Увеличен отступ */
+                width: 38px;
+                height: 38px;
+            }
+            
+            .telegram-icon i {
+                font-size: 1rem;
+            }
+            
+            .theme-toggle i {
+                font-size: 1rem;
+            }
+            
+            /* Suggest Topic адаптация для очень маленьких экранов */
+            .suggest-topic {
+                padding: 18px;
+                margin-top: 25px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            }
+            
+            .light-theme .suggest-topic {
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            /* Сдвигаем кнопку меню левее, чтобы освободить место */
+            .menu-toggle {
+                padding: 8px 16px;
+                font-size: 0.85rem;
+            }
+        }
+        
+        @media (max-width: 350px) {
+            /* Дополнительные корректировки для очень узких экранов */
+            .logo {
+                gap: 4px;
+            }
+            
+            .logo-icon {
+                font-size: 1.2rem;
+            }
+            
+            .logo-text {
+                font-size: 1.2rem;
+            }
+            
+            .telegram-icon {
+                right: 10px;
+                width: 36px;
+                height: 36px;
+            }
+            
+            .theme-toggle {
+                right: 65px; /* Увеличен отступ */
+                width: 36px;
+                height: 36px;
+            }
+            
+            .menu-toggle {
+                padding: 8px 14px;
+                font-size: 0.8rem;
+            }
+            
+            .container {
+                padding: 0 12px;
+            }
+            
+            /* Suggest Topic адаптация для очень узких экранов */
+            .suggest-topic {
+                padding: 15px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            }
+            
+            .light-theme .suggest-topic {
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            .suggest-topic-icon {
+                font-size: 1.8rem;
+                margin-bottom: 15px;
+            }
+            
+            .suggest-topic-title {
+                font-size: 1.2rem;
+            }
+            
+            .suggest-topic-text {
+                font-size: 0.95rem;
+                margin-bottom: 20px;
+            }
+        }
+        
+        @media (max-height: 500px) {
+            .nav-list {
+                max-height: 65vh;
+            }
+        }
+        
+        @media (min-width: 1400px) {
+            .container {
+                max-width: 1300px;
+            }
+        }
+        
+        /* Improved hover states for better UX */
+        @media (hover: hover) {
+            .menu-toggle:hover {
+                background-color: rgba(255, 255, 255, 0.1);
+                border-color: rgba(255, 255, 255, 0.2);
+            }
+            
+            .light-theme .menu-toggle:hover {
+                background-color: rgba(0, 0, 0, 0.15);
+                border-color: rgba(0, 0, 0, 0.25);
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+            }
+            
+            .nav-link:hover, 
+            .nav-link.active,
+            .dropdown.active .dropdown-toggle {
+                background-color: rgba(255, 255, 255, 0.08);
+                color: var(--text-primary);
+            }
+            
+            .light-theme .nav-link:hover,
+            .light-theme .nav-link.active,
+            .light-theme .dropdown.active .dropdown-toggle {
+                background-color: rgba(0, 0, 0, 0.08);
+            }
+            
+            .dropdown-item:hover {
+                background-color: rgba(255, 255, 255, 0.08);
+                color: var(--text-primary);
+            }
+            
+            .light-theme .dropdown-item:hover {
+                background-color: rgba(0, 0, 0, 0.08);
+            }
+            
+            .telegram-icon:hover {
+                background: rgba(255, 255, 255, 0.1);
+                color: var(--text-primary);
+                border-color: rgba(255, 255, 255, 0.2);
+            }
+            
+            .light-theme .telegram-icon:hover {
+                background: rgba(0, 0, 0, 0.1);
+                border-color: rgba(0, 0, 0, 0.2);
+            }
+            
+            .theme-toggle:hover {
+                background: rgba(255, 255, 255, 0.1);
+                color: var(--text-primary);
+                border-color: rgba(255, 255, 255, 0.2);
+            }
+            
+            .light-theme .theme-toggle:hover {
+                background: rgba(0, 0, 0, 0.15);
+                border-color: rgba(0, 0, 0, 0.25);
+            }
+            
+            .support-link:hover {
+                color: var(--text-primary);
+            }
+        }
+        
+        /* Изменение цвета выделения текста */
+        ::selection {
+            background-color: rgba(136, 136, 136, 0.4); /* Основной цвет */
+            color: #ffffff; /* Цвет текста при выделении */
+        }
+
+        /* Для Firefox */
+        ::-moz-selection {
+            background-color: rgba(136, 136, 136, 0.4);
+            color: #ffffff;
+        }
+
+        /* Для WebKit браузеров (Chrome, Safari, Edge) */
+        ::-webkit-selection {
+            background-color: rgba(136, 136, 136, 0.4);
+            color: #ffffff;
+        }
+        
+        .light-theme ::selection {
+            background-color: rgba(136, 136, 136, 0.3);
+            color: #1a1a1a;
+        }
+        
+        .light-theme ::-moz-selection {
+            background-color: rgba(136, 136, 136, 0.3);
+            color: #1a1a1a;
+        }
+        
+        .light-theme ::-webkit-selection {
+            background-color: rgba(136, 136, 136, 0.3);
+            color: #1a1a1a;
+        }
+        
+        /* 1. Убираем максимальную ширину у контейнера */
+.container {
+    width: 100%;
+    max-width: 100%; /* Убираем ограничение 1200px */
+    margin: 0 auto;
+    padding: 0 20px;
+    height: 100%;
+}
+
+/* 2. Добавляем адаптивные отступы для очень широких экранов */
+@media (min-width: 1400px) {
+    .container {
+        padding: 0 40px;
+    }
+    
+    .buttons-grid {
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    }
+    
+    .additional-grid {
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    }
+}
+
+@media (min-width: 1920px) {
+    .container {
+        padding: 0 60px;
+    }
+    
+    .buttons-grid {
+        grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    }
+    
+    .additional-grid {
+        grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    }
+}
+
+/* 3. Делаем секции более адаптивными */
+.channel-description,
+.load-level-section,
+.comments-section,
+.chat-animation-section,
+.info-section {
+    width: 100%;
+    max-width: 100%;
+}
+
+/* 4. Улучшаем сетку для широких экранов */
+@media (min-width: 1600px) {
+    .buttons-grid {
+        grid-template-columns: repeat(auto-fill, minmax(370px, 1fr));
+        gap: 30px;
+    }
+}
+
+/* 5. Гарантируем, что контент растягивается */
+.content {
+    width: 100%;
+    max-width: 100%;
+}
+        
+    </style>
+</head>
+<body>
+    <!-- Menu Overlay -->
+    <div class="menu-overlay" id="menu-overlay"></div>
+    
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <nav class="main-nav">
+                <!-- Кнопка переключения темы -->
+                <button class="theme-toggle" id="theme-toggle" title="Переключить тему">
+                    <i class="fas fa-moon"></i>
+                    <i class="fas fa-sun"></i>
+                </button>
+                
+                <!-- Telegram Icon -->
+                <a href="https://t.me/ishupodrygyilidryga" class="telegram-icon" target="_blank" rel="noopener noreferrer" title="Перейти в Telegram канал">
+                    <i class="fab fa-telegram"></i>
+                </a>
+                
+                <!-- УПРОЩЕННЫЙ ЛОГОТИП - как в первом файле -->
+                <a href="https://ishupodrygyilidryga.fun" class="logo" id="logo" title="Перейти на главную страницу">
+                    <i class="fas fa-users logo-icon"></i>
+                    <span class="logo-text">iipd</span>
+                </a>
+                
+                <!-- Menu Toggle -->
+                <button class="menu-toggle" id="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                    <span>Меню</span>
+                </button>
+                
+                <!-- Navigation Menu -->
+                <ul class="nav-list" id="nav-list">
+                    <li class="nav-item">
+                        <a href="https://ishupodrygyilidryga.fun" class="nav-link">
+                            <span class="link-text">
+                                <i class="fas fa-home"></i> Главная
+                            </span>
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a href="https://t.me/ishupodrygyilidryga" class="nav-link" target="_blank" rel="noopener noreferrer">
+                            <span class="link-text">
+                                <i class="fab fa-telegram"></i> Наш канал
+                            </span>
+                        </a>
+                    </li>
+                
+                    
+                    <li class="nav-item">
+                        <a href="https://t.me/ankety_bot" class="nav-link" target="_blank" rel="noopener noreferrer">
+                            <span class="link-text">
+                                <i class="fas fa-robot"></i> Бот для анкет
+                            </span>
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a href="https://t.me/lymikanon" class="nav-link" target="_blank" rel="noopener noreferrer">
+                            <span class="link-text">
+                                <i class="fas fa-comments"></i> Наш чат
+                            </span>
+                        </a>
+                    </li>
+                    
+                    <!-- Tgstat с подменю -->
+                    <li class="nav-item dropdown">
+                        <button class="nav-link dropdown-toggle">
+                            <span class="link-text">
+                                <i class="fas fa-chart-line"></i> Tgstat
+                            </span>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a href="https://uk.tgstat.com/channel/@ishupodrygyilidryga" class="dropdown-item" target="_blank" rel="noopener noreferrer">
+                                <span class="dropdown-item-text">iipd</span>
+                            </a>
+                            <a href="https://uk.tgstat.com/channel/@surrealtouch" class="dropdown-item" target="_blank" rel="noopener noreferrer">
+                                <span class="dropdown-item-text">surrealtouch</span>
+                            </a>
+                        </div>
+                    </li>
+                    
+                    <!-- Стать Админом с подменю -->
+                    <li class="nav-item dropdown">
+                        <button class="nav-link dropdown-toggle">
+                            <span class="link-text">
+                                <i class="fas fa-user-shield"></i> Стать Админом
+                            </span>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a href="https://t.me/info_ishupodrygyilidryga/27" class="dropdown-item" target="_blank" rel="noopener noreferrer">
+                                <span class="dropdown-item-text">По Анкетам</span>
+                            </a>
+                            <a href="https://t.me/info_ishupodrygyilidryga/897" class="dropdown-item" target="_blank" rel="noopener noreferrer">
+                                <span class="dropdown-item-text">По Аватаркам</span>
+                            </a>
+                        </div>
+                    </li>
+                    
+                    <!-- Footer in menu -->
+                    <li class="nav-footer">
+                        <p class="nav-footer-text">
+                            Ищу интернет подругу/друга (WEB) © 
+                            <a href="https://ishupodrygyilidryga.fun" class="nav-footer-link" target="_blank" rel="noopener noreferrer">ishupodrygyilidryga.fun</a>
+                        </p>
+                        <p class="nav-footer-year">2024</p>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Main Content -->
+    <main class="content">
+        <div class="container">
+            <!-- Page Description -->
+            <div class="page-description">
+                <h2 class="page-title">Наши статьи и материалы</h2>
+                <p class="page-subtitle">Здесь мы делимся интересными статьями, исследованиями и материалами на различные темы, связанные с общением, языком, психологией отношений и развитием коммуникативных навыков в цифровую эпоху.</p>
+            </div>
+            
+            <!-- Articles Grid -->
+            <div class="articles-grid" id="articles-container">
+                <!-- Статьи будут загружены динамически -->
+            </div>
+            
+            <!-- Контейнер для отображения статьи -->
+            <div id="article-content-container" class="article-content-container" style="display: none;">
+                <!-- Содержимое статьи будет загружено динамически -->
+            </div>
+            
+            <!-- Info Section -->
+            <div class="info-section">
+                <h2 class="info-title">Важная информация</h2>
+                <p class="info-text">Все ссылки ведут на официальные страницы с актуальной информацией. Если у вас возникли проблемы с доступом или вы обнаружили неработающую ссылку, пожалуйста, сообщите об этом в <a href="https://t.me/helpforsilencebot" class="support-link" target="_blank" rel="noopener noreferrer">поддержку</a>.</p>
+            </div>
+            
+            <!-- Suggest Topic Section -->
+            <div class="suggest-topic">
+                <div class="suggest-topic-icon">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <h2 class="suggest-topic-title">Предложить тему для статьи</h2>
+                <p class="suggest-topic-text">Есть интересная тема, которую вы хотели бы увидеть в наших статьях? Хотите поделиться своими мыслями или предложить материал для публикации? Напишите нам в поддержку — мы всегда открыты к сотрудничеству и новым идеям.</p>
+                <a href="https://t.me/helpforsilencebot" class="suggest-button" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-comment-dots button-icon"></i>
+                    <span>Написать в поддержку</span>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <script>
+// Оптимизированный JavaScript без анимаций
+(function() {
+    'use strict';
+    
+    // DOM Elements
+    const dom = {
+        menuToggle: document.getElementById('menu-toggle'),
+        navList: document.getElementById('nav-list'),
+        menuOverlay: document.getElementById('menu-overlay'),
+        body: document.body,
+        dropdowns: document.querySelectorAll('.dropdown'),
+        dropdownToggles: document.querySelectorAll('.dropdown-toggle'),
+        themeToggle: document.getElementById('theme-toggle')
+    };
+    
+    // State
+    let isMenuOpen = false;
+    let isLightTheme = false;
+    
+    // Function to apply theme consistently
+    function applyTheme(theme) {
+        if (theme === 'light') {
+            dom.body.classList.add('light-theme');
+            isLightTheme = true;
+            // Обновляем иконку кнопки темы
+            if (dom.themeToggle) {
+                dom.themeToggle.querySelector('.fa-moon').style.display = 'none';
+                dom.themeToggle.querySelector('.fa-sun').style.display = 'block';
+            }
+        } else {
+            dom.body.classList.remove('light-theme');
+            isLightTheme = false;
+            // Обновляем иконку кнопки темы
+            if (dom.themeToggle) {
+                dom.themeToggle.querySelector('.fa-moon').style.display = 'block';
+                dom.themeToggle.querySelector('.fa-sun').style.display = 'none';
+            }
+        }
+    }
+    
+    // Function to toggle theme
+    function toggleTheme() {
+        const newTheme = isLightTheme ? 'dark' : 'light';
+        applyTheme(newTheme);
+        localStorage.setItem('theme', newTheme);
+        
+        // Отправка события в Google Analytics
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'theme_toggle', {
+                'event_category': 'ui_interaction',
+                'event_label': newTheme === 'light' ? 'Light Theme' : 'Dark Theme'
+            });
+        }
+    }
+    
+    // Initialize theme from localStorage or default
+    function initTheme() {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            applyTheme('light');
+        } else {
+            applyTheme('dark');
+            // Сохраняем темную тему как значение по умолчанию
+            if (!savedTheme) {
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+    }
+    
+    // Listen for theme changes from other tabs
+    window.addEventListener('storage', function(e) {
+        if (e.key === 'theme') {
+            applyTheme(e.newValue);
+        }
+    });
+    
+    // Функция для предотвращения выделения текста при долгом нажатии
+    const preventTextSelection = function(e) {
+        e.preventDefault();
+        return false;
+    };
+    
+    // Menu Functions
+    const menu = {
+        open: function() {
+            dom.navList.classList.add('active');
+            dom.menuOverlay.classList.add('active');
+            dom.body.style.overflow = 'hidden';
+            dom.menuToggle.innerHTML = '<i class="fas fa-times"></i><span>Закрыть</span>';
+            isMenuOpen = true;
+            dom.menuToggle.setAttribute('aria-expanded', 'true');
+        },
+        
+        close: function() {
+            dom.navList.classList.remove('active');
+            dom.menuOverlay.classList.remove('active');
+            dom.body.style.overflow = '';
+            dom.menuToggle.innerHTML = '<i class="fas fa-bars"></i><span>Меню</span>';
+            isMenuOpen = false;
+            this.closeAllDropdowns();
+            dom.menuToggle.setAttribute('aria-expanded', 'false');
+        },
+        
+        toggle: function() {
+            if (isMenuOpen) {
+                this.close();
+            } else {
+                this.open();
+            }
+        },
+        
+        closeAllDropdowns: function() {
+            dom.dropdowns.forEach(dropdown => {
+                dropdown.classList.remove('active');
+                const toggle = dropdown.querySelector('.dropdown-toggle');
+                if (toggle) {
+                    toggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+        },
+        
+        toggleDropdown: function(dropdown) {
+            const isActive = dropdown.classList.contains('active');
+            
+            // Close all other dropdowns
+            this.closeAllDropdowns();
+            
+            // Toggle current dropdown
+            if (!isActive) {
+                dropdown.classList.add('active');
+                const toggle = dropdown.querySelector('.dropdown-toggle');
+                if (toggle) {
+                    toggle.setAttribute('aria-expanded', 'true');
+                }
+            }
+        }
+    };
+    
+    // Event Listeners
+    const initEventListeners = function() {
+        // Menu toggle
+        dom.menuToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            menu.toggle();
+        });
+        
+        // Theme toggle
+        dom.themeToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            toggleTheme();
+        });
+        
+        // Dropdown toggles
+        dom.dropdownToggles.forEach(toggle => {
+            toggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                const dropdown = this.parentElement;
+                menu.toggleDropdown(dropdown);
+            });
+        });
+        
+        // Close menu on overlay click
+        dom.menuOverlay.addEventListener('click', function() {
+            menu.close();
+        });
+        
+        // Close menu on regular link click
+        document.querySelectorAll('.nav-link:not(.dropdown-toggle)').forEach(link => {
+            link.addEventListener('click', function() {
+                menu.close();
+            });
+        });
+        
+        // Закрытие меню при клике в любом месте кроме самого меню
+        document.addEventListener('click', function(e) {
+            if (isMenuOpen && 
+                !e.target.closest('.nav-list') && 
+                !e.target.closest('.menu-toggle')) {
+                menu.close();
+            }
+        });
+        
+        // Close menu on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && isMenuOpen) {
+                menu.close();
+            }
+        });
+        
+        // Prevent multiple clicks
+        const links = document.querySelectorAll('a');
+        links.forEach(link => {
+            link.addEventListener('click', function(e) {
+                if (this.dataset.clicked) {
+                    e.preventDefault();
+                    return;
+                }
+                
+                this.dataset.clicked = 'true';
+                setTimeout(() => {
+                    delete this.dataset.clicked;
+                }, 1000);
+            });
+        });
+        
+        // Предотвращаем выделение текста при долгом нажатии на кнопки
+        const interactiveElements = document.querySelectorAll(
+            'button, .menu-toggle, .dropdown-toggle, .nav-link, .dropdown-item, .telegram-icon, .theme-toggle, .article-button, .suggest-button'
+        );
+        
+        interactiveElements.forEach(el => {
+            // Предотвращаем контекстное меню (долгое нажатие)
+            el.addEventListener('contextmenu', preventTextSelection);
+            
+            // Предотвращаем выделение при долгом тапе
+            el.addEventListener('selectstart', preventTextSelection);
+            el.addEventListener('mousedown', preventTextSelection);
+            
+            // Для iOS
+            el.addEventListener('touchstart', function(e) {
+                // Небольшая задержка для предотвращения выделения
+                if (e.touches.length > 1) {
+                    e.preventDefault();
+                }
+            }, { passive: false });
+        });
+        
+        // Добавляем активное состояние для мобильных устройств
+        interactiveElements.forEach(el => {
+            el.addEventListener('touchstart', function() {
+                this.classList.add('active-touch');
+            });
+            
+            el.addEventListener('touchend', function() {
+                this.classList.remove('active-touch');
+            });
+        });
+        
+        // Явно добавляем обработчик для активного состояния кнопок
+        document.querySelectorAll('.article-button, .suggest-button').forEach(button => {
+            button.addEventListener('touchstart', function() {
+                this.style.backgroundColor = 'rgba(255, 255, 255, 0.15)';
+            });
+            
+            button.addEventListener('touchend', function() {
+                this.style.backgroundColor = '';
+            });
+            
+            button.addEventListener('touchcancel', function() {
+                this.style.backgroundColor = '';
+            });
+        });
+    };
+    
+    // Initialize
+    const init = function() {
+        // Инициализируем тему
+        initTheme();
+        
+        // Initialize event listeners
+        initEventListeners();
+        
+        // Set accessibility attributes
+        dom.menuToggle.setAttribute('aria-expanded', 'false');
+        dom.menuToggle.setAttribute('aria-label', 'Открыть меню навигации');
+        dom.themeToggle.setAttribute('aria-label', 'Переключить тему');
+        
+        // Add aria-labels to dropdown toggles
+        dom.dropdownToggles.forEach(toggle => {
+            toggle.setAttribute('aria-expanded', 'false');
+            toggle.setAttribute('aria-haspopup', 'true');
+        });
+        
+        // Устанавливаем текущий год в футер
+        const currentYear = new Date().getFullYear();
+        const yearElement = document.querySelector('.nav-footer-year');
+        if (yearElement) {
+            yearElement.textContent = currentYear;
+        }
+        
+        // Добавляем плавный скролл для меню
+        dom.navList.addEventListener('wheel', function(e) {
+            // Плавный скролл для колесика мыши
+            this.scrollTop += e.deltaY * 0.5;
+            e.preventDefault();
+        }, { passive: false });
+        
+        // Добавляем инерционный скролл для тач-устройств
+        let startY = 0;
+        let scrollTop = 0;
+        let isScrolling = false;
+        
+        dom.navList.addEventListener('touchstart', function(e) {
+            if (e.touches.length === 1) {
+                startY = e.touches[0].pageY;
+                scrollTop = this.scrollTop;
+                isScrolling = true;
+            }
+        });
+        
+        dom.navList.addEventListener('touchmove', function(e) {
+            if (!isScrolling || e.touches.length !== 1) return;
+            
+            e.preventDefault();
+            const y = e.touches[0].pageY;
+            const walk = (y - startY) * 2; // Умножаем для более быстрого скролла
+            this.scrollTop = scrollTop - walk;
+        });
+        
+        dom.navList.addEventListener('touchend', function() {
+            isScrolling = false;
+        });
+        
+        // Отслеживание кликов для Google Analytics
+        function initButtonTracking() {
+            // Отслеживание кликов по кнопке статьи
+            document.querySelectorAll('.article-button').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    const buttonText = this.querySelector('span:first-child')?.textContent || this.textContent;
+                    const buttonUrl = this.href || 'no-url';
+                    
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'article_button_click', {
+                            'event_category': 'engagement',
+                            'event_label': buttonText.trim(),
+                            'link_url': buttonUrl
+                        });
+                    }
+                });
+            });
+            
+            // Отслеживание кликов по кнопке предложения темы
+            document.querySelectorAll('.suggest-button').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'suggest_topic_click', {
+                            'event_category': 'engagement',
+                            'event_label': 'Suggest article topic'
+                        });
+                    }
+                });
+            });
+            
+            // Отслеживание кликов по навигации
+            document.querySelectorAll('.nav-link:not(.dropdown-toggle)').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const linkText = this.querySelector('.link-text')?.textContent || this.textContent;
+                    
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'navigation_click', {
+                            'event_category': 'navigation',
+                            'event_label': linkText.trim(),
+                            'link_url': this.href || 'no-url'
+                        });
+                    }
+                });
+            });
+            
+            // Отслеживание Telegram иконки
+            const telegramIcon = document.querySelector('.telegram-icon');
+            if (telegramIcon) {
+                telegramIcon.addEventListener('click', function(e) {
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'telegram_click', {
+                            'event_category': 'social',
+                            'event_label': 'Telegram Icon from articles'
+                        });
+                    }
+                });
+            }
+            
+            // Отслеживание кликов по логотипу
+            const logo = document.getElementById('logo');
+            if (logo) {
+                logo.addEventListener('click', function(e) {
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'logo_click', {
+                            'event_category': 'navigation',
+                            'event_label': 'Logo Home from articles'
+                        });
+                    }
+                });
+            }
+        }
+        
+        initButtonTracking();
+    };
+    
+    // Start when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+    
+})();
+</script>
+    
+    <!-- Подключаем скрипт загрузки статей -->
+    <script src="articles-script.js"></script>
+</body>
+</html>
