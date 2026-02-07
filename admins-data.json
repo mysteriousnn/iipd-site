@@ -1,0 +1,74 @@
+{
+    "approved_channel_admins": [
+        {
+            "id": "6980ee6529fb9",
+            "username": "@dbDmitriy",
+            "status": "active",
+            "added_at": "2026-02-02 21:35:17",
+            "avatar": "media\/admins\/6980ee6529fe7.jpg"
+        },
+        {
+            "id": "6980f054507e8",
+            "username": "@met4d0n",
+            "status": "inactive",
+            "added_at": "2026-02-02 21:43:32",
+            "avatar": "media\/admins\/6980f0545082b.jpg"
+        },
+        {
+            "id": "6980f17bd307a",
+            "username": "@palodov",
+            "status": "weak",
+            "added_at": "2026-02-02 21:48:27",
+            "avatar": "media\/admins\/6980f17bd30ad.jpg"
+        },
+        {
+            "id": "6980f24e9b5f4",
+            "username": "@Mamalove245",
+            "status": "weak",
+            "added_at": "2026-02-02 21:51:58",
+            "avatar": "media\/admins\/6980f24e9b634.jpg"
+        }
+    ],
+    "verified_channel_admins": [
+        {
+            "id": "6980eec3ccc9b",
+            "username": "@God69Sanji",
+            "status": "medium",
+            "added_at": "2026-02-02 21:36:51",
+            "avatar": "media\/admins\/6980eec3cccd4.jpg"
+        },
+        {
+            "id": "6980eef41ab26",
+            "username": "@milkiksu",
+            "status": "inactive",
+            "added_at": "2026-02-02 21:37:40",
+            "avatar": "media\/admins\/6980eef41ab64.jpg"
+        },
+        {
+            "id": "6980f1a4326ba",
+            "username": "@zyzkaShigolka",
+            "status": "active",
+            "added_at": "2026-02-02 21:49:08",
+            "avatar": "media\/admins\/6980f1a4326f6.jpg",
+            "updated_at": "2026-02-02 21:51:12"
+        }
+    ],
+    "approved_chat_admins": [
+        {
+            "id": "6980ecefccf8e",
+            "username": "@r1karu",
+            "status": "active",
+            "added_at": "2026-02-02 21:29:03",
+            "avatar": "media\/admins\/6980ecefccfca.jpg"
+        }
+    ],
+    "trial_admins": [
+        {
+            "id": "6980e0351bde5",
+            "username": "@lil_kirky",
+            "status": "inactive",
+            "added_at": "2026-02-02 20:34:45",
+            "avatar": "media\/admins\/6980e0351bf3e.jpg"
+        }
+    ]
+}
