@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Пробные админы - iipd</title>
+    <link rel="icon" href="iipdPin.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-primary: #1a1a1a;
+            --bg-secondary: #262626;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.85);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --accent-gradient: linear-gradient(135deg, #888, #aaa);
+            --accent-orange: linear-gradient(135deg, #999, #bbb);
+            --red-color: #c45c5a;
+            --yellow-color: #ecc33c;
+            --green-color: #a6bb7c;
+            --orange-color: #ff5c20;
+            --blue-color: #3b82f6;
+            --purple-color: #8b5cf6;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: var(--bg-primary);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
+        }
+        
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+        }
+        
+        .title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .content-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .content-section {
+            background: var(--bg-secondary);
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 30px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .content-block {
+            margin-bottom: 40px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .content-block:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .text-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            width: 100%;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+            hyphens: auto;
+        }
+        
+        .text-content h2 {
+            font-size: 1.8rem;
+            color: var(--text-primary);
+            margin: 30px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--purple-color);
+        }
+        
+        .text-content h3 {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin: 25px 0 15px 0;
+        }
+        
+        .text-content h4 {
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            margin: 20px 0 10px 0;
+        }
+        
+        .text-content p {
+            margin-bottom: 20px;
+        }
+        
+        .text-content ul, .text-content ol {
+            margin: 15px 0 20px 30px;
+        }
+        
+        .text-content li {
+            margin-bottom: 10px;
+        }
+        
+        .text-content strong {
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+        
+        .text-content em {
+            font-style: italic;
+        }
+        
+        .text-content a {
+            color: #8b5cf6;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .text-content a:hover {
+            color: #a78bfa;
+            border-bottom: 1px solid #a78bfa;
+        }
+        
+        .media-container {
+            margin: 30px 0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            max-width: 100%;
+            position: relative;
+        }
+        
+        .image-block {
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        .image-block img {
+            width: 100%;
+            height: auto;
+            display: block;
+            max-width: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+        
+        .media-caption {
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        /* СТИЛИ ДЛЯ СПИСКА АДМИНОВ */
+        .admins-section {
+            margin-top: 50px;
+            padding-top: 40px;
+            border-top: 2px solid var(--purple-color);
+        }
+        
+        .admins-title {
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--text-primary);
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .admins-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, #8b5cf6, #3b82f6);
+            border-radius: 3px;
+        }
+        
+        .admins-category {
+            margin-bottom: 50px;
+        }
+        
+        .category-title {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 25px;
+            padding-left: 15px;
+            border-left: 4px solid;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+        
+        .category-1 .category-title {
+            border-left-color: #8b5cf6;
+        }
+        
+        .category-2 .category-title {
+            border-left-color: #3b82f6;
+        }
+        
+        .category-3 .category-title {
+            border-left-color: #10b981;
+        }
+        
+        .category-4 .category-title {
+            border-left-color: #f59e0b;
+        }
+        
+        .admins-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        
+        .admin-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .admin-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(139, 92, 246, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .admin-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+            border: 3px solid;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .category-1 .admin-avatar {
+            border-color: #8b5cf6;
+        }
+        
+        .category-2 .admin-avatar {
+            border-color: #3b82f6;
+        }
+        
+        .category-3 .admin-avatar {
+            border-color: #10b981;
+        }
+        
+        .category-4 .admin-avatar {
+            border-color: #f59e0b;
+        }
+        
+        .admin-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .admin-avatar .avatar-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+        
+        .admin-info {
+            flex: 1;
+        }
+        
+        .admin-username {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            word-break: break-word;
+        }
+        
+        /* СТИЛИ ДЛЯ СТАТУСОВ АДМИНОВ */
+        .admin-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 5px;
+        }
+        
+        .status-active {
+            background: rgba(16, 185, 129, 0.15);
+            color: #10b981;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+        
+        .status-inactive {
+            background: rgba(107, 114, 128, 0.15);
+            color: #6b7280;
+            border: 1px solid rgba(107, 114, 128, 0.3);
+        }
+        
+        .status-kick {
+            background: rgba(239, 68, 68, 0.15);
+            color: #ef4444;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+        
+        .status-weak {
+            background: rgba(245, 158, 11, 0.15);
+            color: #f59e0b;
+            border: 1px solid rgba(245, 158, 11, 0.3);
+        }
+        
+        .status-medium {
+            background: rgba(249, 115, 22, 0.15);
+            color: #f97316;
+            border: 1px solid rgba(249, 115, 22, 0.3);
+        }
+        
+        .status-icon {
+            font-size: 0.7rem;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 60px 40px;
+            color: rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            border: 2px dashed rgba(255, 255, 255, 0.1);
+        }
+        
+        .empty-state i {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+        
+        .empty-state h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid var(--border-color);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+        
+        /* СТИЛИ ДЛЯ ИЗОБРАЖЕНИЙ В ТЕКСТЕ */
+        .text-content img {
+            max-width: 100% !important;
+            height: auto !important;
+            display: block;
+            margin: 20px auto;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* АДАПТИВНОСТЬ */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            
+            .title {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .content-section {
+                padding: 25px;
+            }
+            
+            .text-content {
+                font-size: 1rem;
+            }
+            
+            .text-content h2 {
+                font-size: 1.5rem;
+            }
+            
+            .text-content h3 {
+                font-size: 1.3rem;
+            }
+            
+            .admins-title {
+                font-size: 1.8rem;
+            }
+            
+            .category-title {
+                font-size: 1.4rem;
+            }
+            
+            .admins-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 20px;
+            }
+            
+            .admin-card {
+                padding: 20px;
+                gap: 15px;
+            }
+            
+            .admin-avatar {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .admin-username {
+                font-size: 1.2rem;
+            }
+            
+            .media-container {
+                margin: 20px 0;
+            }
+            
+            .image-block img {
+                max-height: 400px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .title {
+                font-size: 1.8rem;
+            }
+            
+            .content-section {
+                padding: 20px;
+            }
+            
+            .admins-title {
+                font-size: 1.6rem;
+                margin-bottom: 30px;
+            }
+            
+            .category-title {
+                font-size: 1.3rem;
+                margin-bottom: 20px;
+            }
+            
+            .admins-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .admin-card {
+                padding: 18px;
+            }
+            
+            .admin-avatar {
+                width: 55px;
+                height: 55px;
+            }
+            
+            .admin-username {
+                font-size: 1.1rem;
+            }
+            
+            .image-block img {
+                max-height: 350px;
+            }
+        }
+        
+        /* ОБЕСПЕЧИВАЕМ, ЧТО ИЗОБРАЖЕНИЯ НИКОГДА НЕ ВЫХОДЯТ ЗА ПРЕДЕЛЫ */
+        .text-content * {
+            max-width: 100%;
+        }
+        
+        /* Для очень длинных слов */
+        .text-content {
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+            word-break: break-word;
+            hyphens: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="content-container">
+        <a href="/" class="back-button">
+            <i class="fas fa-arrow-left"></i>
+            На главную
+        </a>
+        
+        <div class="header">
+            <h1 class="title">Пробные админы</h1>
+            <p class="subtitle">Вся информация о пробных администраторах: правила, требования и рекомендации</p>
+        </div>
+        
+        <div class="content-section" id="content-display">
+            <!-- Контент загружается динамически -->
+        </div>
+        
+        <!-- Секция с админами -->
+        <div class="admins-section" id="admins-section">
+            <h2 class="admins-title">Наша административная команда</h2>
+            
+            <!-- Списки админов загружаются динамически -->
+            <div id="admins-display"></div>
+        </div>
+        
+        <div class="footer">
+            <p>© Ищу интернет подругу/друга (WEB) • Информация актуальна на <span id="current-date"></span></p>
+            <p>Для обновления контента обратитесь к администратору</p>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Установка текущей даты
+            const currentDate = new Date();
+            const day = String(currentDate.getDate()).padStart(2, '0');
+            const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+            const year = currentDate.getFullYear();
+            document.getElementById('current-date').textContent = `${day}.${month}.${year}`;
+            
+            // Загрузка контента
+            loadTrialsContent();
+            
+            // Загрузка списка админов
+            loadAdmins();
+        });
+        
+        function loadTrialsContent() {
+            fetch('trials-data.json?v=' + Date.now())
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Ошибка загрузки контента');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const container = document.getElementById('content-display');
+                    
+                    if (!data || data.length === 0) {
+                        container.innerHTML = `
+                            <div class="empty-state">
+                                <i class="fas fa-file-alt"></i>
+                                <h3>Контент пока не добавлен</h3>
+                                <p>Администратор еще не добавил информацию о пробных админах</p>
+                            </div>
+                        `;
+                        return;
+                    }
+                    
+                    let html = '';
+                    
+                    // Сортируем блоки по позиции
+                    const sortedBlocks = [...data].sort((a, b) => a.position - b.position);
+                    
+                    sortedBlocks.forEach(block => {
+                        if (block.type === 'text') {
+                            html += `
+                                <div class="content-block">
+                                    <div class="text-content">
+                                        ${block.content}
+                                    </div>
+                                </div>
+                            `;
+                        } else if (block.type === 'image') {
+                            html += `
+                                <div class="content-block">
+                                    <div class="media-container image-block">
+                                        <img src="${block.content}" alt="${block.caption || ''}" loading="lazy">
+                                        ${block.caption ? `<div class="media-caption">${block.caption}</div>` : ''}
+                                    </div>
+                                </div>
+                            `;
+                        }
+                    });
+                    
+                    container.innerHTML = html;
+                    
+                    // Восстанавливаем обработчики событий для ссылок внутри контента
+                    container.querySelectorAll('a').forEach(link => {
+                        link.setAttribute('target', '_blank');
+                        link.setAttribute('rel', 'noopener noreferrer');
+                    });
+                    
+                    // Обеспечиваем, что все изображения в тексте ограничены по ширине
+                    container.querySelectorAll('.text-content img').forEach(img => {
+                        img.style.maxWidth = '100%';
+                        img.style.height = 'auto';
+                    });
+                })
+                .catch(error => {
+                    console.error('Ошибка загрузки контента:', error);
+                    const container = document.getElementById('content-display');
+                    container.innerHTML = `
+                        <div class="empty-state">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <h3>Ошибка загрузки контента</h3>
+                            <p>Не удалось загрузить информацию. Пожалуйста, попробуйте позже.</p>
+                        </div>
+                    `;
+                });
+        }
+        
+        function loadAdmins() {
+            fetch('admins-data.json?v=' + Date.now())
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Ошибка загрузки списка админов');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const container = document.getElementById('admins-display');
+                    
+                    if (!data || Object.keys(data).length === 0) {
+                        container.innerHTML = `
+                            <div class="empty-state">
+                                <i class="fas fa-users"></i>
+                                <h3>Список админов пока не добавлен</h3>
+                                <p>Администратор еще не добавил информацию об админах</p>
+                            </div>
+                        `;
+                        return;
+                    }
+                    
+                    let html = '';
+                    
+                    // Категории админов
+                    const categories = [
+                        {
+                            id: 'category-1',
+                            title: '1) Утвержденные Администраторы канала',
+                            key: 'approved_channel_admins',
+                            icon: 'fas fa-user-check'
+                        },
+                        {
+                            id: 'category-2',
+                            title: '2) Заверенные Администраторы канала',
+                            key: 'verified_channel_admins',
+                            icon: 'fas fa-user-shield'
+                        },
+                        {
+                            id: 'category-3',
+                            title: '3) Администраторы чата (утвержденные)',
+                            key: 'approved_chat_admins',
+                            icon: 'fas fa-comments'
+                        },
+                        {
+                            id: 'category-4',
+                            title: '4) Пробные Администраторы',
+                            key: 'trial_admins',
+                            icon: 'fas fa-user-clock'
+                        }
+                    ];
+                    
+                    categories.forEach(category => {
+                        const admins = data[category.key] || [];
+                        
+                        html += `
+                            <div class="admins-category ${category.id}">
+                                <h3 class="category-title">
+                                    <i class="${category.icon}"></i>
+                                    ${category.title}
+                                </h3>
+                        `;
+                        
+                        if (admins.length === 0) {
+                            html += `
+                                <div class="empty-state" style="padding: 30px; margin: 0;">
+                                    <i class="fas fa-user-slash"></i>
+                                    <p style="color: rgba(255, 255, 255, 0.5);">Админы еще не добавлены</p>
+                                </div>
+                            `;
+                        } else {
+                            html += `<div class="admins-grid">`;
+                            
+                            admins.forEach(admin => {
+                                const avatar = admin.avatar || '';
+                                const username = admin.username || 'Без имени';
+                                const status = admin.status || 'inactive';
+                                const firstLetter = username.charAt(0).toUpperCase();
+                                
+                                // Определяем класс и текст статуса
+                                let statusClass = 'status-inactive';
+                                let statusText = 'Не активный';
+                                let statusIcon = 'fa-circle';
+                                
+                                switch(status) {
+                                    case 'active':
+                                        statusClass = 'status-active';
+                                        statusText = 'Активный';
+                                        statusIcon = 'fa-check-circle';
+                                        break;
+                                    case 'inactive':
+                                        statusClass = 'status-inactive';
+                                        statusText = 'Не активный';
+                                        statusIcon = 'fa-times-circle';
+                                        break;
+                                    case 'kick':
+                                        statusClass = 'status-kick';
+                                        statusText = 'На кик';
+                                        statusIcon = 'fa-exclamation-circle';
+                                        break;
+                                    case 'weak':
+                                        statusClass = 'status-weak';
+                                        statusText = 'Слабый актив';
+                                        statusIcon = 'fa-battery-quarter';
+                                        break;
+                                    case 'medium':
+                                        statusClass = 'status-medium';
+                                        statusText = 'Средний актив';
+                                        statusIcon = 'fa-battery-half';
+                                        break;
+                                }
+                                
+                                html += `
+                                    <div class="admin-card">
+                                        <div class="admin-avatar">
+                                            ${avatar ? 
+                                                `<img src="${avatar}" alt="${username}" loading="lazy">` :
+                                                `<div class="avatar-placeholder">${firstLetter}</div>`
+                                            }
+                                        </div>
+                                        <div class="admin-info">
+                                            <div class="admin-username">${username}</div>
+                                            <div class="admin-status ${statusClass}">
+                                                <i class="fas ${statusIcon} status-icon"></i>
+                                                <span>${statusText}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                `;
+                            });
+                            
+                            html += `</div>`;
+                        }
+                        
+                        html += `</div>`;
+                    });
+                    
+                    container.innerHTML = html;
+                })
+                .catch(error => {
+                    console.error('Ошибка загрузки списка админов:', error);
+                    const container = document.getElementById('admins-display');
+                    container.innerHTML = `
+                        <div class="empty-state">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <h3>Ошибка загрузки списка админов</h3>
+                            <p>Не удалось загрузить информацию. Пожалуйста, попробуйте позже.</p>
+                        </div>
+                    `;
+                });
+        }
+        
+        // Автоматическое обновление контента каждые 5 минут
+        setInterval(() => {
+            loadTrialsContent();
+            loadAdmins();
+        }, 5 * 60 * 1000);
+    </script>
+</body>
+</html>
