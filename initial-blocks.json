@@ -1,0 +1,92 @@
+[
+    {
+        "id": "1",
+        "type": "main",
+        "icon": "fas fa-file-alt",
+        "title": "Что нужно, чтобы анкету выложили?",
+        "description": "Узнайте все требования и условия для успешной публикации вашей анкеты на канале.",
+        "button_text": "Перейти к информации",
+        "link": "https://ishupodrygyilidryga.fun/posted",
+        "order": 1
+    },
+    {
+        "id": "2",
+        "type": "main",
+        "icon": "fas fa-robot",
+        "title": "Правила бота",
+        "description": "Основные правила использования бота, которые необходимо соблюдать.",
+        "button_text": "Ознакомиться с правилами",
+        "link": "https://ishupodrygyilidryga.fun/pravila-bota",
+        "order": 2
+    },
+    {
+        "id": "3",
+        "type": "main",
+        "icon": "fas fa-question-circle",
+        "title": "Почему не выложили анкету?",
+        "description": "Возможные причины отказа в публикации анкеты и способы их устранения.",
+        "button_text": "Узнать причины",
+        "link": "https://ishupodrygyilidryga.fun/notposted",
+        "order": 3
+    },
+    {
+        "id": "4",
+        "type": "main",
+        "icon": "fas fa-comments",
+        "title": "Правила чата @lymikanon",
+        "description": "Официальные правила общения в основном чате сообщества.",
+        "button_text": "Читать правила чата",
+        "link": "https://ishupodrygyilidryga.fun/chat-rules",
+        "order": 4
+    },
+    {
+        "id": "5",
+        "type": "main",
+        "icon": "fas fa-headset",
+        "title": "Частые вопросы. Ответы // Поддержка",
+        "description": "Ответы на наиболее частые вопросы пользователей и информация о поддержке.",
+        "button_text": "Перейти в поддержку",
+        "link": "https://ishupodrygyilidryga.fun/support",
+        "order": 5
+    },
+    {
+        "id": "6",
+        "type": "main",
+        "icon": "fas fa-newspaper",
+        "title": "Наши статьи и другой материал",
+        "description": "Здесь мы делимся интересными статьями, исследованиями и материалами на различные темы.",
+        "button_text": "Ознакомиться",
+        "link": "https://ishupodrygyilidryga.fun/articles",
+        "order": 6
+    },
+    {
+        "id": "7",
+        "type": "additional",
+        "icon": "fas fa-file-contract",
+        "title": "Пользовательское соглашение",
+        "description": "Официальное пользовательское соглашение и политика конфиденциальности.",
+        "button_text": "Читать соглашение",
+        "link": "https://ishupodrygyilidryga.fun/privacy",
+        "order": 1
+    },
+    {
+        "id": "8",
+        "type": "additional",
+        "icon": "fas fa-comment-dots",
+        "title": "Связь с нами @helpforsilencebot",
+        "description": "Написать в поддержку для решения вопросов и получения помощи.",
+        "button_text": "Написать в поддержку",
+        "link": "https://t.me/helpforsilencebot",
+        "order": 2
+    },
+    {
+        "id": "9",
+        "type": "additional",
+        "icon": "fas fa-users",
+        "title": "Наш чат @lymikanon",
+        "description": "Присоединяйтесь к нашему основному чату для общения с сообществом.",
+        "button_text": "Перейти в чат",
+        "link": "https://t.me/lymikanon",
+        "order": 3
+    }
+]
