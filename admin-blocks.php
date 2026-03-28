@@ -5,7 +5,7 @@ header("Cache-Control: no-cache, no-store, must-revalidate");
 header("Pragma: no-cache");
 header("Expires: 0");
 
-// Функция для преобразования текста в HTML
+
 function convertSimpleTextToHTML($text) {
     $text = trim($text);
     $text = nl2br(htmlspecialchars($text));
@@ -26,7 +26,7 @@ function convertSimpleTextToHTML($text) {
     return $text;
 }
 
-// Функция для генерации slug
+
 function generateSlug($text) {
     $text = mb_strtolower($text, 'UTF-8');
     
@@ -56,7 +56,7 @@ function generateSlug($text) {
     return $text;
 }
 
-// Функция для создания уникального slug
+
 function makeUniqueSlug($slug, $blocks, $excludeId = null) {
     $originalSlug = $slug;
     $counter = 1;
@@ -84,7 +84,7 @@ function makeUniqueSlug($slug, $blocks, $excludeId = null) {
     return $slug;
 }
 
-// БОЛЬШОЙ МАССИВ ИКОНОК, СГРУППИРОВАННЫХ ПО КАТЕГОРИЯМ
+
 $iconCategories = [
     'Основные' => [
         'fas fa-home', 'fas fa-star', 'fas fa-heart', 'fas fa-cog', 'fas fa-search',
@@ -261,16 +261,16 @@ $iconCategories = [
     ],
 ];
 
-// Создаем плоский массив всех иконок для поиска
+
 $allIcons = [];
 foreach ($iconCategories as $category => $icons) {
     $allIcons = array_merge($allIcons, $icons);
 }
 
-$password = 'ваш_секретный_пароль';
+$password = 'alenkastarpop.xo.je';
 $blocksFile = 'blocks-data.json';
 
-// Проверка авторизации
+
 if (!isset($_SESSION['auth']) || $_SESSION['auth'] !== true) {
     if (isset($_POST['password'])) {
         if ($_POST['password'] === $password) {
@@ -308,7 +308,7 @@ if (!isset($_SESSION['auth']) || $_SESSION['auth'] !== true) {
     }
 }
 
-// Чтение существующих блоков
+
 if (file_exists($blocksFile)) {
     $blocks = json_decode(file_get_contents($blocksFile), true);
     if (!$blocks) $blocks = [];
@@ -316,7 +316,7 @@ if (file_exists($blocksFile)) {
     $blocks = [];
 }
 
-// Удаление блока
+
 if (isset($_GET['delete'])) {
     $idToDelete = $_GET['delete'];
     $blocks = array_filter($blocks, function($block) use ($idToDelete) {
@@ -327,7 +327,7 @@ if (isset($_GET['delete'])) {
     exit;
 }
 
-// Редактирование блока
+
 $editingBlock = null;
 if (isset($_GET['edit'])) {
     $idToEdit = $_GET['edit'];
@@ -339,7 +339,7 @@ if (isset($_GET['edit'])) {
     }
 }
 
-// Добавление/редактирование блока
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['action']) && $_POST['action'] === 'update') {
         $idToUpdate = $_POST['id'];
@@ -439,7 +439,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-// Сортировка блоков
+
 usort($blocks, function($a, $b) {
     if ($a['type'] !== $b['type']) {
         return strcmp($a['type'], $b['type']);
@@ -449,7 +449,7 @@ usort($blocks, function($a, $b) {
 
 $isEditing = isset($_GET['edit']);
 
-// Парсим контент для редактирования
+
 $editingContentTitle = '';
 $editingContentText = '';
 $editingContentSlug = '';
@@ -545,7 +545,7 @@ if ($isEditing && $editingBlock) {
         <?php endif; ?>
         
         <div class="content">
-            <!-- Форма добавления/редактирования -->
+           
             <div class="form-section">
                 <h2><?php echo $isEditing ? 'Редактировать блок' : 'Добавить блок'; ?></h2>
                 
@@ -743,7 +743,7 @@ if ($isEditing && $editingBlock) {
                 <?php endif; ?>
             </div>
             
-            <!-- Список блоков -->
+         
             <div class="list-section">
                 <h2>Блоки (<?php echo count($blocks); ?>)</h2>
                 
@@ -793,23 +793,23 @@ if ($isEditing && $editingBlock) {
     </div>
 
     <script>
-        // Выбор иконки
+       
         document.addEventListener('click', function(e) {
             if (e.target.closest('.icon-option')) {
                 const iconOption = e.target.closest('.icon-option');
                 const icon = iconOption.getAttribute('data-icon');
                 document.getElementById('icon-input').value = icon;
                 
-                // Снимаем выделение со всех
+             
                 document.querySelectorAll('.icon-option').forEach(opt => {
                     opt.classList.remove('selected');
                 });
-                // Выделяем выбранную
+            
                 iconOption.classList.add('selected');
             }
         });
         
-        // Поиск иконок
+  
         const iconSearch = document.getElementById('icon-search');
         if (iconSearch) {
             iconSearch.addEventListener('input', function() {
@@ -830,27 +830,27 @@ if ($isEditing && $editingBlock) {
                         }
                     });
                     
-                    // Показывать/скрывать категорию в зависимости от видимых иконок
+              
                     category.style.display = visibleCount > 0 ? 'block' : 'none';
                 });
             });
         }
         
-        // Переключение типа контента
+    
         document.querySelectorAll('.toggle-option').forEach(option => {
             option.addEventListener('click', function() {
                 const type = this.getAttribute('data-type');
                 
-                // Обновляем активный класс
+          
                 document.querySelectorAll('.toggle-option').forEach(opt => {
                     opt.classList.remove('active');
                 });
                 this.classList.add('active');
                 
-                // Обновляем скрытое поле
+            
                 document.getElementById('content_type').value = type;
                 
-                // Показываем/скрываем поля
+            
                 if (type === 'link') {
                     document.getElementById('link-fields').style.display = 'block';
                     document.getElementById('content-fields').style.display = 'none';
@@ -861,7 +861,7 @@ if ($isEditing && $editingBlock) {
             });
         });
         
-        // Автогенерация slug из заголовка
+      
         const titleInput = document.querySelector('input[name="content_title"]');
         const slugInput = document.querySelector('input[name="content_slug"]');
         
