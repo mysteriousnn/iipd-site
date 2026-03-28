@@ -5,6 +5,9 @@
 3) comments.php
 4) trials-data.json
 5) trials.html
+6) articles-data.json
+7) articles-manager.php
+8) articles.html
 
 Что обновить и добавить на хостинг: 
 
