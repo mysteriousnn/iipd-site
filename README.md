@@ -1,11 +1,15 @@
-🆕 Что полностью удалить с хостинга:
+Что полностью удалить с хостинга:
 
-admin-trials-edit.php
+1) admin-trials-edit.php
+2) admin-trials.php 
+3) comments.php
+4) trials-data.json
+5) trials.html
 
-admin-trials.php 
+Что обновить и добавить на хостинг: 
 
-comments.php
-
-trials-data.json
-
-trials.html
+1) Обновить содержимое - admin-blocks.php
+2) Оновить содержимое - admin-comments.php
+3) Оновить содержимое - admins-data.json
+4) Обновить содержимое -block.php
+5) 
