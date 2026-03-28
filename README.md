@@ -1,4 +1,4 @@
-Что полностью удалить с хостинга:
+❗️ Что полностью удалить с хостинга:
 
 1) admin-trials-edit.php
 2) admin-trials.php 
@@ -9,7 +9,7 @@
 7) articles-manager.php
 8) articles.html
 
-Что обновить и добавить на хостинг: 
+❗️ Что обновить и добавить на хостинг: 
 
 1) Обновить содержимое - admin-blocks.php
 2) Оновить содержимое - admin-comments.php
