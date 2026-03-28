@@ -1,15 +1,15 @@
 <?php
-// comment.php
+
 header("Cache-Control: no-cache, no-store, must-revalidate");
 header("Pragma: no-cache");
 header("Expires: 0");
 
 $dataFile = 'comments-data.json';
 
-// Получаем slug из URL
+
 $slug = $_GET['slug'] ?? '';
 
-// Загружаем комментарии
+
 if (file_exists($dataFile)) {
     $comments = json_decode(file_get_contents($dataFile), true);
     if (!$comments) $comments = [];
@@ -17,7 +17,7 @@ if (file_exists($dataFile)) {
     $comments = [];
 }
 
-// Ищем комментарий по slug
+
 $currentComment = null;
 foreach ($comments as $comment) {
     if (isset($comment['slug']) && $comment['slug'] === $slug) {
@@ -26,7 +26,7 @@ foreach ($comments as $comment) {
     }
 }
 
-// Если комментарий не найден, ищем по ID (для обратной совместимости)
+
 if (!$currentComment) {
     foreach ($comments as $comment) {
         if (isset($comment['id']) && $comment['id'] === $slug) {
@@ -36,13 +36,13 @@ if (!$currentComment) {
     }
 }
 
-// Если комментарий не найден, перенаправляем на главную
+
 if (!$currentComment) {
     header('Location: /');
     exit;
 }
 
-// Получаем простой текст для отображения
+
 $displayText = '';
 if (isset($currentComment['text_formatted']) && !empty($currentComment['text_formatted'])) {
     $displayText = $currentComment['text_formatted'];
@@ -53,7 +53,7 @@ if (isset($currentComment['text_formatted']) && !empty($currentComment['text_for
     $displayText = '<p style="text-align:center;color:rgba(255,255,255,0.5);font-style:italic;padding:40px;">Нет содержимого</p>';
 }
 
-// Полный URL для шаринга
+
 $fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 ?>
 <!DOCTYPE html>
@@ -70,7 +70,7 @@ $fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Добавьте эти мета-теги для предотвращения кеширования -->
+  
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
@@ -79,11 +79,11 @@ $fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "
     <link rel="icon" href="/iipdPin.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- ВАЖНО: Скопированы ВСЕ стили из index.html -->
+  
     <style>
-        /* ===== CSS Reset & Base Styles ===== */
+     
         :root {
-            /* Темная тема (по умолчанию) */
+       
             --bg-primary: #1a1a1a;
             --bg-secondary: #262626;
             --bg-accent: rgba(38, 38, 38, 0.98);
@@ -100,14 +100,14 @@ $fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "
             --scrollbar-thumb-hover: rgba(136, 136, 136, 0.7);
             --theme-toggle-color: #ffffff;
             --theme-toggle-bg: rgba(255, 255, 255, 0.05);
-            --orange-color: #ff5c20; /* Цвет для комментариев */
+            --orange-color: #ff5c20;
             --success-color: #a6bb7c;
-            --success-bg: #2a3320; /* Непрозрачный зеленый фон для темной темы */
-            --success-light: #e8f5e9; /* Непрозрачный светлый фон для светлой темы */
+            --success-bg: #2a3320;
+            --success-light: #e8f5e9;
         }
         
         .light-theme {
-            /* Светлая тема */
+          
             --bg-primary: #f5f5f7;
             --bg-secondary: #ffffff;
             --bg-accent: rgba(255, 255, 255, 0.98);
@@ -122,12 +122,12 @@ $fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "
             --scrollbar-thumb-hover: rgba(136, 136, 136, 0.5);
             --theme-toggle-color: #1a1a1a;
             --theme-toggle-bg: rgba(0, 0, 0, 0.08);
-            /* Усиленная контрастность для кнопки меню */
+        
             --menu-button-bg: rgba(0, 0, 0, 0.12);
             --menu-button-border: rgba(0, 0, 0, 0.18);
             --menu-button-text: #1a1a1a;
             --success-color: #5a8d3e;
-            --success-bg: #e8f5e9; /* Непрозрачный зеленый фон для светлой темы */
+            --success-bg: #e8f5e9;
         }
         
         * {
@@ -161,21 +161,9 @@ $fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "
             -moz-user-select: none;
             -ms-user-select: none;
             user-select: none;
-            /* Убрана анимация при смене темы */
+            
         }
         
-        body::-webkit-scrollbar {
-            width: 0;
-            height: 0;
-            display: none;
-        }
-        
-        body {
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-        }
-        
-        /* ===== Header & Navigation ===== */
         .header {
             position: fixed;
             top: 0;
@@ -186,7 +174,7 @@ $fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "
             background-color: rgba(26, 26, 26, 0.95);
             box-shadow: 0 4px 25px rgba(0, 0, 0, 0.6);
             padding: 10px 0;
-            /* Убрана анимация при смене темы */
+       
         }
         
         .light-theme .header {
@@ -196,7 +184,7 @@ $fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "
 
 .container {
     width: 100%;
-    max-width: 100%; /* Убираем ограничение по ширине */
+    max-width: 100%;
     margin: 0 auto;
     padding: 0 20px;
     height: 100%;
@@ -210,7 +198,7 @@ $fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "
             height: 100%;
         }
         
-        /* УПРОЩЕННЫЙ ЛОГОТИП - как в других файдах */
+     
         .logo {
             position: absolute;
             left: 50%;
@@ -249,10 +237,10 @@ $fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "
             color: var(--text-primary);
         }
         
-        /* Кнопка переключения темы */
+    
         .theme-toggle {
             position: absolute;
-            right: 80px; /* Увеличено расстояние от правого края */
+            right: 80px;
             top: 50%;
             transform: translateY(-50%);
             width: 44px;
@@ -285,7 +273,7 @@ $fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "
             font-size: 1.2rem;
         }
         
-        /* Иконка луны для темной темы */
+   
         .theme-toggle .fa-moon {
             display: block;
         }
@@ -294,7 +282,7 @@ $fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "
             display: none;
         }
         
-        /* В светлой теме показываем солнце, скрываем луну */
+     
         .light-theme .theme-toggle .fa-moon {
             display: none;
         }
@@ -365,7 +353,7 @@ $fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "
             -webkit-touch-callout: none;
         }
         
-        /* Усиленная видимость кнопки меню в светлой теме */
+       
         .light-theme .menu-toggle {
             background-color: var(--menu-button-bg);
             border-color: var(--menu-button-border);
@@ -664,7 +652,7 @@ $fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "
             background-color: rgba(0, 0, 0, 0.08);
         }
         
-        /* ===== Main Content ===== */
+     
         .content {
             padding: 20px 0 40px 0;
             flex: 1 0 auto;
@@ -684,7 +672,7 @@ $fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "
             -ms-overflow-style: none;
         }
         
-        /* LOAD LEVEL SECTION стили */
+    
         .load-level-section {
             position: relative;
             background-color: var(--bg-secondary);
@@ -810,7 +798,7 @@ $fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "
             z-index: 3;
         }
         
-        /* ===== КНОПКИ ДЕЙСТВИЙ ===== */
+    
         .comment-actions {
             display: flex;
             gap: 15px;
@@ -882,12 +870,12 @@ $fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "
             color: var(--text-primary);
         }
         
-        /* ===== УВЕДОМЛЕНИЕ О КОПИРОВАНИИ (НОВЫЙ ДИЗАЙН) ===== */
+     
         .copy-notification {
             position: fixed;
             top: 90px;
             right: 20px;
-            background: var(--success-bg); /* Непрозрачный фон */
+            background: var(--success-bg);
             color: var(--success-color);
             padding: 16px 24px;
             border-radius: 12px;
@@ -946,12 +934,12 @@ $fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "
         
         .light-theme .copy-notification {
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-            background: var(--success-bg); /* Непрозрачный фон */
+            background: var(--success-bg);
             color: var(--success-color);
             border: 1px solid var(--success-color);
         }
         
-        /* Анимация для иконки проверки */
+      
         @keyframes checkmark {
             0% {
                 transform: scale(0);
@@ -970,7 +958,7 @@ $fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "
             animation: checkmark 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
         
-        /* Декоративный фон */
+  
         .decorative-bg {
             position: fixed;
             top: 0;
@@ -1004,7 +992,7 @@ $fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "
             display: block;
         }
         
-        /* Адаптивность - ВАЖНО: точная копия из index.html */
+       
         @media (max-width: 768px) {
             .nav-list {
                 width: calc(100% - 40px);
@@ -1012,7 +1000,7 @@ $fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "
                 max-height: 80vh;
             }
             
-            /* Адаптация логотипа для планшетов */
+           
             .logo {
                 gap: 8px;
             }
@@ -1053,7 +1041,7 @@ $fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "
                 padding: 20px;
             }
             
-            /* Адаптация кнопки темы для планшетов */
+            
             .theme-toggle {
                 right: 70px;
             }
@@ -1085,7 +1073,7 @@ $fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "
                 top: calc(var(--header-height) + 10px);
             }
             
-            /* Адаптация логотипа для мобильных */
+           
             .logo {
                 gap: 6px;
                 left: 50%;
@@ -1302,7 +1290,7 @@ $fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "
             }
         }
         
-        /* Изменение цвета выделения текста */
+      
         ::selection {
             background-color: rgba(136, 136, 136, 0.4);
             color: #ffffff;
@@ -1333,16 +1321,16 @@ $fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "
             color: #1a1a1a;
         }
         
-        /* 1. Убираем максимальную ширину у контейнера */
+      
         .container {
             width: 100%;
-            max-width: 100%; /* Убираем ограничение 1200px */
+            max-width: 100%;
             margin: 0 auto;
             padding: 0 20px;
             height: 100%;
         }
 
-        /* 2. Добавляем адаптивные отступы для очень широких экранов */
+       
         @media (min-width: 1400px) {
             .container {
                 padding: 0 40px;
@@ -1355,19 +1343,19 @@ $fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "
             }
         }
 
-        /* 3. Делаем секции более адаптивными */
+     
         .load-level-section {
             width: 100%;
             max-width: 100%;
         }
 
-        /* 4. Гарантируем, что контент растягивается */
+        
         .content {
             width: 100%;
             max-width: 100%;
         }
         
-/* ===== ПОДВАЛ ===== */
+
 .footer {
     background-color: var(--bg-secondary);
     border-top: 1px solid var(--border-color);
@@ -1522,7 +1510,7 @@ $fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "
     font-size: 0.8rem;
 }
 
-/* Адаптивность для подвала */
+
 @media (max-width: 768px) {
     .footer {
         padding: 15px 0 20px;
@@ -1541,34 +1529,59 @@ $fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "
 @media (max-width: 480px) {
     .footer-content {
         grid-template-columns: 1fr;
-        gap: 20px; /* Уменьшаем отступ между секциями */
+        gap: 20px;
     }
     
     .footer-section {
-        text-align: left; /* Было: center - меняем на left */
+        text-align: left;
     }
     
     .footer-logo {
-        justify-content: flex-start; /* Было: center - выравниваем по левому краю */
+        justify-content: flex-start;
     }
     
     .footer-title::after {
-        left: 0; /* Было: left: 50%; transform: translateX(-50%) */
-        transform: none; /* Убираем трансформацию */
+        left: 0;
+        transform: none;
     }
     
     .footer-social {
-        justify-content: flex-start; /* Было: center - выравниваем по левому краю */
+        justify-content: flex-start;
     }
     
     .footer-links a:hover {
-        transform: translateX(5px); /* Возвращаем анимацию наведения */
+        transform: translateX(5px);
     }
 }
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-thumb-hover);
+}
+
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb) var(--bg-secondary);
+}
+        
     </style>
 </head>
 <body>
-    <!-- Уведомление о копировании -->
+   
     <div id="copy-notification" class="copy-notification">
         <div class="copy-notification-icon">
             <i class="fas fa-check"></i>
@@ -1579,28 +1592,28 @@ $fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "
         </div>
     </div>
     
-    <!-- Decorative Background -->
+
     <div class="decorative-bg"></div>
     
-    <!-- Menu Overlay -->
+    
     <div class="menu-overlay" id="menu-overlay"></div>
     
-    <!-- Header -->
+    
     <header class="header" id="header">
         <div class="container">
             <nav class="main-nav">
-                <!-- Кнопка переключения темы -->
+              
                 <button class="theme-toggle" id="theme-toggle" title="Переключить тему">
                     <i class="fas fa-moon"></i>
                     <i class="fas fa-sun"></i>
                 </button>
                 
-                <!-- Telegram Icon -->
+           
                 <a href="https://t.me/ishupodrygyilidryga" class="telegram-icon" target="_blank" rel="noopener noreferrer" title="Перейти в Telegram канал">
                     <i class="fab fa-telegram"></i>
                 </a>
                 
-                <!-- Логотип -->
+            
                 <a href="/" class="logo" id="logo" title="Перейти на главную страницу">
                     <i class="fas fa-users logo-icon"></i>
                     <span class="logo-text">iipd</span>
@@ -1612,7 +1625,7 @@ $fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "
                     <span>Меню</span>
                 </button>
                 
-                <!-- Navigation Menu -->
+         
                 <ul class="nav-list" id="nav-list">
                     <li class="nav-item">
                         <a href="/" class="nav-link">
@@ -1646,7 +1659,7 @@ $fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "
                         </a>
                     </li>
                     
-                    <!-- Tgstat с подменю -->
+              
                     <li class="nav-item dropdown">
                         <button class="nav-link dropdown-toggle">
                             <span class="link-text">
@@ -1663,7 +1676,7 @@ $fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "
                         </div>
                     </li>
                     
-                    <!-- Стать Админом с подменю -->
+                
                     <li class="nav-item dropdown">
                         <button class="nav-link dropdown-toggle">
                             <span class="link-text">
@@ -1680,10 +1693,10 @@ $fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "
                         </div>
                     </li>
                     
-                    <!-- Footer in menu -->
+                  
                     <li class="nav-footer">
                         <p class="nav-footer-text">
-                            Ищу интернет подругу/друга (WEB) © 
+                            Ищу интернет подругу/друга (WEB)</p>
                             <a href="/" class="nav-footer-link" target="_blank" rel="noopener noreferrer">ishupodrygyilidryga.fun</a>
                         </p>
                         <p class="nav-footer-year"><?php echo date('Y'); ?></p>
@@ -1693,10 +1706,10 @@ $fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "
         </div>
     </header>
     
-    <!-- Main Content -->
+  
     <main class="content">
         <div class="container">
-            <!-- Комментарий -->
+       
             <section class="load-level-section" style="border-left: 5px solid var(--orange-color);">
                 <div class="level-header">
                     <h2 class="level-title">
@@ -1717,7 +1730,7 @@ $fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "
                     </div>
                 </div>
                 
-                <!-- Действия -->
+              
                 <div class="comment-actions">
                     <button id="share-comment" class="button-link share-button">
                         <i class="fas fa-share-alt"></i>
@@ -1732,18 +1745,18 @@ $fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "
         </div>
     </main>
     
-                <!-- Footer -->
+                
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <!-- Основная информация -->
+                
                 <div class="footer-section">
                     <a href="https://ishupodrygyilidryga.fun" class="footer-logo">
                         <i class="fas fa-users"></i>
                         <span class="footer-logo-text">iipd</span>
                     </a>
                     <p class="footer-description">
-                        Канал для поиска новых друзей и интересного общения в интернете
+                        Канал для поиска новых друзей и интересного общения
                     </p>
                     <div class="footer-social">
                         <a href="https://t.me/ishupodrygyilidryga" class="social-icon telegram" target="_blank" rel="noopener noreferrer" title="Telegram канал">
@@ -1758,7 +1771,12 @@ $fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "
                     </div>
                 </div>
                 
-                <!-- Быстрые ссылки -->
+           <div class="mc-article-hero-attribution-author">
+                    <h3 class="footer-title">Автор: Администрация iipd</h3>
+    <img id="author-avatar" src="https://www.minecraft.net/content/dam/minecraftnet/franchise/author-avatars/Mojavatar_Staff-Villager_200x296.png" alt="Avatar">
+    <dl>
+</div>
+                
                 <div class="footer-section">
                     <h3 class="footer-title">Быстрые ссылки</h3>
                     <ul class="footer-links">
@@ -1770,7 +1788,7 @@ $fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "
                     </ul>
                 </div>
                 
-                <!-- Информация -->
+           
                 <div class="footer-section">
                     <h3 class="footer-title">Информация</h3>
                     <ul class="footer-links">
@@ -1783,24 +1801,19 @@ $fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "
                 </div>
             </div>
             
-            <!-- Копирайт -->
+     
             <div class="footer-bottom">
                 <p class="copyright">
-                    &copy; 2026 Ищу интернет подругу/друга (WEB). Все права защищены.
+                    &copy; 2026 Ищу интернет подругу/друга (WEB)
                 </p>
-                <p class="footer-note">
-                    Создано с <i class="fas fa-heart"></i> для друзей
-                </p>
-            </div>
-        </div>
     </footer>
 
     <script>
-        // Оптимизированный JavaScript - точная копия из index.html
+    
         (function() {
             'use strict';
             
-            // DOM Elements
+       
             const dom = {
                 menuToggle: document.getElementById('menu-toggle'),
                 navList: document.getElementById('nav-list'),
@@ -1813,12 +1826,12 @@ $fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "
                 shareButton: document.getElementById('share-comment')
             };
             
-            // State
+     
             let isMenuOpen = false;
             let isLightTheme = false;
             let copyNotificationTimeout = null;
             
-            // Function to apply theme consistently
+      
             function applyTheme(theme) {
                 if (theme === 'light') {
                     dom.body.classList.add('light-theme');
@@ -1829,7 +1842,7 @@ $fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "
                 }
             }
             
-            // Initialize theme from localStorage or default
+        
             const savedTheme = localStorage.getItem('theme');
             if (savedTheme === 'light') {
                 isLightTheme = true;
@@ -1837,26 +1850,26 @@ $fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "
             } else {
                 isLightTheme = false;
                 dom.body.classList.remove('light-theme');
-                // Сохраняем темную тему как значение по умолчанию
+     
                 if (!savedTheme) {
                     localStorage.setItem('theme', 'dark');
                 }
             }
             
-            // Listen for theme changes from other tabs
+     
             window.addEventListener('storage', function(e) {
                 if (e.key === 'theme') {
                     applyTheme(e.newValue);
                 }
             });
             
-            // Function to prevent text selection
+    
             const preventTextSelection = function(e) {
                 e.preventDefault();
                 return false;
             };
             
-            // Menu Functions
+     
             const menu = {
                 open: function() {
                     dom.navList.classList.add('active');
@@ -1910,21 +1923,21 @@ $fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "
                 }
             };
             
-            // Функция для показа уведомления о копировании
+         
             function showCopyNotification() {
-                // Скрыть предыдущее уведомление
+           
                 hideCopyNotification();
                 
-                // Показать новое
+               
                 dom.copyNotification.classList.remove('hide');
                 dom.copyNotification.classList.add('show');
                 
-                // Автоматически скрыть через 3 секунды
+       
                 copyNotificationTimeout = setTimeout(() => {
                     hideCopyNotification();
                 }, 3000);
                 
-                // Отслеживание в Google Analytics
+              
                 if (typeof gtag !== 'undefined') {
                     gtag('event', 'link_copied', {
                         'event_category': 'engagement',
@@ -1934,7 +1947,7 @@ $fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "
                 }
             }
             
-            // Функция для скрытия уведомления
+          
             function hideCopyNotification() {
                 if (copyNotificationTimeout) {
                     clearTimeout(copyNotificationTimeout);
@@ -1944,19 +1957,19 @@ $fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "
                 dom.copyNotification.classList.remove('show');
                 dom.copyNotification.classList.add('hide');
                 
-                // Удалить класс hide после завершения анимации
+            
                 setTimeout(() => {
                     dom.copyNotification.classList.remove('hide');
                 }, 400);
             }
             
-            // Функция для копирования ссылки в буфер обмена
+           
             function copyToClipboard(text) {
-                // Пробуем использовать современный Clipboard API
+                
                 if (navigator.clipboard && window.isSecureContext) {
                     return navigator.clipboard.writeText(text);
                 } else {
-                    // Старый метод для старых браузеров
+                    
                     const textArea = document.createElement('textarea');
                     textArea.value = text;
                     textArea.style.position = 'fixed';
@@ -1973,15 +1986,15 @@ $fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "
                 }
             }
             
-            // Event Listeners
+           
             const initEventListeners = function() {
-                // Menu toggle
+               
                 dom.menuToggle.addEventListener('click', function(e) {
                     e.stopPropagation();
                     menu.toggle();
                 });
                 
-                // Theme toggle
+               
                 dom.themeToggle.addEventListener('click', function(e) {
                     e.stopPropagation();
                     
@@ -1989,7 +2002,7 @@ $fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "
                     applyTheme(newTheme);
                     localStorage.setItem('theme', newTheme);
                     
-                    // Отправка события в Google Analytics
+                   
                     if (typeof gtag !== 'undefined') {
                         gtag('event', 'theme_toggle', {
                             'event_category': 'ui_interaction',
@@ -1999,7 +2012,7 @@ $fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "
                     }
                 });
                 
-                // Dropdown toggles
+               
                 dom.dropdownToggles.forEach(toggle => {
                     toggle.addEventListener('click', function(e) {
                         e.preventDefault();
@@ -2009,19 +2022,19 @@ $fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "
                     });
                 });
                 
-                // Close menu on overlay click
+                
                 dom.menuOverlay.addEventListener('click', function() {
                     menu.close();
                 });
                 
-                // Close menu on regular link click
+                
                 document.querySelectorAll('.nav-link:not(.dropdown-toggle)').forEach(link => {
                     link.addEventListener('click', function() {
                         menu.close();
                     });
                 });
                 
-                // Close menu when clicking outside
+                
                 document.addEventListener('click', function(e) {
                     if (isMenuOpen && 
                         !e.target.closest('.nav-list') && 
@@ -2030,14 +2043,14 @@ $fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "
                     }
                 });
                 
-                // Close menu on escape key
+                
                 document.addEventListener('keydown', function(e) {
                     if (e.key === 'Escape' && isMenuOpen) {
                         menu.close();
                     }
                 });
                 
-                // Кнопка "Поделиться"
+                
                 if (dom.shareButton) {
                     dom.shareButton.addEventListener('click', function() {
                         const currentUrl = window.location.href;
@@ -2048,18 +2061,18 @@ $fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "
                             })
                             .catch(err => {
                                 console.error('Ошибка копирования:', err);
-                                // Все равно показываем уведомление
+                               
                                 showCopyNotification();
                             });
                     });
                 }
                 
-                // Закрыть уведомление при клике на него
+              
                 if (dom.copyNotification) {
                     dom.copyNotification.addEventListener('click', hideCopyNotification);
                 }
                 
-                // Prevent text selection on interactive elements
+           
                 const interactiveElements = document.querySelectorAll(
                     'button, .menu-toggle, .dropdown-toggle, .button-link, .nav-link, .dropdown-item, .telegram-icon, .theme-toggle'
                 );
@@ -2077,48 +2090,48 @@ $fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "
                 });
             };
             
-            // Initialize
+     
             const init = function() {
-                // Initialize event listeners
+          
                 initEventListeners();
                 
-                // Set accessibility attributes
+           
                 dom.menuToggle.setAttribute('aria-expanded', 'false');
                 dom.menuToggle.setAttribute('aria-label', 'Открыть меню навигации');
                 dom.themeToggle.setAttribute('aria-label', 'Переключить тему');
                 
-                // Add aria-labels to dropdown toggles
+              
                 dom.dropdownToggles.forEach(toggle => {
                     toggle.setAttribute('aria-expanded', 'false');
                     toggle.setAttribute('aria-haspopup', 'true');
                 });
                 
-                // Set current year in footer
+        
                 const currentYear = new Date().getFullYear();
                 const yearElement = document.querySelector('.nav-footer-year');
                 if (yearElement) {
                     yearElement.textContent = currentYear;
                 }
                 
-                // Принудительно сбрасываем скролл при загрузке
+          
                 window.scrollTo(0, 0);
                 document.documentElement.scrollTop = 0;
                 document.body.scrollTop = 0;
                 
-                // Дополнительный сброс через таймер
+            
                 setTimeout(() => {
                     window.scrollTo(0, 0);
                     document.documentElement.scrollTop = 0;
                     document.body.scrollTop = 0;
                 }, 100);
                 
-                // Add smooth scroll for menu
+   
                 dom.navList.addEventListener('wheel', function(e) {
                     this.scrollTop += e.deltaY * 0.5;
                     e.preventDefault();
                 }, { passive: false });
                 
-                // Add inertial scroll for touch devices
+             
                 let startY = 0;
                 let scrollTop = 0;
                 let isScrolling = false;
@@ -2144,9 +2157,9 @@ $fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "
                     isScrolling = false;
                 });
                 
-                // Отслеживание кликов по кнопкам для Google Analytics
+          
                 function initButtonTracking() {
-                    // Отслеживание всех основных кнопок
+             
                     document.querySelectorAll('.button-link').forEach(button => {
                         button.addEventListener('click', function(e) {
                             const buttonText = this.querySelector('span:first-child')?.textContent || this.textContent;
@@ -2162,7 +2175,7 @@ $fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "
                         });
                     });
                     
-                    // Отслеживание ссылок в навигации
+               
                     document.querySelectorAll('.nav-link:not(.dropdown-toggle)').forEach(link => {
                         link.addEventListener('click', function(e) {
                             const linkText = this.querySelector('.link-text')?.textContent || this.textContent;
@@ -2177,7 +2190,7 @@ $fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "
                         });
                     });
                     
-                    // Отслеживание ссылок в dropdown
+             
                     document.querySelectorAll('.dropdown-item').forEach(link => {
                         link.addEventListener('click', function(e) {
                             const linkText = this.querySelector('.dropdown-item-text')?.textContent || this.textContent;
@@ -2192,7 +2205,7 @@ $fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "
                         });
                     });
                     
-                    // Отслеживание Telegram иконки
+            
                     const telegramIcon = document.querySelector('.telegram-icon');
                     if (telegramIcon) {
                         telegramIcon.addEventListener('click', function(e) {
@@ -2205,7 +2218,7 @@ $fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "
                         });
                     }
                     
-                    // Отслеживание кликов по логотипу
+              
                     const logo = document.getElementById('logo');
                     if (logo) {
                         logo.addEventListener('click', function(e) {
@@ -2218,7 +2231,7 @@ $fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "
                         });
                     }
                     
-                    // Отслеживание открытия меню
+             
                     const menuToggle = document.getElementById('menu-toggle');
                     if (menuToggle) {
                         menuToggle.addEventListener('click', function(e) {
@@ -2237,7 +2250,7 @@ $fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "
                 initButtonTracking();
             };
             
-            // Start when DOM is ready
+       
             if (document.readyState === 'loading') {
                 document.addEventListener('DOMContentLoaded', init);
             } else {
