@@ -1,5 +1,11 @@
-admin-trials-edit.php - удалить в целом
-admin-trials.php - удалить в целом
-comments.php - удалить в целом 
-trials-data.json - удалить в целом
-trials.html - удалить в целом
+Что полностью удалить с хостинга:
+
+admin-trials-edit.php
+
+admin-trials.php 
+
+comments.php
+
+trials-data.json
+
+trials.html
