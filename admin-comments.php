@@ -5,8 +5,9 @@ header("Cache-Control: no-cache, no-store, must-revalidate");
 header("Pragma: no-cache");
 header("Expires: 0");
 
-// Функция для преобразования текста в HTML
+
 function convertSimpleTextToHTML($text) {
+    $text = trim($text);
     $text = nl2br(htmlspecialchars($text));
     
     $text = preg_replace_callback(
@@ -25,7 +26,7 @@ function convertSimpleTextToHTML($text) {
     return $text;
 }
 
-// Функция для генерации slug
+
 function generateSlug($text) {
     $text = mb_strtolower($text, 'UTF-8');
     
@@ -55,7 +56,7 @@ function generateSlug($text) {
     return $text;
 }
 
-// Функция для создания уникального slug
+
 function makeUniqueSlug($slug, $comments, $excludeId = null) {
     $originalSlug = $slug;
     $counter = 1;
@@ -83,10 +84,10 @@ function makeUniqueSlug($slug, $comments, $excludeId = null) {
     return $slug;
 }
 
-$password = 'ваш_секретный_пароль';
+$password = 'mama123';
 $dataFile = 'comments-data.json';
 
-// Проверка авторизации
+
 if (!isset($_SESSION['auth']) || $_SESSION['auth'] !== true) {
     if (isset($_POST['password'])) {
         if ($_POST['password'] === $password) {
@@ -130,76 +131,14 @@ if (!isset($_SESSION['auth']) || $_SESSION['auth'] !== true) {
     }
 }
 
-// Чтение существующих комментариев
+
 if (file_exists($dataFile)) {
     $comments = json_decode(file_get_contents($dataFile), true) ?: [];
 } else {
     $comments = [];
 }
 
-// Конвертация старых комментариев
-foreach ($comments as &$comment) {
-    if (!isset($comment['text_simple']) && isset($comment['text'])) {
-        $isFormatted = (strpos($comment['text'], '<div class="content-section">') !== false);
-        
-        if ($isFormatted) {
-            $comment['text_formatted'] = $comment['text'];
-            $comment['text_simple'] = strip_tags(htmlspecialchars_decode($comment['text']));
-        } else {
-            $comment['text_simple'] = htmlspecialchars_decode($comment['text']);
-            $comment['text_formatted'] = '';
-        }
-        unset($comment['text']);
-    }
-    
-    if (!isset($comment['short_text']) || empty($comment['short_text'])) {
-        $plainText = $comment['text_simple'] ?? '';
-        $comment['short_text'] = $plainText . ' читать далее...';
-    }
-    
-    if (!isset($comment['pinned'])) {
-        $comment['pinned'] = false;
-    }
-    
-    if (!isset($comment['slug']) || empty($comment['slug'])) {
-        $comment['slug'] = generateSlug($comment['title']);
-        $comment['slug'] = makeUniqueSlug($comment['slug'], $comments, $comment['id']);
-    }
-    
-    // Добавляем поле для хранения оригинального форматированного текста
-    if (!isset($comment['text_markdown'])) {
-        if (isset($comment['text_formatted']) && !empty($comment['text_formatted'])) {
-            $content = $comment['text_formatted'];
-            $content = str_replace('<div class="content-section">', '', $content);
-            $content = str_replace('</div>', '', $content);
-            
-            // Используем более точное преобразование тегов
-            $content = preg_replace_callback('/<a href="([^"]+)"[^>]*>([^<]+)<\/a>/', function($matches) {
-                $url = htmlspecialchars_decode($matches[1]);
-                $text = htmlspecialchars_decode($matches[2]);
-                return '[' . $text . '](' . $url . ')';
-            }, $content);
-            
-            $content = preg_replace('/<strong>([^<]+)<\/strong>/', '**$1**', $content);
-            $content = preg_replace('/<em>([^<]+)<\/em>/', '*$1*', $content);
-            
-            // Убираем <br> без добавления лишних пробелов
-            $content = preg_replace('/<br\s*\/?>/', "\n", $content);
-            
-            $content = htmlspecialchars_decode($content);
-            
-            // Убираем лишние пустые строки
-            $content = preg_replace('/\n\s*\n\s*\n/', "\n\n", $content);
-            $comment['text_markdown'] = trim($content);
-        } else {
-            $comment['text_markdown'] = '';
-        }
-    }
-}
 
-file_put_contents($dataFile, json_encode($comments, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
-
-// Удаление комментария
 if (isset($_GET['delete'])) {
     $idToDelete = $_GET['delete'];
     $comments = array_filter($comments, function($comment) use ($idToDelete) {
@@ -210,7 +149,7 @@ if (isset($_GET['delete'])) {
     exit;
 }
 
-// Редактирование комментария
+
 $editingComment = null;
 if (isset($_GET['edit'])) {
     $idToEdit = $_GET['edit'];
@@ -222,7 +161,7 @@ if (isset($_GET['edit'])) {
     }
 }
 
-// Подготовка данных для редактирования
+
 $simpleTextContent = '';
 $formattedTextContent = '';
 $pinnedStatus = false;
@@ -232,13 +171,25 @@ if ($editingComment) {
     $pinnedStatus = $editingComment['pinned'] ?? false;
     $slugContent = $editingComment['slug'] ?? '';
     
-    // Берем текст из markdown поля, если есть
     if (isset($editingComment['text_markdown']) && !empty($editingComment['text_markdown'])) {
         $formattedTextContent = $editingComment['text_markdown'];
+    } elseif (isset($editingComment['text_formatted']) && !empty($editingComment['text_formatted'])) {
+       
+        $content = $editingComment['text_formatted'];
+        $content = str_replace('<div class="content-section">', '', $content);
+        $content = str_replace('</div>', '', $content);
+        
+        $content = preg_replace_callback('/<a href="([^"]+)"[^>]*>([^<]+)<\/a>/', function($matches) {
+            return '[' . $matches[2] . '](' . $matches[1] . ')';
+        }, $content);
+        $content = preg_replace('/<strong>([^<]+)<\/strong>/', '**$1**', $content);
+        $content = preg_replace('/<em>([^<]+)<\/em>/', '*$1*', $content);
+        $content = preg_replace('/<br\s*\/?>/', "\n", $content);
+        
+        $formattedTextContent = trim($content);
     }
 }
 
-// Добавление/редактирование комментария
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['action']) && $_POST['action'] === 'update') {
         $idToUpdate = $_POST['id'];
@@ -287,24 +238,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         $slug = makeUniqueSlug($slug, $comments);
         
+        $simpleText = trim($_POST['simple_content_text'] ?? '');
+        $formattedText = trim($_POST['formatted_content_text'] ?? '');
+        
         $newComment = [
             'id' => uniqid(),
             'date' => $date,
             'title' => htmlspecialchars($_POST['title']),
-            'text_simple' => '',
+            'text_simple' => htmlspecialchars($simpleText),
             'text_formatted' => '',
-            'text_markdown' => '',
+            'text_markdown' => $formattedText,
             'short_text' => '',
             'pinned' => $pinned,
             'slug' => $slug,
             'timestamp' => time()
         ];
-        
-        $simpleText = trim($_POST['simple_content_text'] ?? '');
-        $newComment['text_simple'] = htmlspecialchars($simpleText);
-        
-        $formattedText = trim($_POST['formatted_content_text'] ?? '');
-        $newComment['text_markdown'] = $formattedText;
         
         if (!empty($formattedText)) {
             $htmlContent = convertSimpleTextToHTML($formattedText);
@@ -314,7 +262,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $plainText = htmlspecialchars_decode($newComment['text_simple']);
         $newComment['short_text'] = $plainText . ' читать далее...';
         
-        array_unshift($comments, $newComment);
+        $comments[] = $newComment;
         file_put_contents($dataFile, json_encode($comments, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
         
         $success = 'Комментарий успешно добавлен!';
@@ -323,7 +271,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 $isEditing = isset($_GET['edit']);
 
-// Сортируем комментарии
+
 usort($comments, function($a, $b) {
     if ($a['pinned'] && !$b['pinned']) return -1;
     if (!$a['pinned'] && $b['pinned']) return 1;
@@ -383,7 +331,6 @@ usort($comments, function($a, $b) {
         <?php endif; ?>
         
         <div class="content">
-            <!-- Форма добавления/редактирования -->
             <div class="form-section">
                 <h2><?php echo $isEditing ? 'Редактировать комментарий' : 'Добавить новый комментарий'; ?></h2>
                 
@@ -485,7 +432,6 @@ usort($comments, function($a, $b) {
                 <?php endif; ?>
             </div>
             
-            <!-- Список комментариев -->
             <div class="list-section">
                 <h2>Существующие комментарии (<?php echo count($comments); ?>)</h2>
                 
@@ -527,7 +473,6 @@ usort($comments, function($a, $b) {
     </div>
     
     <script>
-        // Автогенерация slug из заголовка
         document.addEventListener('DOMContentLoaded', function() {
             const titleInput = document.querySelector('input[name="title"]');
             const slugInput = document.querySelector('input[name="slug"]');
@@ -555,7 +500,6 @@ usort($comments, function($a, $b) {
                 });
             }
             
-            // Установка текущей даты
             const dateInput = document.querySelector('input[name="date"]');
             const setTodayBtn = document.createElement('button');
             setTodayBtn.type = 'button';
