@@ -1,15 +1,15 @@
 <?php
-// block.php
+
 header("Cache-Control: no-cache, no-store, must-revalidate");
 header("Pragma: no-cache");
 header("Expires: 0");
 
 $blocksFile = 'blocks-data.json';
 
-// Получаем slug из URL
+
 $slug = $_GET['slug'] ?? '';
 
-// Загружаем блоки
+
 if (file_exists($blocksFile)) {
     $blocks = json_decode(file_get_contents($blocksFile), true);
     if (!$blocks) $blocks = [];
@@ -17,7 +17,7 @@ if (file_exists($blocksFile)) {
     $blocks = [];
 }
 
-// Ищем блок по slug
+
 $currentBlock = null;
 foreach ($blocks as $block) {
     if (isset($block['content_slug']) && $block['content_slug'] === $slug) {
@@ -26,26 +26,26 @@ foreach ($blocks as $block) {
     }
 }
 
-// Если блок не найден, перенаправляем на главную
+
 if (!$currentBlock) {
     header('Location: /');
     exit;
 }
 
-// Определяем заголовок для отображения
+
 $displayTitle = $currentBlock['content_title'] ?? $currentBlock['title'];
 $displayContent = $currentBlock['content'] ?? '<p style="text-align:center;color:rgba(255,255,255,0.5);font-style:italic;padding:40px;">Контент не найден</p>';
 
-// Функция для обработки длинных ссылок в контенте
+
 function wrapLongLinks($content) {
-    // Обрабатываем ссылки, добавляя им возможность переноса
+   
     $content = preg_replace_callback(
         '/<a\s[^>]*href=["\']([^"\']+)["\'][^>]*>(.*?)<\/a>/is',
         function($matches) {
             $url = $matches[1];
             $text = $matches[2];
             
-            // Если текст ссылки очень длинный (более 30 символов), добавляем класс для переноса
+           
             if (strlen($text) > 30) {
                 return preg_replace(
                     '/<a\s([^>]*)>(.*?)<\/a>/is',
@@ -66,7 +66,7 @@ $displayContent = wrapLongLinks($displayContent);
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <!-- Google Analytics (GA4) -->
+ 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-HKF6P1HJ9Q"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -77,12 +77,12 @@ $displayContent = wrapLongLinks($displayContent);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Добавьте эти мета-теги для предотвращения кеширования -->
+   
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     
-    <!-- Мета-теги для соцсетей -->
+    
     <meta property="og:title" content="<?php echo htmlspecialchars($displayTitle); ?> - Ищу интернет подругу/друга">
     <meta property="og:description" content="<?php echo htmlspecialchars(strip_tags(substr($displayContent, 0, 150))); ?>...">
     <link rel="icon" href="/iipdPin.ico" type="image/x-icon">
@@ -99,9 +99,9 @@ $displayContent = wrapLongLinks($displayContent);
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
 <style>
-    /* ВСЕ стили из index.html */
+    
     :root {
-        /* Темная тема (по умолчанию) */
+       
         --bg-primary: #1a1a1a;
         --bg-secondary: #262626;
         --bg-accent: rgba(38, 38, 38, 0.98);
@@ -120,12 +120,12 @@ $displayContent = wrapLongLinks($displayContent);
         --theme-toggle-bg: rgba(255, 255, 255, 0.05);
         --orange-color: #ff5c20;
         --success-color: #a6bb7c;
-        --success-bg: #2a3320; /* Непрозрачный зеленый фон для темной темы */
-        --success-light: #e8f5e9; /* Непрозрачный светлый фон для светлой темы */
+        --success-bg: #2a3320;
+        --success-light: #e8f5e9;
     }
     
     .light-theme {
-        /* Светлая тема */
+    
         --bg-primary: #f5f5f7;
         --bg-secondary: #ffffff;
         --bg-accent: rgba(255, 255, 255, 0.98);
@@ -144,7 +144,7 @@ $displayContent = wrapLongLinks($displayContent);
         --menu-button-border: rgba(0, 0, 0, 0.18);
         --menu-button-text: #1a1a1a;
         --success-color: #5a8d3e;
-        --success-bg: #e8f5e9; /* Непрозрачный зеленый фон для светлой темы */
+        --success-bg: #e8f5e9;
     }
     
     * {
@@ -190,19 +190,8 @@ $displayContent = wrapLongLinks($displayContent);
         -ms-user-select: text;
         user-select: text;
     }
-    
-    body::-webkit-scrollbar {
-        width: 0;
-        height: 0;
-        display: none;
-    }
-    
-    body {
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-    }
-    
-    /* ===== Header & Navigation ===== */
+ 
+  
     .header {
         position: fixed;
         top: 0;
@@ -236,7 +225,7 @@ $displayContent = wrapLongLinks($displayContent);
         height: 100%;
     }
     
-    /* УПРОЩЕННЫЙ ЛОГОТИП - как в других файлах */
+  
     .logo {
         position: absolute;
         left: 50%;
@@ -275,10 +264,10 @@ $displayContent = wrapLongLinks($displayContent);
         color: var(--text-primary);
     }
     
-    /* Кнопка переключения темы */
+   
     .theme-toggle {
         position: absolute;
-        right: 80px; /* Увеличено расстояние от правого края */
+        right: 80px;
         top: 50%;
         transform: translateY(-50%);
         width: 44px;
@@ -311,7 +300,7 @@ $displayContent = wrapLongLinks($displayContent);
         font-size: 1.2rem;
     }
     
-    /* Иконка луны для темной темы */
+  
     .theme-toggle .fa-moon {
         display: block;
     }
@@ -320,7 +309,7 @@ $displayContent = wrapLongLinks($displayContent);
         display: none;
     }
     
-    /* В светлой теме показываем солнце, скрываем луну */
+   
     .light-theme .theme-toggle .fa-moon {
         display: none;
     }
@@ -391,7 +380,7 @@ $displayContent = wrapLongLinks($displayContent);
         -webkit-touch-callout: none;
     }
     
-    /* Усиленная видимость кнопки меню в светлой теме */
+  
     .light-theme .menu-toggle {
         background-color: var(--menu-button-bg);
         border-color: var(--menu-button-border);
@@ -690,14 +679,14 @@ $displayContent = wrapLongLinks($displayContent);
         background-color: rgba(0, 0, 0, 0.08);
     }
     
-    /* ===== Main Content ===== */
+
     .content {
         padding: 20px 0 40px 0;
         flex: 1 0 auto;
         width: 100%;
     }
     
-    /* Decorative Background */
+ 
     .decorative-bg {
         position: fixed;
         top: 0;
@@ -731,7 +720,7 @@ $displayContent = wrapLongLinks($displayContent);
         display: block;
     }
     
-    /* ===== LOAD LEVEL SECTION (для контента блока) ===== */
+
     .load-level-section {
         position: relative;
         background-color: var(--bg-secondary);
@@ -820,14 +809,14 @@ $displayContent = wrapLongLinks($displayContent);
         hyphens: auto;
     }
     
-    /* Стили для длинных ссылок в контенте */
+  
     .level-description-text a {
         word-break: break-word;
         overflow-wrap: anywhere;
         hyphens: auto;
     }
     
-    /* Специальный класс для очень длинных ссылок */
+    
     .long-link {
         display: inline-block;
         max-width: 100%;
@@ -836,7 +825,7 @@ $displayContent = wrapLongLinks($displayContent);
         hyphens: auto !important;
     }
     
-    /* Обработка длинных URL внутри текста */
+   
     .level-description-text {
         overflow-wrap: break-word;
         word-wrap: break-word;
@@ -847,7 +836,7 @@ $displayContent = wrapLongLinks($displayContent);
         hyphens: auto;
     }
     
-    /* Для мобильных устройств делаем перенос более агрессивным */
+   
     @media (max-width: 768px) {
         .level-description-text {
             word-break: break-word;
@@ -869,7 +858,7 @@ $displayContent = wrapLongLinks($displayContent);
         }
     }
     
-    /* Для очень маленьких экранов */
+ 
     @media (max-width: 480px) {
         .level-description-text a {
             font-size: 0.95rem;
@@ -938,7 +927,7 @@ $displayContent = wrapLongLinks($displayContent);
         font-size: 1.1rem;
     }
     
-    /* ===== КНОПКИ ДЕЙСТВИЙ ===== */
+   
     .comment-actions {
         display: flex;
         gap: 15px;
@@ -1010,12 +999,12 @@ $displayContent = wrapLongLinks($displayContent);
         color: var(--text-primary);
     }
     
-    /* ===== УВЕДОМЛЕНИЕ О КОПИРОВАНИИ (НОВЫЙ ДИЗАЙН) ===== */
+    
     .copy-notification {
         position: fixed;
         top: 90px;
         right: 20px;
-        background: var(--success-bg); /* Непрозрачный фон */
+        background: var(--success-bg);
         color: var(--success-color);
         padding: 16px 24px;
         border-radius: 12px;
@@ -1074,12 +1063,12 @@ $displayContent = wrapLongLinks($displayContent);
     
     .light-theme .copy-notification {
         box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-        background: var(--success-bg); /* Непрозрачный фон */
+        background: var(--success-bg);
         color: var(--success-color);
         border: 1px solid var(--success-color);
     }
     
-    /* Анимация для иконки проверки */
+  
     @keyframes checkmark {
         0% {
             transform: scale(0);
@@ -1098,7 +1087,7 @@ $displayContent = wrapLongLinks($displayContent);
         animation: checkmark 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     }
     
-    /* ===== Media Queries ===== */
+ 
     @media (min-width: 769px) {
         .nav-list {
             width: 400px;
@@ -1113,7 +1102,7 @@ $displayContent = wrapLongLinks($displayContent);
             max-height: 80vh;
         }
         
-        /* Адаптация логотипа для планшетов */
+     
         .logo {
             gap: 8px;
         }
@@ -1144,7 +1133,7 @@ $displayContent = wrapLongLinks($displayContent);
             font-size: 1.6rem;
         }
         
-        /* Адаптация кнопки темы для планшетов */
+   
         .theme-toggle {
             right: 70px;
         }
@@ -1176,7 +1165,7 @@ $displayContent = wrapLongLinks($displayContent);
             top: calc(var(--header-height) + 10px);
         }
         
-        /* Адаптация логотипа для мобильных - ТОЧНО КАК В INDEX.HTML */
+    
         .logo {
             gap: 6px;
             left: 50%;
@@ -1228,7 +1217,7 @@ $displayContent = wrapLongLinks($displayContent);
             padding: 12px 16px;
         }
         
-        /* Header элементы для мобильных - ТОЧНО КАК В INDEX.HTML */
+  
         .telegram-icon {
             right: 15px;
             width: 40px;
@@ -1236,7 +1225,7 @@ $displayContent = wrapLongLinks($displayContent);
         }
         
         .theme-toggle {
-            right: 70px; /* Правильное положение - ТОЧНО КАК В INDEX.HTML */
+            right: 70px;
             width: 40px;
             height: 40px;
         }
@@ -1307,7 +1296,7 @@ $displayContent = wrapLongLinks($displayContent);
         }
         
         .theme-toggle {
-            right: 67px; /* Правильное положение для очень маленьких экранов */
+            right: 67px;
             width: 38px;
             height: 38px;
         }
@@ -1369,7 +1358,7 @@ $displayContent = wrapLongLinks($displayContent);
         }
         
         .theme-toggle {
-            right: 65px; /* Правильное положение для экстремально маленьких экранов */
+            right: 65px;
             width: 36px;
             height: 36px;
         }
@@ -1431,7 +1420,7 @@ $displayContent = wrapLongLinks($displayContent);
         }
     }
     
-    /* Изменение цвета выделения текста */
+ 
     ::selection {
         background-color: rgba(136, 136, 136, 0.4);
         color: #ffffff;
@@ -1462,16 +1451,16 @@ $displayContent = wrapLongLinks($displayContent);
         color: #1a1a1a;
     }
     
-    /* 1. Убираем максимальную ширину у контейнера */
+   
 .container {
     width: 100%;
-    max-width: 100%; /* Убираем ограничение 1200px */
+    max-width: 100%;
     margin: 0 auto;
     padding: 0 20px;
     height: 100%;
 }
 
-/* 2. Добавляем адаптивные отступы для очень широких экранов */
+
 @media (min-width: 1400px) {
     .container {
         padding: 0 40px;
@@ -1500,7 +1489,7 @@ $displayContent = wrapLongLinks($displayContent);
     }
 }
 
-/* 3. Делаем секции более адаптивными */
+
 .channel-description,
 .load-level-section,
 .comments-section,
@@ -1510,7 +1499,7 @@ $displayContent = wrapLongLinks($displayContent);
     max-width: 100%;
 }
 
-/* 4. Улучшаем сетку для широких экранов */
+
 @media (min-width: 1600px) {
     .buttons-grid {
         grid-template-columns: repeat(auto-fill, minmax(370px, 1fr));
@@ -1518,13 +1507,13 @@ $displayContent = wrapLongLinks($displayContent);
     }
 }
 
-/* 5. Гарантируем, что контент растягивается */
+    
 .content {
     width: 100%;
     max-width: 100%;
 }
 
-/* Стили для ссылок в комментариях */
+    
 .comment-link {
     text-decoration: none;
     color: inherit;
@@ -1535,7 +1524,7 @@ $displayContent = wrapLongLinks($displayContent);
     text-decoration: none;
 }
 
-/* ===== ПОДВАЛ ===== */
+
 .footer {
     background-color: var(--bg-secondary);
     border-top: 1px solid var(--border-color);
@@ -1690,7 +1679,7 @@ $displayContent = wrapLongLinks($displayContent);
     font-size: 0.8rem;
 }
 
-/* Адаптивность для подвала */
+
 @media (max-width: 768px) {
     .footer {
         padding: 15px 0 20px;
@@ -1709,35 +1698,100 @@ $displayContent = wrapLongLinks($displayContent);
 @media (max-width: 480px) {
     .footer-content {
         grid-template-columns: 1fr;
-        gap: 20px; /* Уменьшаем отступ между секциями */
+        gap: 20px;
     }
     
     .footer-section {
-        text-align: left; /* Было: center - меняем на left */
+        text-align: left;
     }
     
     .footer-logo {
-        justify-content: flex-start; /* Было: center - выравниваем по левому краю */
+        justify-content: flex-start;
     }
     
     .footer-title::after {
-        left: 0; /* Было: left: 50%; transform: translateX(-50%) */
-        transform: none; /* Убираем трансформацию */
+        left: 0;
+        transform: none;
     }
     
     .footer-social {
-        justify-content: flex-start; /* Было: center - выравниваем по левому краю */
+        justify-content: flex-start;
     }
     
     .footer-links a:hover {
-        transform: translateX(5px); /* Возвращаем анимацию наведения */
+        transform: translateX(5px);
     }
 }
+    
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-thumb-hover);
+}
+
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb) var(--bg-secondary);
+}
+    
+    .info-section {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 30px;
+            border-radius: var(--menu-border-radius);
+            margin-top: 40px;
+            margin-bottom: 40px;
+            border-left: 4px solid #888;
+        }
+        
+        .light-theme .info-section {
+            background: rgba(0, 0, 0, 0.03);
+            border-left: 4px solid #666;
+        }
+        
+        .info-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+        }
+        
+        .info-text {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+        
+        .support-link {
+            color: #aaa;
+            text-decoration: underline;
+            font-weight: 600;
+        }
+        
+        .light-theme .support-link {
+            color: #666;
+        }
+        
+        .support-link:hover {
+            color: var(--text-primary);
+        }
     
 </style>
 </head>
 <body>
-    <!-- Уведомление о копировании -->
+   
     <div id="copy-notification" class="copy-notification">
         <div class="copy-notification-icon">
             <i class="fas fa-check"></i>
@@ -1748,40 +1802,40 @@ $displayContent = wrapLongLinks($displayContent);
         </div>
     </div>
     
-    <!-- Decorative Background -->
+   
     <div class="decorative-bg"></div>
     
     <!-- Menu Overlay -->
     <div class="menu-overlay" id="menu-overlay"></div>
     
-    <!-- Header (ТОЧНО ТАКОЙ ЖЕ КАК В index.html) -->
+   
     <header class="header" id="header">
         <div class="container">
             <nav class="main-nav">
-                <!-- Кнопка переключения темы -->
+              
                 <button class="theme-toggle" id="theme-toggle" title="Переключить тему">
                     <i class="fas fa-moon"></i>
                     <i class="fas fa-sun"></i>
                 </button>
                 
-                <!-- Telegram Icon -->
+              
                 <a href="https://t.me/ishupodrygyilidryga" class="telegram-icon" target="_blank" rel="noopener noreferrer" title="Перейти в Telegram канал">
                     <i class="fab fa-telegram"></i>
                 </a>
                 
-                <!-- УПРОЩЕННЫЙ ЛОГОТИП - как в других файдах -->
+              
                 <a href="https://ishupodrygyilidryga.fun" class="logo" id="logo" title="Перейти на главную страницу">
                     <i class="fas fa-users logo-icon"></i>
                     <span class="logo-text">iipd</span>
                 </a>
                 
-                <!-- Menu Toggle -->
+            
                 <button class="menu-toggle" id="menu-toggle">
                     <i class="fas fa-bars"></i>
                     <span>Меню</span>
                 </button>
                 
-                <!-- Navigation Menu -->
+                
                 <ul class="nav-list" id="nav-list">
                     <li class="nav-item">
                         <a href="https://ishupodrygyilidryga.fun" class="nav-link">
@@ -1815,7 +1869,7 @@ $displayContent = wrapLongLinks($displayContent);
                         </a>
                     </li>
                     
-                    <!-- Tgstat с подменю -->
+            
                     <li class="nav-item dropdown">
                         <button class="nav-link dropdown-toggle">
                             <span class="link-text">
@@ -1832,7 +1886,7 @@ $displayContent = wrapLongLinks($displayContent);
                         </div>
                     </li>
                     
-                    <!-- Стать Админом с подменю -->
+              
                     <li class="nav-item dropdown">
                         <button class="nav-link dropdown-toggle">
                             <span class="link-text">
@@ -1849,10 +1903,10 @@ $displayContent = wrapLongLinks($displayContent);
                         </div>
                     </li>
                     
-                    <!-- Footer in menu -->
+              
                     <li class="nav-footer">
                         <p class="nav-footer-text">
-                            Ищу интернет подругу/друга (WEB) © 
+                            Ищу интернет подругу/друга (WEB)</p>
                             <a href="https://ishupodrygyilidryga.fun" class="nav-footer-link" target="_blank" rel="noopener noreferrer">ishupodrygyilidryga.fun</a>
                         </p>
                         <p class="nav-footer-year"><?php echo date('Y'); ?></p>
@@ -1862,10 +1916,10 @@ $displayContent = wrapLongLinks($displayContent);
         </div>
     </header>
     
-    <!-- Main Content -->
+  
     <main class="content">
         <div class="container">
-            <!-- Контент блока -->
+            
             <section class="load-level-section" id="block-content">
                 <div class="level-header">
                     <h2 class="level-title">
@@ -1886,7 +1940,6 @@ $displayContent = wrapLongLinks($displayContent);
                     </div>
                 </div>
                 
-                <!-- Действия -->
                 <div class="comment-actions">
                     <button id="share-block" class="button-link share-button">
                         <i class="fas fa-share-alt"></i>
@@ -1901,18 +1954,18 @@ $displayContent = wrapLongLinks($displayContent);
         </div>
     </main>
     
-                <!-- Footer -->
+        
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <!-- Основная информация -->
+              
                 <div class="footer-section">
                     <a href="https://ishupodrygyilidryga.fun" class="footer-logo">
                         <i class="fas fa-users"></i>
                         <span class="footer-logo-text">iipd</span>
                     </a>
                     <p class="footer-description">
-                        Канал для поиска новых друзей и интересного общения в интернете
+                        Канал для поиска новых друзей и интересного общения
                     </p>
                     <div class="footer-social">
                         <a href="https://t.me/ishupodrygyilidryga" class="social-icon telegram" target="_blank" rel="noopener noreferrer" title="Telegram канал">
@@ -1927,7 +1980,12 @@ $displayContent = wrapLongLinks($displayContent);
                     </div>
                 </div>
                 
-                <!-- Быстрые ссылки -->
+        <div class="mc-article-hero-attribution-author">
+                    <h3 class="footer-title">Автор: Администрация iipd</h3>
+    <img id="author-avatar" src="https://www.minecraft.net/content/dam/minecraftnet/franchise/author-avatars/Mojavatar_Staff-Villager_200x296.png" alt="Avatar">
+    <dl>
+</div>
+      
                 <div class="footer-section">
                     <h3 class="footer-title">Быстрые ссылки</h3>
                     <ul class="footer-links">
@@ -1939,7 +1997,7 @@ $displayContent = wrapLongLinks($displayContent);
                     </ul>
                 </div>
                 
-                <!-- Информация -->
+         
                 <div class="footer-section">
                     <h3 class="footer-title">Информация</h3>
                     <ul class="footer-links">
@@ -1952,25 +2010,20 @@ $displayContent = wrapLongLinks($displayContent);
                 </div>
             </div>
             
-            <!-- Копирайт -->
+       
             <div class="footer-bottom">
                 <p class="copyright">
-                    &copy; 2026 Ищу интернет подругу/друга (WEB). Все права защищены.
+                    &copy; 2026 Ищу интернет подругу/друга (WEB)
                 </p>
-                <p class="footer-note">
-                    Создано с <i class="fas fa-heart"></i> для друзей
-                </p>
-            </div>
-        </div>
     </footer>
 
 
     <script>
-        // Оптимизированный JavaScript без анимаций
+   
         (function() {
             'use strict';
             
-            // DOM Elements
+     
             const dom = {
                 menuToggle: document.getElementById('menu-toggle'),
                 navList: document.getElementById('nav-list'),
@@ -1983,12 +2036,12 @@ $displayContent = wrapLongLinks($displayContent);
                 shareButton: document.getElementById('share-block')
             };
             
-            // State
+    
             let isMenuOpen = false;
             let isLightTheme = false;
             let copyNotificationTimeout = null;
             
-            // Function to apply theme consistently
+        
             function applyTheme(theme) {
                 if (theme === 'light') {
                     dom.body.classList.add('light-theme');
@@ -1999,7 +2052,7 @@ $displayContent = wrapLongLinks($displayContent);
                 }
             }
             
-            // Initialize theme from localStorage or default
+        
             const savedTheme = localStorage.getItem('theme');
             if (savedTheme === 'light') {
                 isLightTheme = true;
@@ -2007,26 +2060,26 @@ $displayContent = wrapLongLinks($displayContent);
             } else {
                 isLightTheme = false;
                 dom.body.classList.remove('light-theme');
-                // Сохраняем темную тему как значение по умолчанию
+             
                 if (!savedTheme) {
                     localStorage.setItem('theme', 'dark');
                 }
             }
             
-            // Listen for theme changes from other tabs
+      
             window.addEventListener('storage', function(e) {
                 if (e.key === 'theme') {
                     applyTheme(e.newValue);
                 }
             });
             
-            // Function to prevent text selection
+        
             const preventTextSelection = function(e) {
                 e.preventDefault();
                 return false;
             };
             
-            // Menu Functions
+       
             const menu = {
                 open: function() {
                     dom.navList.classList.add('active');
@@ -2080,21 +2133,21 @@ $displayContent = wrapLongLinks($displayContent);
                 }
             };
             
-            // Функция для показа уведомления о копировании
+       
             function showCopyNotification() {
-                // Скрыть предыдущее уведомление
+          
                 hideCopyNotification();
                 
-                // Показать новое
+       
                 dom.copyNotification.classList.remove('hide');
                 dom.copyNotification.classList.add('show');
                 
-                // Автоматически скрыть через 3 секунды
+           
                 copyNotificationTimeout = setTimeout(() => {
                     hideCopyNotification();
                 }, 3000);
                 
-                // Отслеживание в Google Analytics
+         
                 if (typeof gtag !== 'undefined') {
                     gtag('event', 'link_copied', {
                         'event_category': 'engagement',
@@ -2104,7 +2157,7 @@ $displayContent = wrapLongLinks($displayContent);
                 }
             }
             
-            // Функция для скрытия уведомления
+        
             function hideCopyNotification() {
                 if (copyNotificationTimeout) {
                     clearTimeout(copyNotificationTimeout);
@@ -2114,19 +2167,19 @@ $displayContent = wrapLongLinks($displayContent);
                 dom.copyNotification.classList.remove('show');
                 dom.copyNotification.classList.add('hide');
                 
-                // Удалить класс hide после завершения анимации
+            
                 setTimeout(() => {
                     dom.copyNotification.classList.remove('hide');
                 }, 400);
             }
             
-            // Функция для копирования ссылки в буфер обмена
+       
             function copyToClipboard(text) {
-                // Пробуем использовать современный Clipboard API
+        
                 if (navigator.clipboard && window.isSecureContext) {
                     return navigator.clipboard.writeText(text);
                 } else {
-                    // Старый метод для старых браузеров
+               
                     const textArea = document.createElement('textarea');
                     textArea.value = text;
                     textArea.style.position = 'fixed';
@@ -2143,15 +2196,15 @@ $displayContent = wrapLongLinks($displayContent);
                 }
             }
             
-            // Event Listeners
+     
             const initEventListeners = function() {
-                // Menu toggle
+       
                 dom.menuToggle.addEventListener('click', function(e) {
                     e.stopPropagation();
                     menu.toggle();
                 });
                 
-                // Theme toggle
+         
                 dom.themeToggle.addEventListener('click', function(e) {
                     e.stopPropagation();
                     
@@ -2159,7 +2212,7 @@ $displayContent = wrapLongLinks($displayContent);
                     applyTheme(newTheme);
                     localStorage.setItem('theme', newTheme);
                     
-                    // Отправка события в Google Analytics
+             
                     if (typeof gtag !== 'undefined') {
                         gtag('event', 'theme_toggle', {
                             'event_category': 'ui_interaction',
@@ -2169,7 +2222,7 @@ $displayContent = wrapLongLinks($displayContent);
                     }
                 });
                 
-                // Dropdown toggles
+           
                 dom.dropdownToggles.forEach(toggle => {
                     toggle.addEventListener('click', function(e) {
                         e.preventDefault();
@@ -2179,19 +2232,19 @@ $displayContent = wrapLongLinks($displayContent);
                     });
                 });
                 
-                // Close menu on overlay click
+           
                 dom.menuOverlay.addEventListener('click', function() {
                     menu.close();
                 });
                 
-                // Close menu on regular link click
+            
                 document.querySelectorAll('.nav-link:not(.dropdown-toggle)').forEach(link => {
                     link.addEventListener('click', function() {
                         menu.close();
                     });
                 });
                 
-                // Close menu when clicking outside
+          
                 document.addEventListener('click', function(e) {
                     if (isMenuOpen && 
                         !e.target.closest('.nav-list') && 
@@ -2200,14 +2253,14 @@ $displayContent = wrapLongLinks($displayContent);
                     }
                 });
                 
-                // Close menu on escape key
+  
                 document.addEventListener('keydown', function(e) {
                     if (e.key === 'Escape' && isMenuOpen) {
                         menu.close();
                     }
                 });
                 
-                // Кнопка "Поделиться"
+      
                 if (dom.shareButton) {
                     dom.shareButton.addEventListener('click', function() {
                         const currentUrl = window.location.href;
@@ -2218,18 +2271,18 @@ $displayContent = wrapLongLinks($displayContent);
                             })
                             .catch(err => {
                                 console.error('Ошибка копирования:', err);
-                                // Все равно показываем уведомление
+                   
                                 showCopyNotification();
                             });
                     });
                 }
                 
-                // Закрыть уведомление при клике на него
+        
                 if (dom.copyNotification) {
                     dom.copyNotification.addEventListener('click', hideCopyNotification);
                 }
                 
-                // Prevent text selection on interactive elements
+          
                 const interactiveElements = document.querySelectorAll(
                     'button, .menu-toggle, .dropdown-toggle, .button-link, .nav-link, .dropdown-item, .telegram-icon, .theme-toggle'
                 );
@@ -2247,23 +2300,23 @@ $displayContent = wrapLongLinks($displayContent);
                 });
             };
             
-            // Initialize
+      
             const init = function() {
-                // Initialize event listeners
+     
                 initEventListeners();
                 
-                // Set accessibility attributes
+           
                 dom.menuToggle.setAttribute('aria-expanded', 'false');
                 dom.menuToggle.setAttribute('aria-label', 'Открыть меню навигации');
                 dom.themeToggle.setAttribute('aria-label', 'Переключить тему');
                 
-                // Add aria-labels to dropdown toggles
+           
                 dom.dropdownToggles.forEach(toggle => {
                     toggle.setAttribute('aria-expanded', 'false');
                     toggle.setAttribute('aria-haspopup', 'true');
                 });
                 
-                // Отслеживание посещения страницы блока в Google Analytics
+          
                 if (typeof gtag !== 'undefined') {
                     gtag('event', 'block_view', {
                         'event_category': 'engagement',
@@ -2273,7 +2326,7 @@ $displayContent = wrapLongLinks($displayContent);
                 }
             }
             
-            // Start when DOM is ready
+       
             if (document.readyState === 'loading') {
                 document.addEventListener('DOMContentLoaded', init);
             } else {
