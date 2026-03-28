@@ -267,7 +267,7 @@ foreach ($iconCategories as $category => $icons) {
     $allIcons = array_merge($allIcons, $icons);
 }
 
-$password = 'alenkastarpop.xo.je';
+$password = 'mama123';
 $blocksFile = 'blocks-data.json';
 
 
