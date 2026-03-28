@@ -1,0 +1,38 @@
+{
+    "current": "red",
+    "levels": {
+        "red": {
+            "title": "Красный уровень загруженности",
+            "level_text": "Красный уровэнь",
+            "description": "Ожидание публикации анкеты - больше двух\/трёх дней.",
+            "details": "В данный момент у нас очень высокий поток анкет. Из-за большого количества заявок обработка занимает больше времени. Пожалуйста, проявите терпение - ваша анкета будет обязательно обработана!",
+            "indicator_position": 16.60000000000000142108547152020037174224853515625,
+            "icon": "fa-exclamation",
+            "current_level_icon": "fa-exclamation-triangle",
+            "button_text": "Что такое уровни загруженности?",
+            "button_link": "https:\/\/ishupodrygyilidryga.fun\/status"
+        },
+        "yellow": {
+            "title": "Жёлтый уровень загруженности",
+            "level_text": "Жёлтый уровень",
+            "description": "Ожидание публикации анкеты - больше одного дня \/ в течении дня.",
+            "details": "Загруженность анкет средняя. Ваша анкета будет обработана в течение дня. Обращаем внимание, что время обработки может варьироваться в зависимости от времени суток.",
+            "indicator_position": 50,
+            "icon": "fa-exclamation-circle",
+            "current_level_icon": "fa-exclamation-circle",
+            "button_text": "Что такое уровни загруженности?",
+            "button_link": "https:\/\/ishupodrygyilidryga.fun\/status"
+        },
+        "green": {
+            "title": "Зелёный уровень загруженности",
+            "level_text": "Зелёный уровень",
+            "description": "Ожидание публикации анкеты - в день создания.",
+            "details": "Низкая загруженность анкет. Ваша анкета будет обработана в день создания. Это оптимальное время для отправки анкеты!",
+            "indicator_position": 83.400000000000005684341886080801486968994140625,
+            "icon": "fa-check-circle",
+            "current_level_icon": "fa-check-circle",
+            "button_text": "Что такое уровни загруженности?",
+            "button_link": "https:\/\/ishupodrygyilidryga.fun\/status"
+        }
+    }
+}
