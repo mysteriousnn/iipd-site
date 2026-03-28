@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <!-- Google Analytics (GA4) -->
+    
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-HKF6P1HJ9Q"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -12,7 +12,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
- <!-- Добавьте эти мета-теги для предотвращения кеширования -->
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate, max-age=0">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -22,9 +21,9 @@
     <link rel="icon" href="iipdPin.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* ===== CSS Reset & Base Styles ===== */
+        
         :root {
-            /* Темная тема (по умолчанию) */
+            
             --bg-primary: #1a1a1a;
             --bg-secondary: #262626;
             --bg-accent: rgba(38, 38, 38, 0.98);
@@ -41,11 +40,11 @@
             --scrollbar-thumb-hover: rgba(136, 136, 136, 0.7);
             --theme-toggle-color: #ffffff;
             --theme-toggle-bg: rgba(255, 255, 255, 0.05);
-            --orange-color: #ff5c20; /* Цвет для комментариев */
+            --orange-color: #ff5c20; 
         }
         
         .light-theme {
-            /* Светлая тема */
+            
             --bg-primary: #f5f5f7;
             --bg-secondary: #ffffff;
             --bg-accent: rgba(255, 255, 255, 0.98);
@@ -60,7 +59,7 @@
             --scrollbar-thumb-hover: rgba(136, 136, 136, 0.5);
             --theme-toggle-color: #1a1a1a;
             --theme-toggle-bg: rgba(0, 0, 0, 0.08);
-            /* Усиленная контрастность для кнопки меню */
+            
             --menu-button-bg: rgba(0, 0, 0, 0.12);
             --menu-button-border: rgba(0, 0, 0, 0.18);
             --menu-button-text: #1a1a1a;
@@ -97,7 +96,7 @@
             -moz-user-select: none;
             -ms-user-select: none;
             user-select: none;
-            /* Убрана анимация при смене темы */
+            
         }
         
         .channel-description,
@@ -111,18 +110,7 @@
             user-select: text;
         }
         
-        body::-webkit-scrollbar {
-            width: 0;
-            height: 0;
-            display: none;
-        }
         
-        body {
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-        }
-        
-        /* ===== Header & Navigation ===== */
         .header {
             position: fixed;
             top: 0;
@@ -133,7 +121,7 @@
             background-color: rgba(26, 26, 26, 0.95);
             box-shadow: 0 4px 25px rgba(0, 0, 0, 0.6);
             padding: 10px 0;
-            /* Убрана анимация при смене темы */
+            
         }
         
         .light-theme .header {
@@ -143,7 +131,7 @@
 
 .container {
     width: 100%;
-    max-width: 100%; /* Убираем ограничение по ширине */
+    max-width: 100%; 
     margin: 0 auto;
     padding: 0 20px;
     height: 100%;
@@ -157,7 +145,7 @@
             height: 100%;
         }
         
-        /* УПРОЩЕННЫЙ ЛОГОТИП - как в других файлах */
+        
         .logo {
             position: absolute;
             left: 50%;
@@ -196,10 +184,10 @@
             color: var(--text-primary);
         }
         
-        /* Кнопка переключения темы */
+        
         .theme-toggle {
             position: absolute;
-            right: 80px; /* Увеличено расстояние от правого края */
+            right: 80px; 
             top: 50%;
             transform: translateY(-50%);
             width: 44px;
@@ -232,7 +220,7 @@
             font-size: 1.2rem;
         }
         
-        /* Иконка луны для темной темы */
+        
         .theme-toggle .fa-moon {
             display: block;
         }
@@ -241,7 +229,7 @@
             display: none;
         }
         
-        /* В светлой теме показываем солнце, скрываем луну */
+        
         .light-theme .theme-toggle .fa-moon {
             display: none;
         }
@@ -312,7 +300,7 @@
             -webkit-touch-callout: none;
         }
         
-        /* Усиленная видимость кнопки меню в светлой теме */
+        
         .light-theme .menu-toggle {
             background-color: var(--menu-button-bg);
             border-color: var(--menu-button-border);
@@ -611,14 +599,14 @@
             background-color: rgba(0, 0, 0, 0.08);
         }
         
-        /* ===== Main Content ===== */
+        
         .content {
             padding: 20px 0 40px 0;
             flex: 1 0 auto;
             width: 100%;
         }
         
-        /* Channel Description */
+        
         .channel-description {
             background-color: var(--bg-secondary);
             border-radius: var(--menu-border-radius);
@@ -652,19 +640,20 @@
             margin-bottom: 0;
         }
         
-        .subtitle {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto 40px;
-            text-align: center;
-            background-color: var(--bg-secondary);
-            padding: 20px;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-        }
+       .subtitle {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    width: 100%;
+    margin-bottom: 40px;
+    text-align: center;
+    background-color: var(--bg-secondary);
+    padding: 30px;
+    border-radius: var(--menu-border-radius);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
         
-        /* ===== LOAD LEVEL SECTION ===== */
+        
         .load-level-section {
             position: relative;
             background-color: var(--bg-secondary);
@@ -680,7 +669,7 @@
             box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
         }
 
-        /* Level-specific styles with new colors */
+        
         .load-level-section.red-level {
             border-left: 5px solid #c45c5a;
             --level-color: #c45c5a;
@@ -699,7 +688,7 @@
             --level-bg: linear-gradient(135deg, rgba(166, 187, 124, 0.1), rgba(166, 187, 124, 0.05));
         }
 
-        /* Цвета для сегментов шкалы с новыми цветами */
+        
         .scale-segment.red {
             background: linear-gradient(90deg, 
                 rgba(196, 92, 90, 0.15), 
@@ -721,7 +710,7 @@
                 rgba(166, 187, 124, 0.35));
         }
 
-        /* Простые круги с новыми цветами */
+       
         .red-level .level-indicator {
             background: #c45c5a;
         }
@@ -734,14 +723,14 @@
             background: #a6bb7c;
         }
 
-        /* Белые иконки для хорошей видимости */
+        
         .red-level .indicator-icon,
         .yellow-level .indicator-icon,
         .green-level .indicator-icon {
             color: #ffffff;
         }
 
-        /* Приглушенные цвета для текста текущего уровня с новыми цветами */
+        
         .red-level .current-level {
             background: rgba(196, 92, 90, 0.1);
             border: 1px solid #c45c5a;
@@ -812,7 +801,7 @@
             font-size: 1.2rem;
         }
         
-        /* Level scale */
+        
         .level-scale-container {
             position: relative;
             height: 90px;
@@ -845,7 +834,7 @@
             position: relative;
         }
         
-        /* Active indicator */
+        
         .level-indicator {
             position: absolute;
             top: 50%;
@@ -869,7 +858,7 @@
             position: relative;
         }
         
-        /* Level description */
+        
         .level-description {
             background: var(--level-bg);
             border-radius: 15px;
@@ -909,7 +898,7 @@
             font-weight: 700;
         }
         
-        /* Info button */
+        
         .level-info-button {
             display: flex;
             justify-content: center;
@@ -918,18 +907,18 @@
             z-index: 3;
         }
         
-        /* Стиль для кнопки в секции загруженности (без иконки слева) */
+        
         .level-info-button .button-link {
-            justify-content: space-between; /* Текст слева, стрелка справа */
+            justify-content: space-between;
             padding: 14px 20px;
         }
         
-        /* Убираем отступ у текста, так как иконки нет */
+        
         .level-info-button .button-link span:first-child {
             margin-left: 0;
         }
         
-        /* ===== КОММЕНТАРИИ СЕКЦИЯ ===== */
+        
         .comments-section {
             background-color: var(--bg-secondary);
             border-radius: var(--menu-border-radius);
@@ -970,7 +959,7 @@
             flex-shrink: 0;
         }
         
-        /* Значок закрепленного комментария */
+        
         .pinned-badge {
             position: absolute;
             top: 15px;
@@ -992,7 +981,7 @@
             font-size: 0.7rem;
         }
         
-        /* Пагинация комментариев */
+        
         .comments-pagination {
             display: flex;
             justify-content: center;
@@ -1035,7 +1024,7 @@
             font-weight: 600;
         }
         
-        /* Стиль для комментария */
+        
         .comment-post {
             display: block;
             width: 100%;
@@ -1078,36 +1067,36 @@
             width: 100%;
         }
         
-        /* ОБНОВЛЕННЫЙ СТИЛЬ ДЛЯ ДАТЫ - улучшенная видимость в светлой теме */
+        
         .comment-post .link-date {
             width: auto;
             max-width: max-content;
-            background-color: rgba(0, 0, 0, 0.1); /* Светлее фон для светлой темы */
+            background-color: rgba(0, 0, 0, 0.1);
             padding: 0.5rem 1rem;
             font-size: 15px;
             font-weight: 600;
-            color: #2d8b2d; /* Более насыщенный зеленый для лучшей видимости */
+            color: #2d8b2d;
             border-radius: 4px;
             margin-bottom: 12px;
             display: inline-block;
             text-align: left;
-            border: 1px solid rgba(0, 0, 0, 0.1); /* Добавляем границу для контраста */
+            border: 1px solid rgba(0, 0, 0, 0.1);
         }
 
-        /* Специфичные стили для светлой темы */
+        
         .light-theme .comment-post .link-date {
-            background-color: rgba(0, 0, 0, 0.08); /* Еще светлее фон */
-            color: #216621; /* Еще более насыщенный зеленый для лучшего контраста */
-            border: 1px solid rgba(0, 0, 0, 0.15); /* Более заметная граница */
-            font-weight: 700; /* Жирный шрифт для лучшей читаемости */
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Легкая тень для выделения */
+            background-color: rgba(0, 0, 0, 0.08);
+            color: #216621;
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            font-weight: 700;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
         
         .comment-post .link-date time {
-            color: inherit; /* Наследует цвет от родителя */
+            color: inherit;
         }
         
-        /* Заголовок комментария */
+        
         .comment-post h2 {
             margin-top: 0;
             margin-bottom: 16px;
@@ -1118,40 +1107,40 @@
             text-align: left;
         }
         
-        /* Текст комментария - увеличенный размер */
+        
         .comment-post p {
             margin-top: 0;
             margin-bottom: 0;
-            font-size: 1rem; /* Увеличили размер шрифта */
+            font-size: 1rem;
             font-weight: 500;
             line-height: 1.75rem;
             color: #a4a6ab;
             text-align: left;
-            max-height: none; /* Убираем ограничение высоты */
-            overflow: visible; /* Убираем скрытие переполнения */
+            max-height: none;
+            overflow: visible;
             display: block;
             width: 100%;
         }
         
         .light-theme .comment-post p {
-            color: rgba(26, 26, 26, 0.75); /* Темнее текст для светлой темы */
+            color: rgba(26, 26, 26, 0.75);
         }
         
-        /* Стили для "читать далее..." */
+        
         .comment-post p .read-more {
             color: white;
             font-weight: 600;
             text-decoration: none;
             display: inline-block;
             margin-left: 4px;
-            white-space: nowrap; /* Предотвращаем перенос */
+            white-space: nowrap;
         }
         
         .light-theme .comment-post p .read-more {
             color: var(--text-primary);
         }
         
-        /* Эффект при наведении на весь пост */
+        
         .comment-post:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
@@ -1161,10 +1150,10 @@
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         }
         
-        /* ===== Cards Grid ===== */
+        
        .buttons-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Упрощаем */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 25px;
     margin-bottom: 40px;
 }
@@ -1240,7 +1229,7 @@
             color: var(--text-primary);
         }
         
-        /* ОБЯЗАТЕЛЬНО: делаем активное состояние видимым */
+        
         .button-link:active {
             background-color: rgba(255, 255, 255, 0.15) !important;
             transform: translateY(1px);
@@ -1262,7 +1251,7 @@
             font-size: 1.1rem;
         }
         
-        /* Info Section */
+        
         .info-section {
             background: rgba(255, 255, 255, 0.03);
             padding: 30px;
@@ -1303,7 +1292,7 @@
             color: var(--text-primary);
         }
         
-        /* Additional Grid */
+        
         .additional-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
@@ -1312,7 +1301,7 @@
             margin-bottom: 0;
         }
         
-        /* Animated Icons */
+        
         .animated-icon {
             display: flex;
             align-items: center;
@@ -1327,7 +1316,7 @@
             box-shadow: 0 4px 15px rgba(153, 153, 153, 0.3);
         }
         
-        /* ===== Decorative Elements ===== */
+        
         .decorative-bg {
             position: fixed;
             top: 0;
@@ -1361,10 +1350,10 @@
             display: block;
         }
         
-        /* ===== ИСПРАВЛЕНИЕ ДЛЯ ДАТЫ В КОММЕНТАРИИ ===== */
-        /* Переопределение inline-стиля для даты в комментарии */
+        
+        
         #comment-content-page .page-header div[style*="margin-top: 10px"] {
-            color: var(--text-secondary) !important; /* Используем системную переменную */
+            color: var(--text-secondary) !important;
             display: flex !important;
             align-items: center !important;
             gap: 8px !important;
@@ -1374,14 +1363,14 @@
         }
 
         .light-theme #comment-content-page .page-header div[style*="margin-top: 10px"] {
-            color: rgba(26, 26, 26, 0.7) !important; /* Темный цвет для светлой темы */
+            color: rgba(26, 26, 26, 0.7) !important;
         }
 
         #comment-content-page .page-header div[style*="margin-top: 10px"] i {
             font-size: 1rem !important;
         }
         
-        /* ===== Media Queries ===== */
+        
         @media (min-width: 769px) {
             .nav-list {
                 width: 400px;
@@ -1396,7 +1385,7 @@
                 max-height: 80vh;
             }
             
-            /* Адаптация логотипа для планшетов */
+            
             .logo {
                 gap: 8px;
             }
@@ -1452,7 +1441,7 @@
                 height: 80px;
             }
             
-            /* Адаптация комментария для планшетов */
+            
             .comment-post {
                 padding: 2rem;
             }
@@ -1472,12 +1461,12 @@
                 margin-bottom: 10px;
             }
             
-            /* Адаптация кнопки темы для планшетов */
+            
             .theme-toggle {
                 right: 70px;
             }
             
-            /* Исправление иконки в открытом комментарии на мобильных */
+            
             #comment-content-page .level-icon {
                 width: 35px !important;
                 height: 35px !important;
@@ -1492,7 +1481,7 @@
                 font-size: 1.2rem !important;
             }
             
-            /* Пагинация на планшетах */
+            
             .comments-pagination {
                 gap: 15px;
             }
@@ -1511,7 +1500,7 @@
         @media (max-width: 550px) {
             .comment-post {
                 padding: 1.5rem;
-                text-align: left; /* Важно: оставляем выравнивание слева */
+                text-align: left;
             }
             
             .comment-post h2 {
@@ -1540,7 +1529,7 @@
                 top: calc(var(--header-height) + 10px);
             }
             
-            /* Адаптация логотипа для мобильных */
+            
             .logo {
                 gap: 6px;
                 left: 50%;
@@ -1715,7 +1704,7 @@
                 font-size: 0.85rem;
             }
             
-            /* Пагинация на мобильных */
+            
             .comments-pagination {
                 gap: 10px;
                 margin-top: 20px;
@@ -1732,7 +1721,7 @@
                 font-size: 0.8rem;
             }
             
-            /* Значок закрепления на мобильных */
+           
             .pinned-badge {
                 top: 10px;
                 right: 10px;
@@ -1865,13 +1854,7 @@
             }
         }
         
-        @media (min-width: 1400px) {
-            .container {
-                max-width: 1300px;
-            }
-        }
         
-        /* Improved hover states for better UX */
         @media (hover: hover) {
             .menu-toggle:hover {
                 background-color: rgba(255, 255, 255, 0.1);
@@ -1942,19 +1925,19 @@
             }
         }
         
-        /* Изменение цвета выделения текста */
+        
         ::selection {
-            background-color: rgba(136, 136, 136, 0.4); /* Основной цвет */
-            color: #ffffff; /* Цвет текста при выделении */
+            background-color: rgba(136, 136, 136, 0.4);
+            color: #ffffff;
         }
 
-        /* Для Firefox */
+        
         ::-moz-selection {
             background-color: rgba(136, 136, 136, 0.4);
             color: #ffffff;
         }
 
-        /* Для WebKit браузеров (Chrome, Safari, Edge) */
+       
         ::-webkit-selection {
             background-color: rgba(136, 136, 136, 0.4);
             color: #ffffff;
@@ -1975,7 +1958,7 @@
             color: #1a1a1a;
         }
         
-        /* Стили для динамических комментариев */
+        
         .empty-comments {
             text-align: center;
             padding: 40px;
@@ -2007,7 +1990,7 @@
             border: 1px solid rgba(196, 92, 90, 0.3);
         }
         
-        /* Стили для контента внутри комментария (как в блоках) */
+        
 .level-description-text a {
     color: #aaa;
     text-decoration: underline;
@@ -2064,7 +2047,7 @@
     font-size: 1.1rem;
 }
 
-/* Стили для ссылок в контенте */
+
 .level-description-text a.content-link {
     color: var(--orange-color);
     text-decoration: none;
@@ -2076,7 +2059,7 @@
     border-bottom: 1px solid var(--orange-color);
 }
 
-/* Стили для блоков кода или цитат */
+
 .level-description-text pre,
 .level-description-text code {
     background: rgba(255, 255, 255, 0.05);
@@ -2097,7 +2080,7 @@
     background: rgba(0, 0, 0, 0.05);
 }
 
-/* Стили для списков требований (если используются) */
+
 .requirements-list {
     list-style-type: none;
     padding-left: 0;
@@ -2118,487 +2101,6 @@
     font-weight: bold;
 }
 
-/* ===== ЧАТ С СООБЩЕНИЯМИ ===== */
-.chat-animation-section {
-    background-color: var(--bg-secondary);
-    border-radius: var(--menu-border-radius);
-    padding: 30px;
-    margin-bottom: 40px;
-    border: 1px solid var(--border-color);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-}
-
-.light-theme .chat-animation-section {
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-}
-
-/* Контейнер сообщений - ПОЛНОСТЬЮ АДАПТИВНЫЙ */
-.chat-messages-container {
-    position: relative;
-    min-height: 220px; /* Увеличиваем минимальную высоту */
-    margin-bottom: 25px;
-    padding: 50px 20px 60px 20px; /* БОЛЬШЕ места сверху и снизу */
-    background: rgba(255, 255, 255, 0.03);
-    border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    overflow: hidden;
-    box-sizing: border-box;
-}
-
-.light-theme .chat-messages-container {
-    background: rgba(0, 0, 0, 0.03);
-    border: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-/* Контейнеры для сообщений - УЛУЧШЕННАЯ АДАПТИВНОСТЬ */
-.message-wrapper {
-    display: flex;
-    align-items: flex-start;
-    position: absolute;
-    width: calc(100% - 40px); /* Учитываем уменьшенный padding */
-    left: 20px;
-    right: 20px;
-    opacity: 0;
-    transform: translateY(10px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-    box-sizing: border-box;
-}
-
-.message-wrapper.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.message-wrapper.hiding {
-    opacity: 0;
-    transform: translateY(5px);
-    transition: opacity 0.4s ease, transform 0.4s ease;
-}
-
-/* Сообщение пользователя - справа, АДАПТИВНОЕ */
-.user-message-wrapper {
-    top: 40px;
-    right: 20px;
-    left: auto;
-    justify-content: flex-end;
-    width: auto; /* Адаптивная ширина */
-    max-width: 90%; /* Максимум 90% ширины контейнера */
-}
-
-/* Сообщение бота - слева, АДАПТИВНОЕ */
-.bot-message-wrapper {
-    top: 100px; /* БОЛЬШЕ места сверху */
-    left: 20px;
-    right: auto;
-    justify-content: flex-start;
-    width: auto; /* Адаптивная ширина */
-    max-width: 90%; /* Максимум 90% ширины контейнера */
-}
-
-/* Аватарки - АДАПТИВНЫЕ */
-.message-avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.1rem;
-    color: white;
-    flex-shrink: 0;
-    margin: 0 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-.user-avatar {
-    background: linear-gradient(135deg, #8b5cf6, #7c3aed);
-    order: 2;
-}
-
-.bot-avatar {
-    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-}
-
-/* Баббл сообщения - ПОЛНОСТЬЮ АДАПТИВНЫЙ */
-.message-bubble {
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-    max-width: calc(100% - 60px); /* Оставляем место для аватарки */
-    min-width: 0; /* Важно для flex-элементов */
-}
-
-.user-bubble {
-    align-items: flex-end;
-    margin-left: auto; /* Толкаем вправо */
-}
-
-.bot-bubble {
-    align-items: flex-start;
-    margin-right: auto; /* Толкаем влево */
-}
-
-.message-sender {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--text-secondary);
-    margin-bottom: 6px;
-    margin-left: 8px;
-}
-
-/* Текст сообщения - УЛУЧШЕННАЯ АДАПТИВНОСТЬ */
-.message-text {
-    background: var(--bg-primary);
-    padding: 12px 16px;
-    border-radius: 18px;
-    font-size: 1rem;
-    line-height: 1.4; /* Нормальный межстрочный интервал */
-    color: var(--text-primary);
-    border: 1px solid var(--border-color);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    word-break: break-word;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    hyphens: auto;
-    max-width: 100%; /* Никогда не превышаем ширину родителя */
-    display: inline-block;
-    box-sizing: border-box;
-    overflow: hidden;
-}
-
-/* ИСПРАВЛЕНИЕ: Сообщение пользователя всегда в одну строку */
-.user-bubble .message-text {
-    background: linear-gradient(135deg, 
-        rgba(139, 92, 246, 0.15) 0%,
-        rgba(124, 58, 237, 0.1) 100%);
-    border-color: rgba(139, 92, 246, 0.25);
-    border-bottom-right-radius: 8px;
-    border-bottom-left-radius: 18px;
-    white-space: nowrap; /* Запрещаем перенос строк */
-    max-width: fit-content; /* Ширина по содержимому */
-    min-width: min-content; /* Минимальная ширина по самому длинному слову */
-}
-
-.bot-bubble .message-text {
-    background: linear-gradient(135deg, 
-        rgba(59, 130, 246, 0.15) 0%,
-        rgba(29, 78, 216, 0.1) 100%);
-    border-color: rgba(59, 130, 246, 0.25);
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 18px;
-}
-
-/* Кнопка */
-.chat-action-section {
-    text-align: center;
-    padding-top: 25px;
-    border-top: 1px solid var(--border-color);
-}
-
-.chat-action-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    width: 100%;
-    background: rgba(255, 255, 255, 0.05);
-    color: white;
-    text-decoration: none;
-    padding: 16px 24px;
-    border-radius: 50px;
-    font-weight: 600;
-    font-size: 1rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.light-theme .chat-action-button {
-    background: rgba(0, 0, 0, 0.05);
-    color: var(--text-primary);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.chat-action-button:hover {
-    background: rgba(255, 255, 255, 0.1);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-}
-
-.button-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #8b5cf6, #7c3aed);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
-    color: white;
-    flex-shrink: 0;
-    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
-}
-
-.button-text {
-    flex-grow: 1;
-    text-align: left;
-    font-size: 1.05rem;
-}
-
-.button-arrow {
-    font-size: 1.2rem;
-    opacity: 0.8;
-}
-
-.button-hint {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-    margin-top: 10px;
-    opacity: 0.8;
-}
-
-/* ===== АДАПТИВНОСТЬ ДЛЯ ТЕЛЕФОНОВ ===== */
-
-/* Планшеты (768px и меньше) */
-@media (max-width: 768px) {
-    .chat-animation-section {
-        padding: 25px 20px;
-    }
-    
-    .chat-messages-container {
-        min-height: 200px;
-        padding: 40px 15px 50px 15px;
-    }
-    
-    .user-message-wrapper {
-        top: 35px;
-        right: 15px;
-        max-width: 85%;
-    }
-    
-    .bot-message-wrapper {
-        top: 90px;
-        left: 15px;
-        max-width: 85%;
-    }
-    
-    .message-bubble {
-        max-width: calc(100% - 50px);
-    }
-    
-    .message-text {
-        padding: 10px 14px;
-        font-size: 0.95rem;
-        line-height: 1.3;
-    }
-    
-    .message-avatar {
-        width: 36px;
-        height: 36px;
-        font-size: 1rem;
-        margin: 0 8px;
-    }
-}
-
-/* Телефоны (480px и меньше) */
-@media (max-width: 480px) {
-    .chat-animation-section {
-        padding: 20px 15px;
-    }
-    
-    .chat-messages-container {
-        min-height: 180px;
-        padding: 35px 12px 45px 12px;
-    }
-    
-    .user-message-wrapper {
-        top: 30px;
-        right: 12px;
-        max-width: 88%;
-    }
-    
-    .bot-message-wrapper {
-        top: 85px;
-        left: 12px;
-        max-width: 88%;
-    }
-    
-    .message-bubble {
-        max-width: calc(100% - 45px);
-    }
-    
-    .message-text {
-        padding: 9px 12px;
-        font-size: 0.9rem;
-        line-height: 1.25;
-    }
-    
-    /* Ограничиваем ширину сообщения пользователя на мобильных */
-    .user-bubble .message-text {
-        white-space: nowrap;
-        max-width: 200px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-    
-    .bot-bubble .message-text {
-        font-size: 0.85rem;
-        line-height: 1.2;
-        padding: 8px 11px;
-    }
-    
-    .message-avatar {
-        width: 32px;
-        height: 32px;
-        font-size: 0.9rem;
-        margin: 0 6px;
-    }
-    
-    .message-sender {
-        font-size: 0.8rem;
-        margin-bottom: 4px;
-    }
-    
-    .chat-action-button {
-        padding: 14px 20px;
-        font-size: 0.95rem;
-    }
-    
-    .button-icon {
-        width: 36px;
-        height: 36px;
-        font-size: 1.1rem;
-    }
-    
-    .button-text {
-        font-size: 1rem;
-    }
-}
-
-/* Очень маленькие телефоны (360px и меньше) */
-@media (max-width: 360px) {
-    .chat-animation-section {
-        padding: 18px 12px;
-    }
-    
-    .chat-messages-container {
-        min-height: 170px;
-        padding: 30px 10px 40px 10px;
-    }
-    
-    .user-message-wrapper {
-        top: 25px;
-        right: 10px;
-        max-width: 90%;
-    }
-    
-    .bot-message-wrapper {
-        top: 80px;
-        left: 10px;
-        max-width: 90%;
-    }
-    
-    .message-bubble {
-        max-width: calc(100% - 40px);
-    }
-    
-    .message-text {
-        padding: 8px 11px;
-        font-size: 0.85rem;
-        line-height: 1.2;
-    }
-    
-    /* Еще меньше на очень маленьких экранах */
-    .user-bubble .message-text {
-        max-width: 160px;
-    }
-    
-    .bot-bubble .message-text {
-        font-size: 0.8rem;
-        line-height: 1.15;
-        padding: 7px 10px;
-    }
-    
-    .message-avatar {
-        width: 30px;
-        height: 30px;
-        font-size: 0.85rem;
-        margin: 0 5px;
-    }
-    
-    .message-sender {
-        font-size: 0.75rem;
-        margin-bottom: 3px;
-    }
-    
-    .chat-action-button {
-        padding: 12px 16px;
-        font-size: 0.9rem;
-    }
-    
-    .button-icon {
-        width: 34px;
-        height: 34px;
-        font-size: 1rem;
-    }
-    
-    .button-text {
-        font-size: 0.95rem;
-    }
-}
-
-/* Экстремально маленькие телефоны (320px и меньше) */
-@media (max-width: 320px) {
-    .chat-messages-container {
-        min-height: 160px;
-        padding: 25px 8px 35px 8px;
-    }
-    
-    .user-message-wrapper {
-        top: 20px;
-        right: 8px;
-    }
-    
-    .bot-message-wrapper {
-        top: 75px;
-        left: 8px;
-    }
-    
-    .message-text {
-        padding: 7px 10px;
-        font-size: 0.8rem;
-        line-height: 1.15;
-    }
-    
-    /* Минимальная ширина для очень маленьких экранов */
-    .user-bubble .message-text {
-        max-width: 140px;
-    }
-    
-    .bot-bubble .message-text {
-        font-size: 0.75rem;
-        line-height: 1.1;
-        padding: 6px 9px;
-    }
-    
-    .message-avatar {
-        width: 28px;
-        height: 28px;
-        font-size: 0.8rem;
-        margin: 0 4px;
-    }
-}
-
-/* 1. Убираем максимальную ширину у контейнера */
-.container {
-    width: 100%;
-    max-width: 100%; /* Убираем ограничение 1200px */
-    margin: 0 auto;
-    padding: 0 20px;
-    height: 100%;
-}
-
-/* 2. Добавляем адаптивные отступы для очень широких экранов */
 @media (min-width: 1400px) {
     .container {
         padding: 0 40px;
@@ -2627,17 +2129,16 @@
     }
 }
 
-/* 3. Делаем секции более адаптивными */
+
 .channel-description,
 .load-level-section,
 .comments-section,
-.chat-animation-section,
 .info-section {
     width: 100%;
     max-width: 100%;
 }
 
-/* 4. Улучшаем сетку для широких экранов */
+
 @media (min-width: 1600px) {
     .buttons-grid {
         grid-template-columns: repeat(auto-fill, minmax(370px, 1fr));
@@ -2645,13 +2146,13 @@
     }
 }
 
-/* 5. Гарантируем, что контент растягивается */
+
 .content {
     width: 100%;
     max-width: 100%;
 }
 
-/* Стили для ссылок в комментариях */
+
 .comment-link {
     text-decoration: none;
     color: inherit;
@@ -2662,7 +2163,7 @@
     text-decoration: none;
 }
 
-/* ===== ПОДВАЛ ===== */
+
 .footer {
     background-color: var(--bg-secondary);
     border-top: 1px solid var(--border-color);
@@ -2817,7 +2318,7 @@
     font-size: 0.8rem;
 }
 
-/* Адаптивность для подвала */
+
 @media (max-width: 768px) {
     .footer {
         padding: 15px 0 20px;
@@ -2836,32 +2337,32 @@
 @media (max-width: 480px) {
     .footer-content {
         grid-template-columns: 1fr;
-        gap: 20px; /* Уменьшаем отступ между секциями */
+        gap: 20px;
     }
     
     .footer-section {
-        text-align: left; /* Было: center - меняем на left */
+        text-align: left;
     }
     
     .footer-logo {
-        justify-content: flex-start; /* Было: center - выравниваем по левому краю */
+        justify-content: flex-start;
     }
     
     .footer-title::after {
-        left: 0; /* Было: left: 50%; transform: translateX(-50%) */
-        transform: none; /* Убираем трансформацию */
+        left: 0;
+        transform: none;
     }
     
     .footer-social {
-        justify-content: flex-start; /* Было: center - выравниваем по левому краю */
+        justify-content: flex-start;
     }
     
     .footer-links a:hover {
-        transform: translateX(5px); /* Возвращаем анимацию наведения */
+        transform: translateX(5px);
     }
 }
 
-/* ===== СТАТЬИ СЕКЦИЯ ===== */
+
 .articles-section {
     margin-bottom: 40px;
     width: 100%;
@@ -2917,7 +2418,7 @@
     background: linear-gradient(135deg, #5a79bc, #3a59ad);
 }
 
-/* Адаптивность для статей */
+
 @media (max-width: 768px) {
     .articles-section .full-width-card {
         padding: 25px 20px;
@@ -2951,44 +2452,75 @@
         font-size: 1.4rem;
     }
 }
+ .load-level-section.loading {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+}
+      
 
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-thumb-hover);
+}
+
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb) var(--bg-secondary);
+}
+        
+        
     </style>
 </head>
 <body>
-    <!-- Decorative Background -->
+    
     <div class="decorative-bg"></div>
     
-    <!-- Menu Overlay -->
+    
     <div class="menu-overlay" id="menu-overlay"></div>
     
-    <!-- Header -->
+    
     <header class="header" id="header">
         <div class="container">
             <nav class="main-nav">
-                <!-- Кнопка переключения темы -->
+                
                 <button class="theme-toggle" id="theme-toggle" title="Переключить тему">
                     <i class="fas fa-moon"></i>
                     <i class="fas fa-sun"></i>
                 </button>
                 
-                <!-- Telegram Icon -->
+                
                 <a href="https://t.me/ishupodrygyilidryga" class="telegram-icon" target="_blank" rel="noopener noreferrer" title="Перейти в Telegram канал">
                     <i class="fab fa-telegram"></i>
                 </a>
                 
-                <!-- УПРОЩЕННЫЙ ЛОГОТИП - как в других файдах -->
+                
                 <a href="https://ishupodrygyilidryga.fun" class="logo" id="logo" title="Перейти на главную страницу">
                     <i class="fas fa-users logo-icon"></i>
                     <span class="logo-text">iipd</span>
                 </a>
                 
-                <!-- Menu Toggle -->
+                
                 <button class="menu-toggle" id="menu-toggle">
                     <i class="fas fa-bars"></i>
                     <span>Меню</span>
                 </button>
                 
-                <!-- Navigation Menu -->
+                
                 <ul class="nav-list" id="nav-list">
                     <li class="nav-item">
                         <a href="https://ishupodrygyilidryga.fun" class="nav-link">
@@ -3022,7 +2554,7 @@
                         </a>
                     </li>
                     
-                    <!-- Tgstat с подменю -->
+                    
                     <li class="nav-item dropdown">
                         <button class="nav-link dropdown-toggle">
                             <span class="link-text">
@@ -3039,7 +2571,7 @@
                         </div>
                     </li>
                     
-                    <!-- Стать Админом с подменю -->
+                    
                     <li class="nav-item dropdown">
                         <button class="nav-link dropdown-toggle">
                             <span class="link-text">
@@ -3056,10 +2588,10 @@
                         </div>
                     </li>
                     
-                    <!-- Footer in menu -->
+                    
                     <li class="nav-footer">
                         <p class="nav-footer-text">
-                            Ищу интернет подругу/друга (WEB) © 
+                            Ищу интернет подругу/друга (WEB)</p>
                             <a href="https://ishupodrygyilidryga.fun" class="nav-footer-link" target="_blank" rel="noopener noreferrer">ishupodrygyilidryga.fun</a>
                         </p>
                         <p class="nav-footer-year">2026</p>
@@ -3069,7 +2601,7 @@
         </div>
     </header>
     
-    <!-- Main Content -->
+   
     <main class="content">
         <div class="container">
             <div class="channel-description">
@@ -3080,10 +2612,8 @@
                 <p class="channel-text">Присоединяйтесь к нам и найдите своего идеального интернет друга или подругу!</p>
             </div>
             
-            <p class="subtitle">Вся необходимая информация о работе бота, правилах и часто задаваемые вопросы</p>
             
-            <!-- Load Level Section -->
-            <section class="load-level-section red-level" id="load-level">
+            <section class="load-level-section loading" id="load-level">
                 <div class="level-header">
                     <h2 class="level-title">
                         <span class="level-icon">
@@ -3130,7 +2660,7 @@
                 </div>
             </section>
             
-            <!-- Комментарии Section -->
+            
             <section class="comments-section" id="comments">
                 <h2 class="section-title">
                     <span class="title-icon">
@@ -3140,91 +2670,32 @@
                 </h2>
                 
                 <div id="comments-container">
-                    <!-- Комментарии загружаются динамически -->
+                    
                 </div>
             </section>
             
-            <!-- Основные блоки -->
+            
             <div class="buttons-grid" id="main-blocks-container">
-                <!-- Блоки загружаются динамически из blocks-data.json -->
+                
             </div>
-            
-                        <!-- ЧАТ СООБЩЕНИЯ -->
-<section class="chat-animation-section" id="chat-animation">
-    <div class="chat-animation-container">
-        <!-- Контейнер сообщений с адаптивной высотой -->
-        <div class="chat-messages-container">
-            <!-- Сообщение пользователя -->
-            <div class="message-wrapper user-message-wrapper" id="user-message">
-                <div class="message-avatar user-avatar">
-                    <i class="fas fa-user"></i>
-                </div>
-                <div class="message-bubble user-bubble">
-                    <div class="message-text" id="user-text"></div>
-                </div>
-            </div>
-            
-            <!-- Сообщение бота -->
-            <div class="message-wrapper bot-message-wrapper" id="bot-message">
-                <div class="message-avatar bot-avatar">
-                    <i class="fas fa-robot"></i>
-                </div>
-                <div class="message-bubble bot-bubble">
-                    <div class="message-sender">Анкеты</div>
-                    <div class="message-text" id="bot-text"></div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Кнопка -->
-        <div class="chat-action-section">
-            <a href="https://t.me/ankety_bot" class="chat-action-button" target="_blank" rel="noopener noreferrer">
-                <span class="button-icon">
-                    <i class="fas fa-pencil-alt"></i>
-                </span>
-                <span class="button-text">Создать анкету через бота</span>
-                <span class="button-arrow">→</span>
-            </a>
-            <p class="button-hint">Быстро, просто и бесплатно</p>
-        </div>
-    </div>
-</section>
-
-<!-- Статьи и материалы -->
-<section class="articles-section">
-    <div class="container">
-        <div class="button-card full-width-card">
-            <div class="button-icon-container">
-                <i class="fas fa-newspaper"></i>
-            </div>
-            <h3 class="button-title">Наши статьи и материалы</h3>
-            <p class="button-description">Здесь мы делимся интересными статьями, исследованиями и материалами на различные темы, связанные с общением, языком, психологией отношений и развитием коммуникативных навыков в цифровую эпоху.</p>
-            <a href="https://ishupodrygyilidryga.fun/articles" class="button-link">
-                <span>Читать статьи</span>
-                <span class="link-icon">→</span>
-            </a>
-        </div>
-    </div>
-</section>
-            
-            <!-- Важная информация -->
+      
             <div class="info-section">
                 <h2 class="info-title">Важная информация</h2>
                 <p class="info-text">Все ссылки ведут на официальные страницы с актуальной информацией. Если у вас возникли проблемы с доступом или вы обнаружили неработающую ссылку, пожалуйста, сообщите об этом в <a href="https://t.me/helpforsilencebot" class="support-link" target="_blank" rel="noopener noreferrer">поддержку</a>.</p>
             </div>
             
-            <!-- Дополнительные блоки -->
+            
             <div class="additional-grid" id="additional-blocks-container">
-                <!-- Блоки загружаются динамически из blocks-data.json -->
+                
             </div>
         </div>
     </main>
 
-            <!-- Footer -->
+            
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <!-- Основная информация -->
+                
                 <div class="footer-section">
                     <a href="https://ishupodrygyilidryga.fun" class="footer-logo">
                         <i class="fas fa-users"></i>
@@ -3246,7 +2717,12 @@
                     </div>
                 </div>
                 
-                <!-- Быстрые ссылки -->
+                <div class="mc-article-hero-attribution-author">
+                    <h3 class="footer-title">Автор: Администрация iipd</h3>
+    <img id="author-avatar" src="https://www.minecraft.net/content/dam/minecraftnet/franchise/author-avatars/Mojavatar_Staff-Villager_200x296.png" alt="Avatar">
+    <dl>
+</div>
+                
                 <div class="footer-section">
                     <h3 class="footer-title">Быстрые ссылки</h3>
                     <ul class="footer-links">
@@ -3258,7 +2734,7 @@
                     </ul>
                 </div>
                 
-                <!-- Информация -->
+                
                 <div class="footer-section">
                     <h3 class="footer-title">Информация</h3>
                     <ul class="footer-links">
@@ -3271,24 +2747,17 @@
                 </div>
             </div>
             
-            <!-- Копирайт -->
             <div class="footer-bottom">
                 <p class="copyright">
-                    &copy; 2026 Ищу интернет подругу/друга (WEB). Все права защищены.
-                </p>
-                <p class="footer-note">
-                    Создано с <i class="fas fa-heart"></i> для друзей
-                </p>
-            </div>
-        </div>
+                    &copy; 2026 Ищу интернет подругу/друга (WEB)
     </footer>
 
     <script>
-        // Оптимизированный JavaScript без анимаций
+        
         (function() {
             'use strict';
             
-            // DOM Elements
+            
             const dom = {
                 menuToggle: document.getElementById('menu-toggle'),
                 navList: document.getElementById('nav-list'),
@@ -3297,7 +2766,7 @@
                 dropdowns: document.querySelectorAll('.dropdown'),
                 dropdownToggles: document.querySelectorAll('.dropdown-toggle'),
                 themeToggle: document.getElementById('theme-toggle'),
-                // Load level elements
+                
                 loadLevelSection: document.getElementById('load-level'),
                 levelIndicator: document.getElementById('level-indicator'),
                 currentLevelText: document.getElementById('current-level-text'),
@@ -3305,15 +2774,15 @@
                 levelDescriptionText: document.getElementById('level-description-text')
             };
             
-            // State
+            
             let isMenuOpen = false;
             let isLightTheme = false;
             
-            // Глобальные переменные для пагинации комментариев
+            
             let currentCommentPage = 0;
             const COMMENTS_PER_PAGE = 3;
             
-            // Function to apply theme consistently
+            
             function applyTheme(theme) {
                 if (theme === 'light') {
                     dom.body.classList.add('light-theme');
@@ -3324,7 +2793,7 @@
                 }
             }
             
-            // Initialize theme from localStorage or default
+            
             const savedTheme = localStorage.getItem('theme');
             if (savedTheme === 'light') {
                 isLightTheme = true;
@@ -3332,20 +2801,20 @@
             } else {
                 isLightTheme = false;
                 dom.body.classList.remove('light-theme');
-                // Сохраняем темную тему как значение по умолчанию
+                
                 if (!savedTheme) {
                     localStorage.setItem('theme', 'dark');
                 }
             }
             
-            // Listen for theme changes from other tabs
+            
             window.addEventListener('storage', function(e) {
                 if (e.key === 'theme') {
                     applyTheme(e.newValue);
                 }
             });
             
-            // Load Level Configuration
+           
             const loadLevels = {
                 red: {
                     title: "Красный уровень загруженности",
@@ -3376,39 +2845,39 @@
                 }
             };
             
-            // Current load level (change this to switch levels)
+           
             let currentLoadLevel = "yellow";
             
-            // Function to set load level
+         
             function setLoadLevel(level) {
                 if (!loadLevels[level]) return;
                 
                 currentLoadLevel = level;
                 const levelData = loadLevels[level];
                 
-                // Update section class
+             
                 dom.loadLevelSection.className = "load-level-section " + level + "-level";
                 
-                // Update indicator position
+              
                 dom.levelIndicator.style.left = levelData.indicatorPosition + "%";
                 
-                // Update current level text
+              
                 dom.currentLevelText.textContent = levelData.levelText;
                 
-                // Update description
+         
                 dom.levelDescriptionTitle.textContent = levelData.title;
                 dom.levelDescriptionText.innerHTML = `<strong>${levelData.description}</strong> ${levelData.details}`;
                 
-                // Update indicator icon
+           
                 const indicatorIcon = dom.levelIndicator.querySelector('.indicator-icon i');
                 indicatorIcon.className = "fas " + levelData.icon;
                 
-                // Update current level icon
+             
                 const currentLevelIcon = document.querySelector('.current-level i');
                 currentLevelIcon.className = "fas " + levelData.currentLevelIcon;
             }
 
-           // Загрузка комментариев с сервера
+     
 function loadComments(page = 0) {
     fetch('comments-data.json?trim=true&v=' + Date.now())
         .then(response => {
@@ -3420,7 +2889,7 @@ function loadComments(page = 0) {
         .then(comments => {
             const container = document.getElementById('comments-container');
             
-            // Сохраняем комментарии в глобальной переменной
+        
             window.allComments = comments;
             
             if (comments.length === 0) {
@@ -3429,9 +2898,9 @@ function loadComments(page = 0) {
                 return;
             }
             
-            // Сортируем: сначала закрепленные, потом остальные по дате
+     
             comments.sort((a, b) => {
-                // Сначала проверяем закрепление
+          
                 const aPinned = a.pinned ? 1 : 0;
                 const bPinned = b.pinned ? 1 : 0;
                 
@@ -3439,14 +2908,14 @@ function loadComments(page = 0) {
                     return bPinned - aPinned;
                 }
                 
-                // Затем сортируем по timestamp (новые первыми)
+        
                 return b.timestamp - a.timestamp;
             });
             
-            // Сохраняем отсортированные комментарии
+     
             window.allCommentsSorted = comments;
             
-            // Рассчитываем индексы для текущей страницы
+    
             const startIndex = page * COMMENTS_PER_PAGE;
             const endIndex = startIndex + COMMENTS_PER_PAGE;
             const commentsToShow = comments.slice(startIndex, endIndex);
@@ -3459,19 +2928,19 @@ function loadComments(page = 0) {
             }
             
             commentsToShow.forEach(comment => {
-                // Используем short_text для карточки
+           
                 let shortText = comment.short_text || '';
                 
-                // Если short_text не существует, генерируем из простого текста
+            
                 if (!shortText || shortText.trim() === '') {
                     const simpleText = comment.text_simple || '';
                     shortText = simpleText + ' <span class="read-more">читать далее...</span>';
                 } else if (!shortText.includes('<span class="read-more">')) {
-                    // Добавляем класс для стилизации "читать далее..."
+               
                     shortText = shortText.replace('читать далее...', '<span class="read-more">читать далее...</span>');
                 }
                 
-                // Создаем HTML для комментария
+           
                 const commentHTML = `
                     <a href="comment.php?slug=${encodeURIComponent(comment.slug || comment.id)}" class="comment-link">
                         <div class="comment-post" data-comment-id="${comment.id}">
@@ -3493,7 +2962,7 @@ function loadComments(page = 0) {
                 container.innerHTML += commentHTML;
             });
             
-            // Обновляем элементы пагинации
+     
             updatePaginationControls(comments.length, page);
         })
         .catch(error => {
@@ -3503,11 +2972,11 @@ function loadComments(page = 0) {
         });
 }
 
-            // Функция обновления элементов пагинации
+          
             function updatePaginationControls(totalComments, currentPage = 0) {
                 const totalPages = Math.ceil(totalComments / COMMENTS_PER_PAGE);
                 
-                // Создаем или обновляем контейнер пагинации
+            
                 let paginationContainer = document.querySelector('.comments-pagination');
                 
                 if (!paginationContainer) {
@@ -3516,7 +2985,7 @@ function loadComments(page = 0) {
                     document.getElementById('comments').appendChild(paginationContainer);
                 }
                 
-                // Показываем пагинацию только если есть больше 3 комментариев
+            
                 if (totalPages <= 1) {
                     paginationContainer.style.display = 'none';
                     return;
@@ -3534,7 +3003,7 @@ function loadComments(page = 0) {
                     </button>
                 `;
                 
-                // Добавляем обработчики событий для кнопок
+          
                 const prevButton = paginationContainer.querySelector('.prev-button');
                 const nextButton = paginationContainer.querySelector('.next-button');
                 
@@ -3559,11 +3028,11 @@ function loadComments(page = 0) {
                 }
             }
 
-            // Функция для прокрутки к комментариям
+       
             function scrollToComments() {
                 const commentsSection = document.getElementById('comments');
                 if (commentsSection) {
-                    // Учитываем высоту фиксированного header
+              
                     const headerHeight = document.querySelector('.header')?.offsetHeight || 70;
                     const targetPosition = commentsSection.offsetTop - headerHeight - 20;
                     
@@ -3574,40 +3043,40 @@ function loadComments(page = 0) {
                 }
             }
 
-            // Функция загрузки страницы с контентом комментария (старая версия - оставлена для совместимости)
+          
             function loadCommentContentPage(comment) {
-                // Перенаправляем на comment.php если есть slug, иначе используем старый метод
+           
                 if (comment.slug && comment.slug.trim() !== '') {
                     window.location.href = `comment.php?slug=${encodeURIComponent(comment.slug)}`;
                     return;
                 }
                 
-                // Старый метод для комментариев без slug
-                // Восстанавливаем отступ для body
+             
+            
                 document.body.style.paddingTop = 'var(--header-height)';
                 
-                // Скрываем текущий контент
+            
                 const currentContent = document.querySelector('.content .container');
                 if (currentContent) {
                     currentContent.style.display = 'none';
                 }
                 
-                // Создаем контейнер для контента комментария
+           
                 const mainContent = document.querySelector('.content');
                 if (!mainContent) return;
                 
-                // Определяем, какой текст показывать
+             
                 let displayText = '';
                 
-                // ПРИОРИТЕТ 1: text_formatted (новая структура)
+           
                 if (comment.text_formatted && comment.text_formatted.trim() !== '') {
                     displayText = comment.text_formatted;
                 } 
-                // ПРИОРИТЕТ 2: text (старая структура - форматированный)
+          
                 else if (comment.text && comment.text.trim() !== '') {
                     displayText = comment.text;
                 }
-                // ПРИОРИТЕТ 3: text_simple (новая структура - простой)
+         
                 else if (comment.text_simple && comment.text_simple.trim() !== '') {
                     const simpleText = comment.text_simple;
                     const escapedText = simpleText
@@ -3618,16 +3087,16 @@ function loadComments(page = 0) {
                         .replace(/'/g, '&#039;');
                     displayText = escapedText.replace(/\n/g, '<br>');
                 } 
-                // ПРИОРИТЕТ 4: нет текста
+         
                 else {
                     displayText = '<p style="text-align:center;color:rgba(255,255,255,0.5);font-style:italic;padding:40px;">Нет содержимого</p>';
                 }
                 
-                // Удаляем старые обертки content-section, если есть
+              
                 displayText = displayText.replace(/<div class="content-section">/g, '');
                 displayText = displayText.replace(/<\/div>/g, '');
                 
-                // Создаем HTML для страницы комментария в том же стиле, что и блоки
+             
                 const commentContentHTML = `
                     <div class="container">
                         <section class="load-level-section" style="border-left: 5px solid var(--orange-color);">
@@ -3660,30 +3129,30 @@ function loadComments(page = 0) {
                     </div>
                 `;
                 
-                // Добавляем HTML в content
+              
                 mainContent.innerHTML = commentContentHTML;
                 
-                // Добавляем обработчик для кнопки "Назад"
+             
                 document.getElementById('back-to-main-comments').addEventListener('click', function() {
-                    location.reload(); // Перезагружаем страницу для возврата
+                    location.reload();
                 });
                 
-                // Обновляем заголовок страницы
+            
                 document.title = (comment.title || 'Комментарий') + ' - iipd';
                 
-                // Прокручиваем в самый верх
+              
                 window.scrollTo(0, 0);
                 document.documentElement.scrollTop = 0;
                 document.body.scrollTop = 0;
             }
 
-            // Function to prevent text selection
+            
             const preventTextSelection = function(e) {
                 e.preventDefault();
                 return false;
             };
             
-            // Menu Functions
+           
             const menu = {
                 open: function() {
                     dom.navList.classList.add('active');
@@ -3737,15 +3206,15 @@ function loadComments(page = 0) {
                 }
             };
             
-            // Event Listeners
+           
             const initEventListeners = function() {
-                // Menu toggle
+              
                 dom.menuToggle.addEventListener('click', function(e) {
                     e.stopPropagation();
                     menu.toggle();
                 });
                 
-                // Theme toggle
+               
                 dom.themeToggle.addEventListener('click', function(e) {
                     e.stopPropagation();
                     
@@ -3753,14 +3222,14 @@ function loadComments(page = 0) {
                     applyTheme(newTheme);
                     localStorage.setItem('theme', newTheme);
                     
-                    // Отправка события в Google Analytics
+                  
                     gtag('event', 'theme_toggle', {
                         'event_category': 'ui_interaction',
                         'event_label': newTheme === 'light' ? 'Light Theme' : 'Dark Theme'
                     });
                 });
                 
-                // Dropdown toggles
+             
                 dom.dropdownToggles.forEach(toggle => {
                     toggle.addEventListener('click', function(e) {
                         e.preventDefault();
@@ -3770,19 +3239,19 @@ function loadComments(page = 0) {
                     });
                 });
                 
-                // Close menu on overlay click
+            
                 dom.menuOverlay.addEventListener('click', function() {
                     menu.close();
                 });
                 
-                // Close menu on regular link click
+             
                 document.querySelectorAll('.nav-link:not(.dropdown-toggle)').forEach(link => {
                     link.addEventListener('click', function() {
                         menu.close();
                     });
                 });
                 
-                // Close menu when clicking outside
+          
                 document.addEventListener('click', function(e) {
                     if (isMenuOpen && 
                         !e.target.closest('.nav-list') && 
@@ -3791,14 +3260,14 @@ function loadComments(page = 0) {
                     }
                 });
                 
-                // Close menu on escape key
+             
                 document.addEventListener('keydown', function(e) {
                     if (e.key === 'Escape' && isMenuOpen) {
                         menu.close();
                     }
                 });
                 
-                // Prevent multiple clicks on links
+           
                 const links = document.querySelectorAll('a');
                 links.forEach(link => {
                     link.addEventListener('click', function(e) {
@@ -3814,7 +3283,7 @@ function loadComments(page = 0) {
                     });
                 });
                 
-                // Prevent text selection on interactive elements
+             
                 const interactiveElements = document.querySelectorAll(
                     'button, .menu-toggle, .dropdown-toggle, .button-link, .nav-link, .dropdown-item, .telegram-icon, .theme-toggle'
                 );
@@ -3831,7 +3300,7 @@ function loadComments(page = 0) {
                     }, { passive: false });
                 });
                 
-                // Add active touch state for mobile
+               
                 interactiveElements.forEach(el => {
                     el.addEventListener('touchstart', function() {
                         this.classList.add('active-touch');
@@ -3842,7 +3311,7 @@ function loadComments(page = 0) {
                     });
                 });
                 
-                // Явно добавляем обработчик для активного состояния кнопок
+             
                 document.querySelectorAll('.button-link').forEach(button => {
                     button.addEventListener('touchstart', function() {
                         this.style.backgroundColor = 'rgba(255, 255, 255, 0.15)';
@@ -3854,48 +3323,49 @@ function loadComments(page = 0) {
                 });
             };
             
-            // Initialize
+           
             const init = function() {
-                // Initialize event listeners
+               
                 initEventListeners();
                 
-                // Set accessibility attributes
+               
                 dom.menuToggle.setAttribute('aria-expanded', 'false');
                 dom.menuToggle.setAttribute('aria-label', 'Открыть меню навигации');
                 dom.themeToggle.setAttribute('aria-label', 'Переключить тему');
                 
-                // Add aria-labels to dropdown toggles
+                
                 dom.dropdownToggles.forEach(toggle => {
                     toggle.setAttribute('aria-expanded', 'false');
                     toggle.setAttribute('aria-haspopup', 'true');
                 });
                 
-                // Set current year in footer
+                
                 const currentYear = new Date().getFullYear();
                 const yearElement = document.querySelector('.nav-footer-year');
                 if (yearElement) {
                     yearElement.textContent = currentYear;
                 }
                 
-                // Initialize load level
-                setLoadLevel(currentLoadLevel);
+               
+              
                 
-                // Загружаем блоки
+                
+                loadLoadLevels();
+                
+                
                 loadBlocks();
                 
-                // Загружаем комментарии
-                loadComments(0); // Начинаем с первой страницы
                 
-                // Инициализируем анимацию чата
-                initChatAnimation();
+                loadComments(0);
                 
-                // Add smooth scroll for menu
+                
+                
                 dom.navList.addEventListener('wheel', function(e) {
                     this.scrollTop += e.deltaY * 0.5;
                     e.preventDefault();
                 }, { passive: false });
                 
-                // Add inertial scroll for touch devices
+                
                 let startY = 0;
                 let scrollTop = 0;
                 let isScrolling = false;
@@ -3921,9 +3391,9 @@ function loadComments(page = 0) {
                     isScrolling = false;
                 });
                 
-                // Отслеживание кликов по кнопкам для Google Analytics
+               
                 function initButtonTracking() {
-                    // Отслеживание всех основных кнопок
+                   
                     document.querySelectorAll('.button-link').forEach(button => {
                         button.addEventListener('click', function(e) {
                             const buttonText = this.querySelector('span:first-child')?.textContent || this.textContent;
@@ -3937,7 +3407,7 @@ function loadComments(page = 0) {
                         });
                     });
                     
-                    // Отслеживание ссылок в навигации
+                    
                     document.querySelectorAll('.nav-link:not(.dropdown-toggle)').forEach(link => {
                         link.addEventListener('click', function(e) {
                             const linkText = this.querySelector('.link-text')?.textContent || this.textContent;
@@ -3950,7 +3420,7 @@ function loadComments(page = 0) {
                         });
                     });
                     
-                    // Отслеживание ссылок в dropdown
+                   
                     document.querySelectorAll('.dropdown-item').forEach(link => {
                         link.addEventListener('click', function(e) {
                             const linkText = this.querySelector('.dropdown-item-text')?.textContent || this.textContent;
@@ -3963,7 +3433,7 @@ function loadComments(page = 0) {
                         });
                     });
                     
-                    // Отслеживание Telegram иконки
+                 
                     const telegramIcon = document.querySelector('.telegram-icon');
                     if (telegramIcon) {
                         telegramIcon.addEventListener('click', function(e) {
@@ -3974,7 +3444,7 @@ function loadComments(page = 0) {
                         });
                     }
                     
-                    // Отслеживание кликов по логотипу
+                  
                     const logo = document.getElementById('logo');
                     if (logo) {
                         logo.addEventListener('click', function(e) {
@@ -3985,7 +3455,7 @@ function loadComments(page = 0) {
                         });
                     }
                     
-                    // Отслеживание открытия меню
+                
                     const menuToggle = document.getElementById('menu-toggle');
                     if (menuToggle) {
                         menuToggle.addEventListener('click', function(e) {
@@ -4002,156 +3472,54 @@ function loadComments(page = 0) {
                 initButtonTracking();
             }
             
-            // Start when DOM is ready
+          
             if (document.readyState === 'loading') {
                 document.addEventListener('DOMContentLoaded', init);
             } else {
                 init();
             }
             
-// Адаптивная анимация чата
-function initChatAnimation() {
-    const userMessage = document.getElementById('user-message');
-    const botMessage = document.getElementById('bot-message');
-    const userTextEl = document.getElementById('user-text');
-    const botTextEl = document.getElementById('bot-text');
-    
-    const userText = "Создать анкету";
-    const botText = "Ваша анкета создана! Номер - #5000";
-    
-    let isAnimating = true;
-    let animationTimer = null;
-    
-    function clearAllTimers() {
-        if (animationTimer) {
-            clearTimeout(animationTimer);
-            animationTimer = null;
-        }
-    }
-    
-    function resetAnimation() {
-        clearAllTimers();
-        
-        userMessage.classList.remove('visible', 'hiding');
-        botMessage.classList.remove('visible', 'hiding');
-        userTextEl.textContent = '';
-        botTextEl.textContent = '';
-    }
-    
-    function hideElement(element) {
-        return new Promise(resolve => {
-            element.classList.add('hiding');
-            animationTimer = setTimeout(() => {
-                element.classList.remove('visible', 'hiding');
-                resolve();
-            }, 400);
-        });
-    }
-    
-    function showElement(element) {
-        element.classList.add('visible');
-    }
-    
-    function typeText(element, text, speed = 50) {
-        return new Promise(resolve => {
-            let i = 0;
-            element.textContent = '';
-            
-            function typeNext() {
-                if (i < text.length) {
-                    element.textContent = text.substring(0, i + 1);
-                    i++;
-                    animationTimer = setTimeout(typeNext, speed);
-                } else {
-                    resolve();
-                }
-            }
-            
-            typeNext();
-        });
-    }
-    
-    function delay(ms) {
-        return new Promise(resolve => {
-            animationTimer = setTimeout(resolve, ms);
-        });
-    }
-    
-    async function animationLoop() {
-        while (isAnimating) {
-            resetAnimation();
-            await delay(500);
-            
-            if (!isAnimating) break;
-            
-            showElement(userMessage);
-            await delay(300);
-            if (!isAnimating) break;
-            
-            await typeText(userTextEl, userText, 60);
-            await delay(600);
-            if (!isAnimating) break;
-            
-            showElement(botMessage);
-            await delay(300);
-            if (!isAnimating) break;
-            
-            await typeText(botTextEl, botText, 40);
-            await delay(1500);
-            if (!isAnimating) break;
-            
-            await Promise.all([
-                hideElement(userMessage),
-                hideElement(botMessage)
-            ]);
-            
-            await delay(1000);
-        }
-    }
-    
-    animationLoop();
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                if (!isAnimating) {
-                    isAnimating = true;
-                    animationLoop();
-                }
-            } else {
-                isAnimating = false;
-                resetAnimation();
-            }
-        });
-    }, {
-        threshold: 0.1,
-        rootMargin: '50px'
-    });
-    
-    const chatSection = document.getElementById('chat-animation');
-    if (chatSection) {
-        observer.observe(chatSection);
-    }
-    
-    const actionButton = document.querySelector('.chat-action-button');
-    if (actionButton) {
-        actionButton.addEventListener('click', function(e) {
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'create_profile_click', {
-                    'event_category': 'engagement',
-                    'event_label': 'Create Profile via Animation Button'
-                });
-            }
-        });
-    }
-    
-    window.addEventListener('beforeunload', resetAnimation);
-}
-
-document.addEventListener('DOMContentLoaded', initChatAnimation);
         })();
+        
+function loadLoadLevels() {
+    fetch('load-levels.json?v=' + Date.now())
+        .then(response => response.json())
+        .then(data => {
+            const currentLevel = data.current;
+            const levelData = data.levels[currentLevel];
+            
+            const section = document.getElementById('load-level');
+            if (!section) return;
+            
+            
+            section.classList.remove('loading');
+            
+            
+            section.className = 'load-level-section ' + currentLevel + '-level';
+            
+            const currentLevelSpan = document.getElementById('current-level-text');
+            if (currentLevelSpan) currentLevelSpan.textContent = levelData.level_text;
+            
+            const currentLevelIcon = document.querySelector('.current-level i');
+            if (currentLevelIcon) currentLevelIcon.className = 'fas ' + levelData.current_level_icon;
+            
+            const descTitle = document.getElementById('level-description-title');
+            if (descTitle) descTitle.textContent = levelData.title;
+            
+            const descText = document.getElementById('level-description-text');
+            if (descText) descText.innerHTML = `<strong>${levelData.description}</strong> ${levelData.details}`;
+            
+            const indicator = document.getElementById('level-indicator');
+            if (indicator) indicator.style.left = levelData.indicator_position + '%';
+            
+            const indicatorIcon = indicator?.querySelector('.indicator-icon i');
+            if (indicatorIcon) indicatorIcon.className = 'fas ' + levelData.icon;
+        })
+        .catch(error => console.error('Ошибка загрузки уровней:', error));
+}
+        
     </script>
-    <!-- Скрипт для загрузки динамических блоков -->
+    
     <script src="blocks-loader.js"></script>
 </body>
 </html>
